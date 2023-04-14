@@ -8,6 +8,8 @@
         "typescriptreact" // Enable .tsx
     ],
     "cSpell.words": [
-        "giscus"
+        "giscus",
+        "micromessenger",
+        "wechat"
     ]
 }

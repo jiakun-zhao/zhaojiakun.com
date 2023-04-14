@@ -1,9 +1,8 @@
 {
     "private": true,
     "type": "module",
-    "version": "0.0.1",
     "scripts": {
-        "build": "pnpm run script:giscus && astro build",
+        "build": "astro build",
         "dev": "astro dev",
         "preview": "astro preview"
     },

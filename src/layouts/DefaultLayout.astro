@@ -1,0 +1,15 @@
+---
+import DafaultHead from '~/components/DafaultHead.astro'
+---
+
+<html lang="en">
+    <head>
+        <DafaultHead />
+    </head>
+    <body>
+        <slot />
+        <script>
+            import '~/client'
+        </script>
+    </body>
+</html>
