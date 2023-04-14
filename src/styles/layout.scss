@@ -1,0 +1,29 @@
+header {
+    span {
+        font-size: 0.875rem;
+    }
+}
+
+main {
+    margin-top: 4rem;
+
+    p,
+    li {
+        line-height: 2;
+    }
+
+    ul {
+        padding-inline-start: 1.8rem;
+    }
+
+    pre {
+        border-radius: 6px;
+        padding: 0.875rem 1rem;
+        background-color: $background-secondary !important;
+    }
+}
+
+footer {
+    margin-top: 4rem;
+    font-size: 0.875rem;
+}

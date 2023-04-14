@@ -1,0 +1,11 @@
+<script>
+   (function () {
+       if (navigator.userAgent.toLowerCase().includes('micromessenger')) {
+           const title = document.title
+           const observer = new IntersectionObserver(([{ intersectionRatio }]) => {
+               document.title = intersectionRatio ? '' : title
+           })
+           observer.observe(document.querySelector('body header h1')!)
+       }
+   })()
+</script>

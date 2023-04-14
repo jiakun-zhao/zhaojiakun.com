@@ -1,0 +1,46 @@
+---
+import Footer from '~/components/Footer.astro'
+import BaiduAnalytics from '~/components/BaiduAnalytics.astro'
+import Shiki from '~/components/Shiki.astro'
+import RandomFavicon from '~/components/RandomFavicon.astro'
+import WeChatTitle from '~/components/WeChatTitle.astro'
+
+import '~/styles/index.scss'
+
+const props = Astro.props.frontmatter ?? Astro.props
+const { origin } = Astro.url
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml" /> -->
+
+        <title>{props.title}</title>
+        <meta name="author" content={props.author ?? 'Jiakun Zhao'} />
+        <meta name="description" content={props.description ?? 'Jiakun Zhao\'s Portfolio'} />
+
+        <meta property="og:title" content={props.title} />
+        <meta property="og:image" content={`${origin}/${props.iamge ?? 'og-icon.jpg'}`} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@zhaojiakun_cn" />
+
+        <RandomFavicon />
+        <WeChatTitle />
+        {props.hasCode && <Shiki />}
+        {import.meta.env.PROD && <BaiduAnalytics />}
+    </head>
+    <body>
+        <header>
+            <h1>{props.title}</h1>
+            {props.date && <span>{props.date}</span>}
+        </header>
+        <main>
+            <slot />
+        </main>
+        {props.footer !== false && <Footer />}
+    </body>
+</html>
