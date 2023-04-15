@@ -19,6 +19,10 @@ $colors: (
         light: #000,
         dark: #fff,
     ),
+    foreground-thirdly: (
+        light: #bababa,
+        dark: #444,
+    ),
     border-primary: (
         light: #ddd,
         dark: #333,
@@ -30,6 +34,7 @@ $background-primary: var(--background-primary);
 $background-secondary: var(--background-secondary);
 $foreground-primary: var(--foreground-primary);
 $foreground-secondary: var(--foreground-secondary);
+$foreground-thirdly: var(--foreground-thirdly);
 $border-primary: var(--border-primary);
 
 :root {

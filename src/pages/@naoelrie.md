@@ -9,4 +9,4 @@ description: Naoelrie
 
 <br>
 
-![Naoelrie WeChat MP](/assets/images/naoelrie-wechat-mp.jpg)
+![Naoelrie WeChat MP](/images/naoelrie-wechat-mp.jpg)

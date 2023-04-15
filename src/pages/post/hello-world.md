@@ -2,13 +2,16 @@
 title: 你好，世界！
 description: 你好，世界！
 date: 2023-04-07 01:53
+toc: true
 ---
 
 一直只有一个草草的首页，而今天终于可以写一篇推文了。以前就一直想写东西，但作为理科生肚子里只有数字没有墨水，微信订阅号注册又注销，看好朋友 @[Naoelrie](/@Naoelrie) 最近一直在订阅号分享心情，我决定再试试...
 
 那么，你好世界～
 
-[ TODO ]
+<br>
+
+![cover](/images/hello-world-cover.jpg)
 
 ### 关于我
 
@@ -20,10 +23,8 @@ date: 2023-04-07 01:53
 
 通常喜欢极简的东西，所以这个网站的方方面面都还蛮极简的。
 
--   设计：代码敲成啥样算啥样
--   前端：Astro, TypeScript, SASS
+-   开发：Astro, TypeScript, SASS, Vercel
 -   编辑：Markdown
--   服务：Vercel
 -   评论：Giscus
 
 浏览源码：[jiakun-zhao/zhaojiakun.com]()

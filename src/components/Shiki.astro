@@ -1,24 +1,26 @@
 <script is:inline src="https://cdn.jsdelivr.net/npm/shiki@0.14.1/dist/index.jsdelivr.iife.js"></script>
 <script>
 import type { Lang } from 'shiki'
-(async function (shiki) {
-    function isSupported(lang: string): lang is Lang {
-        return !!shiki.BUNDLED_LANGUAGES.find(({ id, aliases }) => id === lang || aliases?.includes(lang))
-    }
-    const h = await shiki.getHighlighter({ langs: [], themes: ['vitesse-dark', 'vitesse-light'] })
-    for (const el of Array.from(document.querySelectorAll('pre code'))) {
-        const lang = el.className.match(/language-(.+)/)?.[1]
-        const code = el.textContent
-        if (!lang || !isSupported(lang) || !code)
-            continue
-        if (!h.getLoadedLanguages().includes(lang))
-            await h.loadLanguage(lang)
-        const light = h.codeToHtml(code ?? '', { lang, theme: 'vitesse-light' })
-        const dark = h.codeToHtml(code ?? '', { lang, theme: 'vitesse-dark' })
-        const wrapper = document.createElement('div')
-        wrapper.innerHTML = `${light}${dark}`
-        el.parentElement!.replaceWith(...Array.from(wrapper.childNodes))
-    }
+try {
+    (async function (shiki) {
+        function isSupported(lang: string): lang is Lang {
+            return !!shiki.BUNDLED_LANGUAGES.find(({ id, aliases }) => id === lang || aliases?.includes(lang))
+        }
+        const h = await shiki.getHighlighter({ langs: [], themes: ['vitesse-dark', 'vitesse-light'] })
+        for (const el of Array.from(document.querySelectorAll('pre code'))) {
+            const lang = el.className.match(/language-(.+)/)?.[1]
+            const code = el.textContent
+            if (!lang || !isSupported(lang) || !code)
+                continue
+            if (!h.getLoadedLanguages().includes(lang))
+                await h.loadLanguage(lang)
+            const light = h.codeToHtml(code ?? '', { lang, theme: 'vitesse-light' })
+            const dark = h.codeToHtml(code ?? '', { lang, theme: 'vitesse-dark' })
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = `${light}${dark}`
+            el.parentElement!.replaceWith(...Array.from(wrapper.childNodes))
+        }
     // eslint-disable-next-line no-undef
-})(shiki).catch(console.error)
+    })(shiki).catch(console.error)
+} catch {}
 </script>

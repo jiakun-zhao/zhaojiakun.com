@@ -1,5 +1,6 @@
 ---
 title: Jiakun Zhao
+style: img{width:70%}
 ---
 
 Front-end developer<br>Graphic designer
@@ -8,7 +9,7 @@ Trying to understand everything.<br>Struggling to learn English.
 
 <br>
 
-<img src="/images/index-cover.jpg" alt="cover" style="width: 70%">
+![cover](/images/index-cover.jpg)
 
 <br>
 <br>

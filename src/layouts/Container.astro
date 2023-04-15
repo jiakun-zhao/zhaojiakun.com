@@ -4,6 +4,7 @@ import BaiduAnalytics from '~/components/BaiduAnalytics.astro'
 import Shiki from '~/components/Shiki.astro'
 import RandomFavicon from '~/components/RandomFavicon.astro'
 import WeChatTitle from '~/components/WeChatTitle.astro'
+import Headings from '~/components/Headings.astro'
 
 import '~/styles/index.scss'
 
@@ -28,6 +29,8 @@ const { origin } = Astro.url
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content="@zhaojiakun_cn" />
 
+        {props.style && <style set:html={props.style}></style>}
+
         <RandomFavicon />
         <WeChatTitle />
         {props.hasCode && <Shiki />}
@@ -37,6 +40,7 @@ const { origin } = Astro.url
         <header>
             <h1>{props.title}</h1>
             {props.date && <span>{props.date}</span>}
+            {props.toc && Astro.props.headings && <Headings headings={Astro.props.headings} />}
         </header>
         <main>
             <slot />

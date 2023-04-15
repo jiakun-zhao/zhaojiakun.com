@@ -21,6 +21,10 @@ main {
         padding: 0.875rem 1rem;
         background-color: $background-secondary !important;
     }
+
+    img {
+        max-width: 100%;
+    }
 }
 
 footer {
