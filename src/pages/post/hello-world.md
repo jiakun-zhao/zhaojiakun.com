@@ -23,10 +23,11 @@ toc: true
 
 通常喜欢极简的东西，所以这个网站的方方面面都还蛮极简的。
 
--   开发：[Astro](https://astro.build), [TypeScript](https://www.typescriptlang.org), [Sass](https://sass-lang.com), [Vercel](https://vercel.com)
+-   开发：[Astro](https://astro.build), [TypeScript](https://www.typescriptlang.org), [Sass](https://sass-lang.com)
 -   编辑：[Markdown](https://www.markdownguide.org)
 -   评论：[Giscus](https://giscus.app)
--   源码：[GitHub]()
+-   部署：[Vercel](https://vercel.com)
+-   源码：[GitHub](https://github.com/jiakun-zhao/zhaojiakun.com)
 
 ### 友链
 

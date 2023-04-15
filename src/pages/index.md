@@ -24,7 +24,7 @@ Trying to understand everything.<br>Struggling to learn English.
 
 ### Projects
 
--   [A simple video cover generator.](https://video-cover.zhaojiakun.cn/)
+-   [A simple video cover generator.](https://cover.zhaojiakun.com/)
 
 <br>
 
