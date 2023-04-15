@@ -5,11 +5,13 @@ import Shiki from '~/components/Shiki.astro'
 import RandomFavicon from '~/components/RandomFavicon.astro'
 import WeChatTitle from '~/components/WeChatTitle.astro'
 import Headings from '~/components/Headings.astro'
+import Giscus from '~/components/Giscus.astro'
 
 import '~/styles/index.scss'
 
 const props = Astro.props.frontmatter ?? Astro.props
-const { origin } = Astro.url
+const { origin, pathname } = Astro.url
+const isPost = pathname.startsWith('/post/')
 ---
 
 <html lang="en">
@@ -29,12 +31,13 @@ const { origin } = Astro.url
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content="@zhaojiakun_cn" />
 
-        {props.style && <style set:html={props.style}></style>}
+        {props.style && <style set:html={props.style} />}
 
         <RandomFavicon />
         <WeChatTitle />
         {props.hasCode && <Shiki />}
         {import.meta.env.PROD && <BaiduAnalytics />}
+        {isPost && <Giscus />}
     </head>
     <body>
         <header>
@@ -44,6 +47,7 @@ const { origin } = Astro.url
         </header>
         <main>
             <slot />
+            {isPost && <div class="giscus" />}
         </main>
         {props.footer !== false && <Footer />}
     </body>
