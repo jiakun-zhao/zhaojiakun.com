@@ -13,12 +13,10 @@ Trying to understand everything.<br>Struggling to learn English.
 
 <br>
 <br>
-<br>
 
 ### Navigation
 
 -   [Blog](/posts)
--   [Bookmarks](/bookmarks)
 -   [About](/post/hello-world)
 -   [jiakun.zhao@outlook.com](mailto:jiakun.zhao@outlook.com)
 
