@@ -30,7 +30,7 @@ Trying to understand everything.<br>Struggling to learn English.
 
 -   [BiliBili](https://space.bilibili.com/35245056)
 -   [GitHub](https://github.com/jiakun-zhao)
--   [Twitter](https://twitter.com/zhaojiakun_cn)
+-   [Twitter](https://twitter.com/zhaojiakun_com)
 -   [Mastodon](https://mas.to/@zhaojiakun)
 
 Or mail me at [hi@zhaojiakun.com](mailto:hi@zhaojiakun.com)
