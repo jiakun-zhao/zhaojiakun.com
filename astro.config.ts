@@ -17,6 +17,7 @@ export default defineConfig({
             markdownSmMs(),
         ],
     },
+    base: 'https://zhaojiakun.com',
     build: {
         assets: 'assets',
     },
