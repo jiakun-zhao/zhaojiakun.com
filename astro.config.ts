@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config'
 import markdownLinkTarget from './plugins/markdown-link-target'
 import markdownDefaultLayout from './plugins/markdown-default-layout'
 import markdownHasCode from './plugins/markdown-has-code'
-import markdownSmMs from './plugins/markdown-sm-ms'
+import markdownImage from './plugins/markdown-image'
 import htmlMinifier from './plugins/html-minifier'
 
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
             markdownLinkTarget(),
             markdownDefaultLayout(),
             markdownHasCode(),
-            markdownSmMs(),
+            markdownImage(),
         ],
     },
     site: 'https://zhaojiakun.com',
