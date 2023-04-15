@@ -12,19 +12,17 @@ Trying to understand everything.<br>Struggling to learn English.
 ![cover](/images/index-cover.jpg)
 
 <br>
-<br>
 
 ### Navigation
 
--   [Blog](/posts)
--   [About](/post/hello-world)
--   [jiakun.zhao@outlook.com](mailto:jiakun.zhao@outlook.com)
+-   [BLOG](/posts)
+-   [About - 你好，世界！](/post/hello-world)
 
 <br>
 
 ### Projects
 
--   [A simple video cover generator.](https://cover.zhaojiakun.com/)
+-   [A simple video cover generator.](https://video-cover.zhaojiakun.com/)
 
 <br>
 
@@ -34,6 +32,8 @@ Trying to understand everything.<br>Struggling to learn English.
 -   [GitHub](https://github.com/jiakun-zhao)
 -   [Twitter](https://twitter.com/zhaojiakun_cn)
 -   [Mastodon](https://mas.to/@zhaojiakun)
+
+Or mail me at [hi@zhaojiakun.com](mailto:hi@zhaojiakun.com)
 
 <!-- - [Unsplash](https://unsplash.com/@zhaojiakun) -->
 <!-- - [Dribbble](https://dribbble.com/jiakun-zhao) -->

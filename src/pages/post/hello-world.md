@@ -25,9 +25,16 @@ toc: true
 
 -   开发：[Astro](https://astro.build), [TypeScript](https://www.typescriptlang.org), [Sass](https://sass-lang.com)
 -   编辑：[Markdown](https://www.markdownguide.org)
--   评论：[Giscus](https://giscus.app)
--   部署：[Vercel](https://vercel.com)
 -   源码：[GitHub](https://github.com/jiakun-zhao/zhaojiakun.com)
+
+以下是建设网站用到的服务，供你参考：
+
+-   [Vercel](https://vercel.com)：网站托管
+-   [Giscus](https://giscus.app)：基于 GitHub Discussions 的评论系统
+-   [Dynadot](https://dynadot.com)：域名注册
+-   [Forward Email](https://forwardemail.net)：邮件转发
+-   [jsDelivr](https://www.jsdelivr.com)：公共CDN
+-   [SM.MS](https://sm.ms)：图床
 
 ### 友链
 
