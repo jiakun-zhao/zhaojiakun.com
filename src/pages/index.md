@@ -23,6 +23,7 @@ Trying to understand everything.<br>Struggling to learn English.
 ### Projects
 
 -   [A simple video cover generator.](https://video-cover.zhaojiakun.com/)
+-   [莘野起始页](/post/start-page)
 
 <br>
 
