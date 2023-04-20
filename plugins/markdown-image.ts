@@ -9,7 +9,7 @@ const map: Record<string, string> = {
     '/images/naoelrie-wechat-mp.jpg': 'https://s2.loli.net/2023/04/15/ieGpTmfbMIcEq6h.jpg',
 }
 
-const jsDelivrBaseUrl = 'https://cdn.jsdelivr.net/gh/jiakun-zhao/zhaojiakun.com/public'
+const jsDelivrBaseUrl = 'https://cdn.jsdelivr.net/npm/@jiakun-zhao/static/dist/personal-website'
 
 export default function (): RemarkPlugin {
     return function () {
