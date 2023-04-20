@@ -35,11 +35,12 @@ main {
         max-width: 100%;
     }
 
-    code {
+    code:not(pre > code) {
         letter-spacing: normal;
         background-color: $background-secondary;
         border-radius: 4px;
         font-size: 0.925rem;
+        word-wrap: break-word;
     }
 }
 
