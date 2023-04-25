@@ -1,21 +1,14 @@
 import { defineConfig } from 'astro/config'
 
-import markdownLinkTarget from './plugins/markdown-link-target'
-import markdownDefaultLayout from './plugins/markdown-default-layout'
-import markdownHasCode from './plugins/markdown-has-code'
-import markdownImage from './plugins/markdown-image'
-import htmlMinifier from './plugins/html-minifier'
+import UnoCSS from 'unocss/astro'
+
+import cssnano from 'cssnano'
+import autoprefixer from 'autoprefixer'
 
 export default defineConfig({
-    integrations: [htmlMinifier()],
     markdown: {
         syntaxHighlight: false,
-        remarkPlugins: [
-            markdownLinkTarget(),
-            markdownDefaultLayout(),
-            markdownHasCode(),
-            markdownImage(),
-        ],
+        remarkPlugins: [],
     },
     site: 'https://zhaojiakun.com',
     build: {
@@ -24,9 +17,17 @@ export default defineConfig({
     server: {
         host: true,
     },
+    integrations: [
+        UnoCSS(),
+    ],
     vite: {
         build: {
             assetsInlineLimit: 0,
+        },
+        css: {
+            postcss: {
+                plugins: [autoprefixer(), cssnano()],
+            },
         },
     },
 })
