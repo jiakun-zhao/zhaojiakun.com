@@ -31,12 +31,14 @@
         "@rollup/plugin-terser": "^0.4.1",
         "@rollup/plugin-typescript": "^11.1.0",
         "@types/node": "^18.15.11",
+        "@types/sharp": "^0.31.1",
         "astro": "^2.3.0",
         "autoprefixer": "^10.4.14",
         "cssnano": "^6.0.0",
         "eslint": "^8.38.0",
         "eslint-plugin-astro": "^0.26.1",
         "sass": "^1.62.0",
+        "sharp": "^0.31.3",
         "typescript": "^5.0.4"
     }
 }

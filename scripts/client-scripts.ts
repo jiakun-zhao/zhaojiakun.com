@@ -1,1 +1,1 @@
-console.log(1)
+import './client-scripts/favicon'

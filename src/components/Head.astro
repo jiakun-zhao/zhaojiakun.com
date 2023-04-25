@@ -1,0 +1,25 @@
+---
+import { AUTHOR, DESCRIPTION, NAME, OG_IMAGE } from '~/config'
+
+interface Props {
+    title: string | undefined
+    author: string | undefined
+    description: string | undefined
+    image: string | undefined
+}
+---
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{Astro.props.title ?? NAME}</title>
+<meta name="author" content={Astro.props.author ?? AUTHOR} />
+<meta name="description" content={Astro.props.description ?? DESCRIPTION} />
+
+<meta property="og:title" content={Astro.props.title ?? NAME} />
+<meta property="og:description" content={Astro.props.description ?? DESCRIPTION} />
+<meta property="og:image" content={`${Astro.site!.origin}/${Astro.props.image ?? OG_IMAGE}`} />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@zhaojiakun_com" />

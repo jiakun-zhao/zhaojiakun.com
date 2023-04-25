@@ -1,13 +1,14 @@
 import { defineCollection, z } from 'astro:content'
-import { NAME } from '~/config'
+import { DESCRIPTION, NAME } from '~/config'
 
 const postCollection = defineCollection({
     schema: z.object({
-        title: z.string(),
-        description: z.string(),
+        title: z.string().default(NAME),
+        author: z.string().default(NAME),
+        description: z.string().default(DESCRIPTION),
+        image: z.string().default('og.jpg'),
         create_at: z.date(),
         update_at: z.date(),
-        author: z.string().default(NAME),
     }),
 })
 
