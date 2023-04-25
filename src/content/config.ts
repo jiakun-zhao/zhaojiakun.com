@@ -15,11 +15,7 @@ const postCollection = defineCollection({
     }),
 })
 
-const momentCollection = defineCollection({
-    schema: z.object({
-        images: z.array(z.string()).optional(),
-    }),
-})
+const momentCollection = defineCollection({})
 
 export const collections = {
     posts: postCollection,
