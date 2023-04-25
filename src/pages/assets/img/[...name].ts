@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 async function getSharpContext(filePath: string) {
-    const ctx = sharp(filePath)
+    const ctx = sharp(filePath.slice(0, -5))
     const { width } = await ctx.metadata()
     const customWidth = parseInt(filePath.match(/[!|,](\d)w+/)?.[1] ?? '1080')
     const customQuality = parseInt(filePath.match(/[!|,](\d)q+/)?.[1] ?? '75')
@@ -30,6 +30,7 @@ async function getSharpContext(filePath: string) {
 
 export const get: APIRoute = async ({ params }) => {
     const filePath = join(IMAGE_SAVE_PATH, params.name!)
+    console.log(filePath)
     let buffer: Buffer
     if (filePath.endsWith('.webp')) {
         const { ctx, quality } = await getSharpContext(filePath)

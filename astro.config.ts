@@ -9,6 +9,8 @@ import { minify } from 'html-minifier'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import glob from 'fast-glob'
+import cssnano from 'cssnano'
+import autoprefixer from 'autoprefixer'
 import { CLIENT_SCRIPTS_NAME } from './src/config'
 
 export default defineConfig({
@@ -27,6 +29,7 @@ export default defineConfig({
     vite: {
         optimizeDeps: { exclude: ['fsevents'] },
         build: { assetsInlineLimit: 0 },
+        css: { postcss: { plugins: [autoprefixer(), cssnano()] } },
         plugins: [injectClientScript()],
     },
 })
