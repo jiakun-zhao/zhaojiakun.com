@@ -7,7 +7,28 @@ import Favicon from '~/components/Favicon.astro'
     <head>
         <Favicon />
     </head>
-    <body font-sans m-0>
-        <slot />
+    <body>
+        <main>
+            <slot />
+        </main>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">HOME</a>
+                </li>
+                <li>
+                    <a href="/blog">BLOG</a>
+                </li>
+                <li>
+                    <a href="/projects">PROJECTS</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);scrollTo({top:0,behavior:'smooth'});">TOP</a>
+                </li>
+            </ul>
+        </nav>
+        <script>
+            import '~/client-scripts'
+        </script>
     </body>
 </html>

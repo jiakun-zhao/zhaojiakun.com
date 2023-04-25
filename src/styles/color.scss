@@ -1,0 +1,50 @@
+$colors: (
+    accent: (
+        light: #6054ba,
+        dark: #6054ba,
+    ),
+    background-primary: (
+        light: #fff,
+        dark: #111,
+    ),
+    background-secondary: (
+        light: #f2f2f2,
+        dark: #191919,
+    ),
+    foreground-primary: (
+        light: #767676,
+        dark: #767676,
+    ),
+    foreground-secondary: (
+        light: #000,
+        dark: #fff,
+    ),
+    foreground-thirdly: (
+        light: #bababa,
+        dark: #444,
+    ),
+    border-primary: (
+        light: #ddd,
+        dark: #333,
+    ),
+);
+
+$accent: var(--accent);
+$background-primary: var(--background-primary);
+$background-secondary: var(--background-secondary);
+$foreground-primary: var(--foreground-primary);
+$foreground-secondary: var(--foreground-secondary);
+$foreground-thirdly: var(--foreground-thirdly);
+$border-primary: var(--border-primary);
+
+:root {
+    @each $color, $value in $colors {
+        --#{$color}: #{map-get($value, light)};
+    }
+
+    @media (prefers-color-scheme: dark) {
+        @each $color, $value in $colors {
+            --#{$color}: #{map-get($value, dark)};
+        }
+    }
+}
