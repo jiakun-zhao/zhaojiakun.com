@@ -30,7 +30,6 @@ async function getSharpContext(filePath: string) {
 
 export const get: APIRoute = async ({ params }) => {
     const filePath = join(IMAGE_SAVE_PATH, params.name!)
-    console.log(filePath)
     let buffer: Buffer
     if (filePath.endsWith('.webp')) {
         const { ctx, quality } = await getSharpContext(filePath)
