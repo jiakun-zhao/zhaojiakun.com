@@ -1,12 +1,5 @@
 ---
 import { AUTHOR, DESCRIPTION, NAME, OG_IMAGE } from '~/config'
-
-interface Props {
-    title: string | undefined
-    author: string | undefined
-    description: string | undefined
-    image: string | undefined
-}
 ---
 
 <meta charset="UTF-8" />
@@ -19,7 +12,9 @@ interface Props {
 
 <meta property="og:title" content={Astro.props.title ?? NAME} />
 <meta property="og:description" content={Astro.props.description ?? DESCRIPTION} />
-<meta property="og:image" content={`${Astro.site!.origin}/${Astro.props.image ?? OG_IMAGE}`} />
+<meta property="og:image" content={`${Astro.url.origin}/${Astro.props.image ?? OG_IMAGE}`} />
 
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@zhaojiakun_com" />
+
+<style set:html={Astro.props.style ?? ''} />

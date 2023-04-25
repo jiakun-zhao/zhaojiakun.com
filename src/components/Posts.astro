@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import Layout from '~/components/Layout.astro'
+
+const posts = await getCollection('posts', ({ data }) => data.draft !== true)
+    .then((res) => {
+        const getUpdateTime = (p: CollectionEntry<'posts'>) => new Date(p.data.date.update_at).getTime()
+        return res.sort((a, b) => getUpdateTime(b) - getUpdateTime(a))
+            .map(i => ({
+                date: i.data.date.update_at,
+                url: `/post/${i.slug}`,
+                title: i.data.title,
+            }))
+    })
+
+function getDisplayTime(date: string) {
+    const d = new Date(date)
+    return [d.getMonth() - 1, d.getDate()].map(i => i < 10 ? `0${i}` : i).join('-')
+}
+
+function isSameYear(a: string, b = '0000-00-00') {
+    return new Date(a).getFullYear() === new Date(b).getFullYear()
+}
+---
+
+<Layout {...Astro.props}>
+    {
+        posts.map((i, idx) => (
+            <>
+                {!isSameYear(i.date, posts[idx - 1]?.date) && <h3>{new Date(i.date).getFullYear()}</h3>}
+                <p>
+                    <span>{getDisplayTime(i.date)}&nbsp;</span>
+                    <a href={i.url}>{i.title}</a>
+                </p>
+            </>
+        ))
+    }
+</Layout>

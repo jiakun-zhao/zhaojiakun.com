@@ -5,8 +5,7 @@ import autoprefixer from 'autoprefixer'
 import { rollup } from 'rollup'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
-
-const CLIENT_SCRIPTS_NAME = '~/client-scripts'
+import { CLIENT_SCRIPTS_NAME } from './src/config'
 
 export default defineConfig({
     markdown: {

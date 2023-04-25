@@ -1,0 +1,21 @@
+---
+import { GISCUS_STYLE_VERSION } from '~/config'
+---
+
+<script
+    is:inline
+    src="https://giscus.app/client.js"
+    data-repo="jiakun-zhao/zhaojiakun.com"
+    data-repo-id="R_kgDOJWuyVg"
+    data-category="BLOG"
+    data-category-id="DIC_kwDOJWuyVs4CVzNG"
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="0"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme={`${Astro.url.origin}/assets/css/giscus@${GISCUS_STYLE_VERSION}.css`}
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    defer
+></script>

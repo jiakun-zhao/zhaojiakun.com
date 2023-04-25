@@ -1,8 +1,9 @@
 ---
 title: 你好，世界！
 description: 你好，世界！
-update_at: 2023-04-07 01:53
-create_at: 2023-04-07 01:53
+date:
+    update_at: 2023-04-07 01:53
+    create_at: 2023-04-07 01:53
 ---
 
 一直只有一个草草的首页，而今天终于可以写一篇推文了。以前就一直想写东西，但作为理科生肚子里只有数字没有墨水，微信订阅号注册又注销，看好朋友 @[Naoelrie](/@Naoelrie) 最近一直在订阅号分享心情，我决定再试试...
@@ -11,7 +12,7 @@ create_at: 2023-04-07 01:53
 
 <br>
 
-![cover](/images/hello-world-cover.jpg)
+![cover](/assets/img/@hello-world.jpg)
 
 ### 关于我
 
@@ -33,8 +34,6 @@ create_at: 2023-04-07 01:53
 -   [Giscus](https://giscus.app)：基于 GitHub Discussions 的评论系统
 -   [Dynadot](https://dynadot.com)：域名注册
 -   [Forward Email](https://forwardemail.net)：邮件转发
--   [jsDelivr](https://www.jsdelivr.com)：公共CDN
--   [SM.MS](https://sm.ms)：图床
 
 ### 友链
 

@@ -1,4 +1,93 @@
-body {
-    background-color: red;
-    user-select: none;
+@import './colors.scss';
+
+// https://giscus.app/zh-CN
+
+$rounded: 6px;
+
+// Remove border
+body * {
+    border: none;
+}
+
+main {
+    // hide
+    .gsc-header,
+    .gsc-comment-box-tabs,
+    .gsc-comment-box-textarea-extras,
+    .capitalize,
+    .gsc-comment-footer,
+    .gsc-reply-reactions,
+    .gsc-reply-header details {
+        display: none;
+    }
+
+    // input
+    textarea {
+        resize: none;
+        border: none !important;
+        color: $foreground-primary;
+        background-color: $background-primary !important;
+
+        &::placeholder {
+            color: $foreground-primary;
+        }
+    }
+
+    .form-control {
+        border-radius: $rounded;
+        color: $foreground-primary;
+        background-color: $background-primary;
+    }
+
+    // comment box style
+    .gsc-comment,
+    .gsc-comment-box {
+        border-radius: $rounded !important;
+        background-color: $background-secondary;
+    }
+
+    .gsc-comment {
+        padding: 0.5rem 0;
+
+        .gsc-comment-box-bottom {
+            margin-bottom: 0;
+        }
+    }
+
+    .gsc-comment-box:not(.gsc-comment-box-is-reply) {
+        padding: 1px;
+    }
+
+    // reply line
+    .gsc-tl-line {
+        background-color: $border-primary;
+    }
+
+    // content style
+    .gsc-reply-content {
+        padding: 0.5rem 0;
+    }
+
+    // other
+
+    .btn,
+    a {
+        color: $foreground-secondary !important;
+
+        &:hover {
+            color: $accent !important;
+            text-decoration: none;
+        }
+    }
+
+    .gsc-comments {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .link-secondary {
+        margin-left: 0.25rem;
+        font-size: 0.875em;
+        color: $foreground-primary !important;
+    }
 }

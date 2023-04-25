@@ -7,3 +7,4 @@ export const DESCRIPTION = 'Jiakun Zhao\'s Portfolio'
 export const OG_IMAGE = 'og-icon.jpg'
 
 export const IMAGE_SAVE_PATH = join('src', 'images')
+export const CLIENT_SCRIPTS_NAME = '~/client-scripts'
