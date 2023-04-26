@@ -8,4 +8,5 @@ export const OG_IMAGE = 'og-icon.jpg'
 
 export const IMAGE_SAVE_PATH = join('src', 'images')
 export const STYLE_SAVE_PATH = join('src', 'styles')
+export const IMAGE_ROUTE_PATH = '/assets/img'
 export const CLIENT_SCRIPTS_NAME = '~/client-scripts'

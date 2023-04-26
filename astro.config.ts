@@ -1,5 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import { readFile, writeFile } from 'node:fs/promises'
+import { createRequire } from 'node:module'
+import { join } from 'node:path'
 import type { AstroConfig, AstroIntegration } from 'astro'
 import type { RemarkPlugin } from '@astrojs/markdown-remark'
 import { defineConfig } from 'astro/config'
@@ -11,7 +13,8 @@ import typescript from '@rollup/plugin-typescript'
 import glob from 'fast-glob'
 import cssnano from 'cssnano'
 import autoprefixer from 'autoprefixer'
-import { CLIENT_SCRIPTS_NAME } from './src/config'
+import { createSyncFn } from 'synckit'
+import { CLIENT_SCRIPTS_NAME, IMAGE_ROUTE_PATH, IMAGE_SAVE_PATH } from './src/config'
 
 export default defineConfig({
     site: 'https://zhaojiakun.com',
@@ -24,7 +27,7 @@ export default defineConfig({
     integrations: [htmlMinify()],
     markdown: {
         syntaxHighlight: false,
-        remarkPlugins: [remarkLinkTarget()],
+        remarkPlugins: [remarkLinkTarget(), remarkImage()],
     },
     vite: {
         optimizeDeps: { exclude: ['fsevents'] },
@@ -53,20 +56,6 @@ function injectClientScript(): AstroConfig['vite']['plugins'] {
     }]
 }
 
-function remarkLinkTarget(): RemarkPlugin {
-    return function () {
-        return function (tree) {
-            visit(tree, 'link', (node) => {
-                if (node.url.startsWith('http')) {
-                    const data = node.data || (node.data = {})
-                    const props: any = data.hProperties || (data.hProperties = {})
-                    props.target = '_blank'
-                }
-            })
-        }
-    }
-}
-
 function htmlMinify(): AstroIntegration {
     return {
         name: 'astro-html-minifier',
@@ -86,5 +75,52 @@ function htmlMinify(): AstroIntegration {
                 }
             },
         },
+    }
+}
+
+function remarkLinkTarget(): RemarkPlugin {
+    return function () {
+        return function (tree) {
+            visit(tree, 'link', (node) => {
+                if (node.url.startsWith('http')) {
+                    const data = node.data || (node.data = {})
+                    const props: any = data.hProperties || (data.hProperties = {})
+                    props.target = '_blank'
+                }
+            })
+        }
+    }
+}
+
+function remarkImage(): RemarkPlugin {
+    return function () {
+        return function (tree) {
+            visit(tree, 'image', (node: any) => {
+                if (!node.url.startsWith(`${IMAGE_ROUTE_PATH}/@`))
+                    return
+
+                const require = createRequire(import.meta.url)
+                const workerPath = require.resolve('./scripts/sharp-sync-metadata')
+                const fn = createSyncFn(workerPath)
+
+                const imgPath = join(process.cwd(), IMAGE_SAVE_PATH, node.url.replace(`${IMAGE_ROUTE_PATH}/`, ''))
+                const { width, height } = fn(imgPath)
+
+                node.type = 'html'
+                node.children = undefined
+                node.value = `
+                    <picture>
+                        <source srcset="${node.url}.avif" type="image/avif">
+                        <source srcset="${node.url}.webp" type="image/webp">
+                        <img 
+                            src="${node.url}" 
+                            alt="${node.alt}" 
+                            style="aspect-ratio: ${width}/${height}"
+                            ${node.title ? `title="${node.title}"` : ''}
+                        >
+                    </picture>
+                `
+            })
+        }
     }
 }

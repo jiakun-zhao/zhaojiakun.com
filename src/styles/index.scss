@@ -15,6 +15,67 @@ body {
     margin: 0 auto;
     padding: 6rem 1.6rem;
 
+    nav {
+        position: fixed;
+        right: 0;
+        top: 0;
+        padding: 1rem;
+        box-sizing: border-box;
+        font-size: 0.875rem;
+
+        details {
+            background-color: $background-primary;
+            border: $border-primary solid 1px;
+            border-radius: 6px;
+
+            summary {
+                list-style: none;
+                user-select: none;
+                padding: 0.3rem 0.6rem;
+                font-size: 0.6rem;
+                outline: none;
+                cursor: pointer;
+                &::-webkit-details-marker {
+                    display: none;
+                }
+                &::before {
+                    content: 'MENU';
+                }
+            }
+
+            &[open] {
+                padding: 1rem;
+
+                summary {
+                    &::before {
+                        content: 'CLOSE';
+                    }
+                    padding: 0 0 1rem 0;
+                    text-align: right;
+                }
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+
+            li {
+                padding-left: var(--depth);
+                line-height: 2;
+                transition: color 500ms ease-in-out;
+                cursor: pointer;
+                &:first-of-type {
+                    margin-top: 1.25rem;
+                }
+                &:hover {
+                    color: $accent;
+                }
+            }
+        }
+    }
+
     header {
         span {
             font-size: 0.875rem;
@@ -64,6 +125,7 @@ body {
 
         img {
             max-width: 100%;
+            display: block;
         }
 
         code:not(pre > code) {

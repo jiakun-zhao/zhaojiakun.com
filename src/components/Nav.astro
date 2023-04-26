@@ -1,0 +1,29 @@
+---
+const { headings } = Astro.props as { headings: { text: string; slug: string; depth: number }[] }
+const minDepth = Math.min(...headings.map(h => h.depth))
+---
+
+<nav>
+    <details>
+        <summary></summary>
+        <div>
+            <a href="/">Home</a>
+            ·
+            <a href="/posts">Blog</a>
+            ·
+            <a href="/projects">Projects</a>
+            ·
+            <a href="/post/hello-world">About</a>
+        </div>
+        <ul>
+            {
+                headings.map(i => (
+                    <li
+                        data-slug={i.slug}
+                        style={`--depth:${(i.depth - minDepth) * 1.25}rem`}
+                    >{i.text}</li>
+                ))
+            }
+        </ul>
+    </details>
+</nav>
