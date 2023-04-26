@@ -1,8 +1,7 @@
 ---
 layout: ~/components/Layout.astro
-style: img{width:75%}
+style: img{width:75%!important}
 ---
-
 
 Front-end developer<br>Graphic designer
 

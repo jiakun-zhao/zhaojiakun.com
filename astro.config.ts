@@ -27,7 +27,7 @@ export default defineConfig({
     integrations: [htmlMinify()],
     markdown: {
         syntaxHighlight: false,
-        remarkPlugins: [remarkLinkTarget(), remarkImage()],
+        remarkPlugins: [remarkLinkTarget(), remarkImage(), remarkTab()],
     },
     vite: {
         optimizeDeps: { exclude: ['fsevents'] },
@@ -38,22 +38,24 @@ export default defineConfig({
 })
 
 function injectClientScript(): AstroConfig['vite']['plugins'] {
-    return [{
-        name: 'inject-client-scripts',
-        resolveId(source) {
-            return source === CLIENT_SCRIPTS_NAME ? `\0${CLIENT_SCRIPTS_NAME}` : undefined
+    return [
+        {
+            name: 'inject-client-scripts',
+            resolveId(source) {
+                return source === CLIENT_SCRIPTS_NAME ? `\0${CLIENT_SCRIPTS_NAME}` : undefined
+            },
+            async load(id) {
+                if (id === `\0${CLIENT_SCRIPTS_NAME}`) {
+                    const bundle = await rollup({
+                        input: 'scripts/client-scripts.ts',
+                        plugins: [terser(), typescript()],
+                    })
+                    const { output } = await bundle.generate({ format: 'iife' })
+                    return output[0].code
+                }
+            },
         },
-        async load(id) {
-            if (id === `\0${CLIENT_SCRIPTS_NAME}`) {
-                const bundle = await rollup({
-                    input: 'scripts/client-scripts.ts',
-                    plugins: [terser(), typescript()],
-                })
-                const { output } = await bundle.generate({ format: 'iife' })
-                return output[0].code
-            }
-        },
-    }]
+    ]
 }
 
 function htmlMinify(): AstroIntegration {
@@ -120,6 +122,21 @@ function remarkImage(): RemarkPlugin {
                         >
                     </picture>
                 `
+            })
+        }
+    }
+}
+
+function remarkTab(): RemarkPlugin {
+    return function () {
+        return function (tree) {
+            visit(tree, 'paragraph', (node) => {
+                if (node.children[0]?.type === 'text' && node.children[0]?.value.startsWith('\\t ')) {
+                    const data = node.data || (node.data = {})
+                    const props: any = data.hProperties || (data.hProperties = {})
+                    props.style = 'text-indent: 2em;'
+                    node.children[0].value = node.children[0].value.replace('\\t ', '')
+                }
             })
         }
     }

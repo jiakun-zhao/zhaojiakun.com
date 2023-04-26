@@ -111,12 +111,22 @@ body {
             padding-inline-start: 1.8rem;
         }
 
-        pre {
+        pre,
+        blockquote {
+            margin: 0;
             border-radius: 6px;
             padding: 0.875rem 1rem;
             background-color: $background-secondary !important;
             overflow-x: auto;
+        }
 
+        blockquote {
+            p {
+                margin: 0;
+            }
+        }
+
+        pre {
             code {
                 line-height: 1.6;
                 font-size: 0.875rem;
@@ -124,6 +134,7 @@ body {
         }
 
         img {
+            width: 100%;
             max-width: 100%;
             display: block;
         }
