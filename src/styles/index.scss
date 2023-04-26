@@ -97,7 +97,10 @@ body {
 
     main {
         margin-top: 4rem;
-
+        text-align: justify;
+        word-wrap: break-word;
+        word-break: break-all;
+        
         p,
         li {
             line-height: 2;
@@ -144,7 +147,6 @@ body {
             background-color: $background-secondary;
             border-radius: 4px;
             font-size: 0.925rem;
-            word-wrap: break-word;
         }
     }
 
