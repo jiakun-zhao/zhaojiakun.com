@@ -17,4 +17,15 @@ import { AUTHOR, DESCRIPTION, NAME, OG_IMAGE } from '~/config'
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@zhaojiakun_com" />
 
-<style set:html={Astro.props.style ?? ''} />
+<style set:html={Astro.props.style ?? ''}></style>
+
+<script is:inline>
+    // eslint-disable-next-line no-var, @typescript-eslint/no-use-before-define
+    var _hmt = _hmt || []
+    ;(function () {
+        const hm = document.createElement('script')
+        hm.src = 'https://hm.baidu.com/hm.js?94da58b5a6019e02c7d547ffb37de625'
+        const s = document.getElementsByTagName('script')[0]
+        s.parentNode.insertBefore(hm, s)
+    })()
+</script>
