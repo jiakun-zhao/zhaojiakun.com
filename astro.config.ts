@@ -2,19 +2,17 @@ import { fileURLToPath } from 'node:url'
 import { readFile, writeFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { join } from 'node:path'
-import type { AstroConfig, AstroIntegration } from 'astro'
+import type { AstroIntegration } from 'astro'
 import type { RemarkPlugin } from '@astrojs/markdown-remark'
 import { defineConfig } from 'astro/config'
-import { rollup } from 'rollup'
 import { visit } from 'unist-util-visit'
 import { minify } from 'html-minifier'
-import terser from '@rollup/plugin-terser'
-import typescript from '@rollup/plugin-typescript'
 import glob from 'fast-glob'
 import cssnano from 'cssnano'
 import autoprefixer from 'autoprefixer'
 import { createSyncFn } from 'synckit'
-import { CLIENT_SCRIPTS_NAME, IMAGE_ROUTE_PATH, IMAGE_SAVE_PATH } from './src/config'
+import { IMAGE_ROUTE_PATH, IMAGE_SAVE_PATH } from './src/config'
+import iife from './utils/vite-plugin-iife'
 
 export default defineConfig({
     site: 'https://zhaojiakun.com',
@@ -33,30 +31,9 @@ export default defineConfig({
         optimizeDeps: { exclude: ['fsevents'] },
         build: { assetsInlineLimit: 0 },
         css: { postcss: { plugins: [autoprefixer(), cssnano()] } },
-        plugins: [injectClientScript()],
+        plugins: [iife()],
     },
 })
-
-function injectClientScript(): AstroConfig['vite']['plugins'] {
-    return [
-        {
-            name: 'inject-client-scripts',
-            resolveId(source) {
-                return source === CLIENT_SCRIPTS_NAME ? `\0${CLIENT_SCRIPTS_NAME}` : undefined
-            },
-            async load(id) {
-                if (id === `\0${CLIENT_SCRIPTS_NAME}`) {
-                    const bundle = await rollup({
-                        input: 'scripts/client-scripts.ts',
-                        plugins: [terser(), typescript()],
-                    })
-                    const { output } = await bundle.generate({ format: 'iife' })
-                    return output[0].code
-                }
-            },
-        },
-    ]
-}
 
 function htmlMinify(): AstroIntegration {
     return {
@@ -102,7 +79,7 @@ function remarkImage(): RemarkPlugin {
                     return
 
                 const require = createRequire(import.meta.url)
-                const workerPath = require.resolve('./scripts/sharp-sync-metadata')
+                const workerPath = require.resolve('./utils/sharp-sync-metadata')
                 const fn = createSyncFn(workerPath)
 
                 const imgPath = join(process.cwd(), IMAGE_SAVE_PATH, node.url.replace(`${IMAGE_ROUTE_PATH}/`, ''))
