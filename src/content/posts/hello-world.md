@@ -12,7 +12,7 @@ date:
 
 <br>
 
-![cover](/assets/img/@hello-world.jpg)
+![cover](/assets/images/hello-world.jpg)
 
 <br>
 

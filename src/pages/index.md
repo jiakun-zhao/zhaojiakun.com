@@ -9,7 +9,7 @@ Trying to understand everything.<br>Struggling to learn English.
 
 <br>
 
-![cover](/assets/img/@index.jpg)
+![cover](/assets/images/index.jpg)
 
 <br>
 

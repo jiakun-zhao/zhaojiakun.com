@@ -10,4 +10,4 @@ layout: ~/components/Layout.astro
 
 <br>
 
-![Naoelrie WeChat MP QrCode](/assets/img/@naoelrie-wechat-mp.jpg)
+![Naoelrie WeChat MP QrCode](/assets/images/@naoelrie-wechat-mp.jpg)
