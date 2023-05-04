@@ -10,7 +10,7 @@ date:
 
 这是莘野起始页的使用文档，同时也是我的一篇博客。
 
-![Start Page Cover](/assets/img/@start-page.png)
+![Start Page Cover](/assets/images/start-page.png)
 
 -   起始页地址：[start.zhaojiakun.com](https://start.zhaojiakun.com)
 -   项目源码：[jiakun-zhao/start-page](https://github.com/jiakun-zhao/start-page)
