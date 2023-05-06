@@ -6,7 +6,6 @@
         "typescript", // Enable .ts
         "typescriptreact" // Enable .tsx
     ],
-    "unocss.disable": true,
     "explorer.fileNesting.patterns": {
         "*.jpg": "$(capture).jpg.avif, $(capture).jpg.webp",
         "*.jpeg": "$(capture).jpeg.avif, $(capture).jpeg.webp",
