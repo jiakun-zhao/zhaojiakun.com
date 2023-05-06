@@ -3,6 +3,7 @@
     "exclude": ["dist", "node_modules"],
     "compilerOptions": {
         "baseUrl": ".",
+        "allowJs": true,
         "strictNullChecks": true,
         "paths": {
             "~/*": ["src/*"]
