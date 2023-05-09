@@ -32,6 +32,6 @@ date:
 
 \t 第四次就是上面说的这次了，这才年初啊，怎么就那么糟心啊，人们说时间会冲刷一切，也许有天我会觉得这段时间的经历也没什么大不了的，也能笑着像今天这样写段文字出来诉说，但我也确实还没有缓过来，每天对自己精神内耗，也许哪天耗不动了，就好了。
 
-![img-4](/assets/images/nNaoelrie@-TxYC3Dc5zUtMhJA-pHuSA@4.jpeg)
+![img-4](/assets/images/naoelrie@-TxYC3Dc5zUtMhJA-pHuSA@4.jpeg)
 
 \t 没有期待的日子，反而顺顺利利。祝大家安好。
