@@ -8,7 +8,7 @@ import { NAME } from '~/config'
 const props = Astro.props.frontmatter ?? Astro.props
 ---
 
-<html>
+<html lang="en">
     <head>
         <Head {...props} />
         {props.giscus && <Giscus />}

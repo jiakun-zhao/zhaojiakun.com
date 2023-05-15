@@ -1,4 +1,3 @@
-import './favicon'
 import shiki from './shiki'
 import { $, $all } from './utils'
 
