@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import '~/assets/fonts/DMMono.css'
+
 useHead({
   bodyAttrs: {
     class: [

@@ -44,7 +44,7 @@ const socialMedia: SocialMedia[] = [
     <NuxtLink to="/projects">Projects</NuxtLink>
     <NuxtLink to="/about">About</NuxtLink>
 
-    <!-- <details relative select-none open>
+    <details relative select-none open>
       <summary text-2xl cursor-pointer>@</summary>
       <div
         absolute top-10 right--2 flex gap-3
@@ -59,6 +59,6 @@ const socialMedia: SocialMedia[] = [
           <div text-4.5 :class="i.icon"></div>
         </a>
       </div>
-    </details> -->
+    </details>
   </nav>
 </template>

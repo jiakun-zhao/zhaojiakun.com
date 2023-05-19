@@ -13,6 +13,9 @@ devDependencies:
   '@nuxt/devtools':
     specifier: ^0.5.0
     version: 0.5.0(nuxt@3.5.0)(vite@4.3.8)
+  '@nuxtjs/google-fonts':
+    specifier: ^3.0.1
+    version: 3.0.1
   '@types/node':
     specifier: ^18
     version: 18.0.0
@@ -1208,6 +1211,17 @@ packages:
       - vls
       - vti
       - vue-tsc
+    dev: true
+
+  /@nuxtjs/google-fonts@3.0.1:
+    resolution: {integrity: sha512-9W5jZhpJ4UTmiPebljdoxs+ju89rOBVD5gb0sPRe73BVXCUUv46lV2Q0ynPZPsnono5WlTB6nyZbOCECa7IWDQ==}
+    dependencies:
+      '@nuxt/kit': 3.5.0
+      google-fonts-helper: 3.3.0
+      pathe: 1.1.0
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /@pkgjs/parseargs@0.11.0:
@@ -4484,6 +4498,15 @@ packages:
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
+    dev: true
+
+  /google-fonts-helper@3.3.0:
+    resolution: {integrity: sha512-aFEVbmaavTY6wN3m6jZaWXQHfakMy6XNqdWN8YzHqHWCGpGma91zp8MiWsyb5i8gXQXYeGUWegb9ca/Jf/Q7Yw==}
+    dependencies:
+      deepmerge: 4.3.1
+      hookable: 5.5.3
+      ofetch: 1.0.1
+      ufo: 1.1.2
     dev: true
 
   /gopd@1.0.1:

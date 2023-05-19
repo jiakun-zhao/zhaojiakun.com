@@ -31,8 +31,6 @@ watchEffect(() => wrapper.value && (wrapper.value.style.height = `${height.value
         <span mx-2 text-secondary>来自</span>
         <a :href="wallpaper.userUrl" target="_blank">{{ wallpaper.userName }}</a>
       </p>
-
-      <p text-secondary>2023 © Jiakun Zhao</p>
     </div>
   </div>
 </template>

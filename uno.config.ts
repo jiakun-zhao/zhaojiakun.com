@@ -12,13 +12,17 @@ export default defineConfig<Theme>({
     presetWebFonts({
       provider: 'google',
       fonts: {
-        mono: ['DM Mono'],
+        mono: [{
+          name: 'DM Mono',
+          weights: [300, 400, 500],
+          italic: true,
+        }],
       },
     }),
   ],
   theme: {
     fontFamily: {
-      sans: '"DM Mono", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
+      sans: '"DM Mono", PingFangTC-Light, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
       mono: '"DM Mono", Input, "Input Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
     },
     colors: {
