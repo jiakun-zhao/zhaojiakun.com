@@ -1,6 +1,12 @@
 lockfileVersion: '6.0'
 
 devDependencies:
+  '@iconify-json/fluent-emoji':
+    specifier: ^1.1.13
+    version: 1.1.13
+  '@iconify-json/tabler':
+    specifier: ^1.1.76
+    version: 1.1.76
   '@jiakun-zhao/eslint-config':
     specifier: ^0.0.11
     version: 0.0.11(eslint@8.40.0)(typescript@5.0.4)
@@ -753,6 +759,18 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/fluent-emoji@1.1.13:
+    resolution: {integrity: sha512-9tyClxWzrLwbfItv10/oUp3G7s5X+MUa0VN5P8nN2gmVg9Uy87HoZnDt3IRKNwbyqncXRr3p0VoWuv/Tg2jUCg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/tabler@1.1.76:
+    resolution: {integrity: sha512-p/NRbxR3xjxHaiyVg0SAtUIZjvhGy9UJHBU+blpcLUTlz4T8yM3gNLTnmQJrQ6bcbRHxHNG0ncjixTH/MVdrqg==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:
