@@ -2,9 +2,3 @@
 
 node_modules
 dist
-
-.nuxt
-.nitro
-.cache
-.output
-.env

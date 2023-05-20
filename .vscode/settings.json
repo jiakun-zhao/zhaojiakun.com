@@ -1,10 +1,22 @@
 {
+  "json.schemas": [
+    {
+      "fileMatch": ["**/*.mdx.json"],
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title.",
+            "pattern": "\\S+"
+          }
+        }
+      }
+    }
+  ],
   "explorer.fileNesting.patterns": {
-    "*.jpg": "$(capture).jpg.avif, $(capture).jpg.webp",
-    "*.jpeg": "$(capture).jpeg.avif, $(capture).jpeg.webp",
-    "*.png": "$(capture).png.avif, $(capture).png.webp",
-
-    "favicon.ico": "favicon*.png",
-  },
-  "cSpell.words": ["bilibili", "Consolas", "Menlo", "Segoe", "Shantell", "tabler"]
+    "*.mdx": "${capture}.mdx.*",
+  }
 }

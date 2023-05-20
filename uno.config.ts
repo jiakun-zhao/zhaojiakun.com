@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
 
 export default defineConfig<Theme>({
@@ -9,25 +9,14 @@ export default defineConfig<Theme>({
       scale: 1.2,
       extraProperties: { 'display': 'inline-block', 'vertical-align': 'bottom' },
     }),
-    presetWebFonts({
-      provider: 'google',
-      fonts: {
-        mono: [{
-          name: 'DM Mono',
-          weights: [300, 400, 500],
-          italic: true,
-        }],
-      },
-    }),
   ],
   theme: {
     fontFamily: {
-      sans: '"DM Mono", PingFangTC-Light, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
-      mono: '"DM Mono", Input, "Input Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
+      sans: 'DM Mono, PingFangTC, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
+      mono: 'Input, Input Mono, DM Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace',
     },
     colors: {
       accent: '#6054ba',
-      mid: '#aaa',
     },
   },
   shortcuts: {
