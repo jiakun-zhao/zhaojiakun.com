@@ -1,6 +1,6 @@
 {
   "explorer.fileNesting.patterns": {
-    "*.md": "${capture}.md.*"
+    "*.md": "${capture}.*"
   },
   "json.schemas": [
     {
@@ -20,6 +20,18 @@
           "title": {
             "pattern": "\\S+",
             "type": "string"
+          },
+          "og:image": {
+            "pattern": "[http|https]://\\S+",
+            "type": "string"
+          },
+          "images":{
+            "type":"object",
+            "patternProperties": {
+              ".*": {
+                "type": "number"
+              }
+            }
           }
         },
         "required": ["title", "description", "date"],

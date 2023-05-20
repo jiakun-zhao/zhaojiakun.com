@@ -14,7 +14,7 @@ useStyleTag(
   <div
     slide-enter
     class="[&_a]:b1 [&_a]:border-b [&_a]:duration-500 [&_a]:transition"
-    tracking-wider text-justify w-full p8 font-300
+    tracking-wider text-justify w-full p8 font-300 max-w-3xl mx-auto
   >
     <RouterView />
   </div>
