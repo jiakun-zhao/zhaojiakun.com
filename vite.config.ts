@@ -3,12 +3,13 @@ import { defineConfig } from 'vite'
 
 import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
-  publicDir: 'src/public',
   plugins: [
     Vue(),
     UnoCSS(),
+    Pages(),
   ],
   build: {
     rollupOptions: {
@@ -23,7 +24,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./contents', import.meta.url)),
     },
   },
-  server: {
-    host: true,
-  },
+  publicDir: 'src/public',
+  server: { host: true },
 })

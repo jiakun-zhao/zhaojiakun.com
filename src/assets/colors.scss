@@ -1,0 +1,46 @@
+$colors: (
+  bg1: (
+    light: #fff,
+    dark: #111,
+  ),
+  bg2: (
+    light: #f2f2f2,
+    dark: #191919,
+  ),
+
+  t1: (
+    light: #000,
+    dark: #fff,
+  ),
+  t2: (
+    light: #767676,
+    dark: #898989,
+  ),
+  t3: (
+    light: #bababa,
+    dark: #444,
+  ),
+
+  b1: (
+    light: #ddd,
+    dark: #333,
+  ),
+  b2: (
+    light: #eee,
+    dark: #222,
+  ),
+);
+
+:root {
+  --accent: #6054ba;
+
+  @each $color, $value in $colors {
+    --#{$color}: #{map-get($value, light)};
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @each $color, $value in $colors {
+      --#{$color}: #{map-get($value, dark)};
+    }
+  }
+}

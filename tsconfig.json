@@ -1,21 +1,21 @@
 {
   "compilerOptions": {
-      "baseUrl": ".",
-      "target": "ES2018",
-      "module": "ESNext",
-      "lib": ["DOM", "ESNext"],
-      "strict": true,
-      "esModuleInterop": true,
-      "jsx": "preserve",
-      "skipLibCheck": true,
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "forceConsistentCasingInFileNames": true,
-      "types": ["vite/client"],
-      "paths": {
-          "~/*": ["src/*"],
-          "@/*": ["contents/*"],
-      }
+    "baseUrl": ".",
+    "target": "ES2018",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vite/client", "vite-plugin-pages/client"],
+    "paths": {
+      "~/*": ["src/*"],
+      "@/*": ["contents/*"]
+    }
   },
   "exclude": ["dist", "node_modules"]
 }

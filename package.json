@@ -7,13 +7,11 @@
     "preview": "vite preview"
   },
   "eslintConfig": {
-    "extends": [
-      "@jiakun-zhao",
-      "@unocss"
-    ]
+    "extends": "@jiakun-zhao"
   },
   "dependencies": {
     "@vueuse/core": "^10.1.2",
+    "@vueuse/head": "^1.1.26",
     "vue": "^3.3.2",
     "vue-router": "^4.2.1"
   },
@@ -21,12 +19,13 @@
     "@iconify-json/ph": "^1.1.5",
     "@jiakun-zhao/eslint-config": "^0.0.9",
     "@types/node": "^20.1.7",
-    "@unocss/eslint-config": "^0.51.13",
     "@vitejs/plugin-vue": "^4.2.3",
     "eslint": "^8.40.0",
+    "sass": "^1.62.1",
     "typescript": "~5.0.4",
     "unocss": "^0.51.13",
     "vite": "^4.3.7",
+    "vite-plugin-pages": "^0.30.1",
     "vue-tsc": "^1.6.5"
   }
 }

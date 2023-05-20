@@ -3,7 +3,7 @@ import type { Theme } from 'unocss/preset-mini'
 
 export default defineConfig<Theme>({
   presets: [
-    presetUno({ dark: 'media', preflight: false }),
+    presetUno({ dark: 'media' }),
     presetAttributify(),
     presetIcons({
       scale: 1.2,
@@ -11,25 +11,19 @@ export default defineConfig<Theme>({
     }),
   ],
   theme: {
-    fontFamily: {
-      sans: 'DM Mono, PingFangTC, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
-      mono: 'Input, Input Mono, DM Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace',
-    },
     colors: {
-      accent: '#6054ba',
+      accent: 'var(--accent)',
     },
   },
   shortcuts: {
-    'text-primary': 'text-black dark:text-white',
-    'text-secondary': 'text-#767676 dark:text-#898989',
-    'text-thirdly': 'text-#bababa dark:text-#444',
+    bg1: 'bg-[var(--bg1)]',
+    bg2: 'bg-[var(--bg2)]',
 
-    'bg-primary': 'bg-white dark:bg-black',
-    'bg-secondary': 'bg-#f2f2f2 dark:bg-#191919',
+    t1: 'text-[var(--t1)]',
+    t2: 'text-[var(--t2)]',
+    t3: 'text-[var(--t3)]',
 
-    'border-primary': 'border-#ddd dark:border-#333 border-solid border-0',
-    'border-secondary': 'border-#eee dark:border-#222 border-solid border-0',
-
-    'body-primary': 'text-primary bg-primary font-sans m0',
+    b1: 'border-[var(--b1)] border-solid border-0',
+    b2: 'border-[var(--b2)] border-solid border-0',
   },
 })
