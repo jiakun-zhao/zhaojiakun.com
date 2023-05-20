@@ -12,18 +12,18 @@ export default defineConfig<Theme>({
   ],
   theme: {
     colors: {
-      accent: 'var(--accent)',
+      accent: '#6054ba',
     },
   },
   shortcuts: {
-    bg1: 'bg-[var(--bg1)]',
-    bg2: 'bg-[var(--bg2)]',
+    bg1: 'bg-#ffffff dark:bg-#111111',
+    bg2: 'bg-#f2f2f2 dark:bg-#191919',
 
-    t1: 'text-[var(--t1)]',
-    t2: 'text-[var(--t2)]',
-    t3: 'text-[var(--t3)]',
+    t1: 'text-#000000 dark:text-#ffffff',
+    t2: 'text-#767676 dark:text-#898989',
+    t3: 'text-#bababa dark:text-#444444',
 
-    b1: 'border-[var(--b1)] border-solid border-0',
-    b2: 'border-[var(--b2)] border-solid border-0',
+    b1: 'b-#ddd dark:b-#333 border-solid border-0',
+    b2: 'b-#eee dark:b-#222 border-solid border-0',
   },
 })

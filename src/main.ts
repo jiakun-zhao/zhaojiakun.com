@@ -4,8 +4,7 @@ import { createHead } from '@vueuse/head'
 import routes from '~pages'
 
 import 'uno.css'
-import '~/assets/DMMono.css'
-import '~/assets/style.scss'
+import '~/assets/styles/index.css'
 
 createApp(RouterView)
   .use(createHead())

@@ -1,7 +1,7 @@
 <template>
-  <h3 text-primary>Hi~</h3>
-  <p text-sm leading-loose tracking-widest max-w-lg>
-    <span>我正在思索如何设计与构建一个足够简约的个人网站，在此之前让这些以最简单的方式呈现： </span>
+  <h3>Hi~</h3>
+  <p max-w-lg>
+    <span>我正在思索如何设计与构建一个足够让我满意的个人网站；在此之前这些以最简单的方式呈现： </span>
     <!--
       <RouterLink to="/moments">时刻</RouterLink>
       <span>, </span>

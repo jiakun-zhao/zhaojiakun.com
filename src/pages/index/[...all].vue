@@ -1,7 +1,7 @@
 <template>
-  <h3>博客</h3>
+  <h3>404</h3>
   <p>
-    <span>浏览我的所知所想，或</span>
+    <span>没找到网页呢，请试试</span>
     <RouterLink mx1 to="../">../</RouterLink>
   </p>
 </template>
