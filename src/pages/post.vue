@@ -12,6 +12,7 @@ interface FrontMatter extends DefaultFrontMatter {
 
 const route = useRoute()
 const frontmatter = computed<FrontMatter>(() => route.meta.frontmatter)
+
 useDefaultHead(frontmatter.value, {
   script: [{
     'src': 'https://giscus.app/client.js',
@@ -34,10 +35,20 @@ useDefaultHead(frontmatter.value, {
 
 <template>
   <IndexWrapper>
-    <h3>{{ frontmatter.title }}</h3>
-    <p class="text-xs!" pb-6>{{ frontmatter.date.slice(0, -3) }}</p>
+    <RouterLink to="/posts">
+      <h3>{{ frontmatter.title }}</h3>
+    </RouterLink>
+    <p class="text-xs!" pb-6>
+      <span>{{ frontmatter.date.slice(0, -3) }}</span>
+      <span
+        animate-fade-out animate-delay-1000 animate-duration-2000 animate-fill-forwards
+        font-normal text-xs ml2 t3
+      >
+        点击标题返回博客列表
+      </span>
+    </p>
     <RouterView />
-    <p py16 class="text-xs!">
+    <p py16 class="leading-6! text-xs!">
       <a class="hover:text-accent! t2!" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">遵循 CC BY-NC-SA 4. 协议</a>
       <span>，转载内容请参阅原地址协议。</span>
     </p>

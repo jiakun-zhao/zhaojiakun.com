@@ -2,7 +2,7 @@ import type { UseHeadInput } from '@vueuse/head'
 import { useHead } from '@vueuse/head'
 import type { DefaultFrontMatter } from '~/types'
 
-export const BASE_URL = new URL(import.meta.url).origin
+export const BASE_URL = location.origin
 
 export function useDefaultHead(frontMatter: DefaultFrontMatter, other?: UseHeadInput) {
   const {
