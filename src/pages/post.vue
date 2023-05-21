@@ -2,16 +2,12 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import IndexWrapper from '~/components/IndexWrapper.vue'
-import type { DefaultFrontMatter } from '~/types'
+import type { PostFrontMatter } from '~/types'
 import { BASE_URL, useDefaultHead } from '~/utils'
-
-interface FrontMatter extends DefaultFrontMatter {
-  date: string
-  images?: { [key: string]: number }
-}
+import IndexRouteTip from '~/components/IndexRouteTip.vue'
 
 const route = useRoute()
-const frontmatter = computed<FrontMatter>(() => route.meta.frontmatter)
+const frontmatter = computed<PostFrontMatter>(() => route.meta.frontmatter)
 
 useDefaultHead(frontmatter.value, {
   script: [{
@@ -34,23 +30,16 @@ useDefaultHead(frontmatter.value, {
 </script>
 
 <template>
-  <IndexWrapper>
-    <RouterLink to="/posts">
-      <h3>{{ frontmatter.title }}</h3>
-    </RouterLink>
-    <p class="text-xs!" pb-6>
+  <IndexWrapper :title="frontmatter.title" to="/posts">
+    <p class="text-xs!" pb-12>
       <span>{{ frontmatter.date.slice(0, -3) }}</span>
-      <span
-        animate-fade-out animate-delay-1000 animate-duration-2000 animate-fill-forwards
-        font-normal text-xs ml2 t3
-      >
-        点击标题返回博客列表
-      </span>
+      <IndexRouteTip msg="点击标题去到博客列表" />
     </p>
     <RouterView />
-    <p py16 class="leading-6! text-xs!">
+    <hr w-16 b2 my-16 border-1>
+    <p pl-2 class="leading-6! text-xs!">
       <a class="hover:text-accent! t2!" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">遵循 CC BY-NC-SA 4. 协议</a>
-      <span>，转载内容请参阅原地址协议。</span>
+      <span>，转载的内容请参阅原地址协议。</span>
     </p>
     <div class="giscus" />
   </IndexWrapper>

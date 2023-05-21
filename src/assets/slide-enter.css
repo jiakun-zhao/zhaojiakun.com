@@ -11,8 +11,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  
-  .markdown-body,
   [slide-enter] > * {
     --enter-stage: 0;
     --enter-step: 90ms;

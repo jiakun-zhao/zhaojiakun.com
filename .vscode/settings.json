@@ -22,11 +22,14 @@
             "type": "string"
           },
           "og_image": {
-            "pattern": "[http|https]://\\S+",
+            "pattern": "og/\\S+",
             "type": "string"
           },
-          "images":{
-            "type":"object",
+          "draft": {
+            "type": "boolean"
+          },
+          "images": {
+            "type": "object",
             "patternProperties": {
               ".*": {
                 "type": "number"

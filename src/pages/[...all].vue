@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import IndexRouteTip from '~/components/IndexRouteTip.vue'
 import IndexWrapper from '~/components/IndexWrapper.vue'
 import { useDefaultHead } from '~/utils'
 
@@ -6,11 +7,10 @@ useDefaultHead({ title: '404', description: '没找到网页呢~' })
 </script>
 
 <template>
-  <IndexWrapper>
-    <h3>404</h3>
+  <IndexWrapper title="404" to="/">
     <p>
-      <span>没找到网页呢，请试试</span>
-      <RouterLink mx1 to="../">../</RouterLink>
+      <span>没找到网页呢</span>
+      <IndexRouteTip msg="点击标题去到列表" />
     </p>
   </IndexWrapper>
 </template>

@@ -10,9 +10,8 @@ async function handler(id, src) {
   try {
     const from = resolve(id, '..', src)
     const infoStr = await readFile(`${id}.json`, 'utf-8')
-    const quality = JSON.parse(infoStr).images[src] ?? 80
+    const quality = JSON.parse(infoStr).images?.[src] ?? 80
     const to = resolve('node_modules', '.sharp-images', `${src}.${quality}.webp`)
-
     const ctx = sharp(from)
     const { width, height } = await ctx.metadata()
     try {

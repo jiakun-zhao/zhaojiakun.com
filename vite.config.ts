@@ -9,10 +9,12 @@ import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import Pages from 'vite-plugin-pages'
 import Markdown from 'vite-plugin-vue-markdown'
+import { BUNDLED_LANGUAGES } from 'shiki'
 
 type SharpFn = (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
 const sharpFnPath = createRequire(import.meta.url).resolve('./sharp')
 const sharpFn: SharpFn = createSyncFn(sharpFnPath)
+const shikiLangs = BUNDLED_LANGUAGES.map(({ id, aliases }) => [id, ...aliases ?? []]).flat()
 
 export default defineConfig(viteEnv => ({
   plugins: [
@@ -21,6 +23,12 @@ export default defineConfig(viteEnv => ({
     Markdown({
       wrapperClasses: null,
       transforms: { after: code => code.slice(5, -6) },
+      markdownItOptions: {
+        highlight(str, lang) {
+          const attr = shikiLangs.includes(lang) ? ` v-shiki data-language="${lang}"` : ''
+          return `<pre${attr}><code>${str}</code></pre>`
+        },
+      },
       markdownItSetup(md) {
         md.renderer.rules.image = (tokens, idx, options, env, self) => {
           const token = tokens[idx]

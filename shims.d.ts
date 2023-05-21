@@ -5,3 +5,7 @@ declare module 'vue-router' {
     frontmatter: any
   }
 }
+
+declare global {
+  var shiki: typeof import('shiki') | undefined
+}

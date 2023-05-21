@@ -26,3 +26,22 @@ details summary::-webkit-details-marker {
   background-color: #6054ba;
   color: #fff;
 }
+
+
+pre.shiki.vitesse-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre.shiki.vitesse-dark {
+      display: block;
+  }
+
+  pre.shiki.vitesse-light {
+      display: none;
+  }
+}
+
+#nprogress  .bar {
+  background: #6054ba !important;
+}
