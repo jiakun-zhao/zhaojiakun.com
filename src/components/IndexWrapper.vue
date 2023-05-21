@@ -5,6 +5,7 @@ const className = [
   '[&_a]:b1 [&_a]:b-b [&_a:hover]:b-[currentColor]',
   '[&_p]:t2 [&_p]:text-sm [&_p]:leading-8',
   '[&_ul]:t2 [&_ul]:text-sm [&_ul]:leading-8',
+  '[&_img]:max-w-full',
 ]
 </script>
 
@@ -15,5 +16,6 @@ const className = [
     w-full max-w-3xl p8 mx-auto
   >
     <slot />
+    <div class="pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]"></div>
   </div>
 </template>

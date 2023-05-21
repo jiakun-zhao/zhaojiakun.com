@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import IndexWrapper from '~/components/IndexWrapper.vue'
+import { useDefaultHead } from '~/utils'
+
+useDefaultHead({ title: '404', description: '没找到网页呢~' })
 </script>
 
 <template>

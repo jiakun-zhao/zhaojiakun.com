@@ -1,20 +1,45 @@
 import { fileURLToPath } from 'node:url'
-import { resolve } from 'node:path'
+import { relative, resolve } from 'node:path'
 import { readFileSync } from 'node:fs'
+import { createRequire } from 'node:module'
 import { defineConfig } from 'vite'
+import { createSyncFn } from 'synckit'
 
 import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import Pages from 'vite-plugin-pages'
 import Markdown from 'vite-plugin-vue-markdown'
 
-export default defineConfig({
+type SharpFn = (from: string, to: string, quality?: number) => { height: number; width: number } | null
+
+export default defineConfig(viteEnv => ({
   plugins: [
     Vue({ include: [/\.vue$/, /\.md$/] }),
     UnoCSS(),
     Markdown({
       wrapperClasses: null,
       transforms: { after: code => code.slice(5, -6) },
+      markdownItSetup(md) {
+        md.renderer.rules.image = (tokens, idx, options, env, self) => {
+          const token = tokens[idx]
+          const src = token.attrGet('src')
+          if (src) {
+            const from = resolve(env.id, '..', src)
+            const to = resolve('node_modules', '.images', `${src}.webp`)
+            const quality = JSON.parse(readFileSync(`${env.id}.json`, 'utf-8')).images[src] ?? 80
+            const fnPath = createRequire(import.meta.url).resolve('./sharp')
+            const metadata = (createSyncFn(fnPath) as SharpFn)(from, to, quality)
+            if (metadata) {
+              const { height, width } = metadata
+              token.attrSet('style', `aspect-ratio:${width}/${height}`)
+              token.attrSet('src', viteEnv.mode === 'production' ? to : relative(from, to))
+            }
+          }
+          token.attrSet('alt', token.content)
+          token.attrSet('loading', 'lazy')
+          return self.renderToken(tokens, idx, options)
+        }
+      },
     }),
     Pages({
       extensions: ['vue', 'md'],
@@ -41,4 +66,4 @@ export default defineConfig({
   },
   publicDir: 'src/public',
   server: { host: true },
-})
+}))

@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
 import IndexWrapper from '~/components/IndexWrapper.vue'
+import { useDefaultHead } from '~/utils'
 
 const routes = useRouter().getRoutes().filter(i => i.meta.isPost)
+useDefaultHead({ title: '博客', description: '浏览我的所知所想。' })
 </script>
 
 <template>

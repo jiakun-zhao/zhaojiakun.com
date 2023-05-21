@@ -21,3 +21,8 @@ details summary {
 details summary::-webkit-details-marker {
   display: none;
 }
+
+::selection {
+  background-color: #6054ba;
+  color: #fff;
+}

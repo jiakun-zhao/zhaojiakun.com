@@ -1,0 +1,114 @@
+:root {
+  --accent: #6054ba;
+  --background-primary: #fff;
+  --background-secondary: #f2f2f2;
+  --foreground-primary: #767676;
+  --foreground-secondary: #000;
+  --foreground-thirdly: #bababa;
+  --border-primary: #ddd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #6054ba;
+    --background-primary: #111;
+    --background-secondary: #191919;
+    --foreground-primary: #767676;
+    --foreground-secondary: #fff;
+    --foreground-thirdly: #444;
+    --border-primary: #333;
+  }
+}
+
+/* Remove border */
+
+body * {
+  border: none;
+}
+
+/* hide */
+main .capitalize,
+main .gsc-comment-box-tabs,
+main .gsc-comment-box-textarea-extras,
+main .gsc-comment-footer,
+main .gsc-header,
+main .gsc-reply-header details,
+main .gsc-reply-reactions {
+  display: none;
+}
+
+/* input */
+main textarea {
+  background-color: var(--background-primary) !important;
+  border: none !important;
+  color: var(--foreground-primary);
+  resize: none;
+}
+
+main textarea::-moz-placeholder {
+  color: var(--foreground-primary);
+}
+
+main textarea::placeholder {
+  color: var(--foreground-primary);
+}
+
+main .form-control {
+  background-color: var(--background-primary);
+  border-radius: 6px;
+  color: var(--foreground-primary);
+}
+
+/* comment box style */
+
+main .gsc-comment,
+main .gsc-comment-box {
+  background-color: var(--background-secondary);
+  border-radius: 6px !important;
+}
+
+main .gsc-comment {
+  padding: 0.5rem 0;
+}
+
+main .gsc-comment .gsc-comment-box-bottom {
+  margin-bottom: 0;
+}
+
+main .gsc-comment-box:not(.gsc-comment-box-is-reply) {
+  padding: 1px;
+}
+
+/* reply line */
+main .gsc-tl-line {
+  background-color: var(--border-primary);
+}
+
+/* content style */
+main .gsc-reply-content {
+  padding: 0.5rem 0;
+}
+
+/* other */
+
+main .btn,
+main a {
+  color: var(--foreground-secondary) !important;
+}
+
+main .btn:hover,
+main a:hover {
+  color: var(--accent) !important;
+  text-decoration: none;
+}
+
+main .gsc-comments {
+  display: flex;
+  flex-direction: column;
+}
+
+main .link-secondary {
+  color: var(--foreground-primary) !important;
+  font-size: 0.875em;
+  margin-left: 0.25rem;
+}

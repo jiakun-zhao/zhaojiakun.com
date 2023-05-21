@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import IndexWrapper from '~/components/IndexWrapper.vue'
+import { useDefaultHead } from '~/utils'
+
+useDefaultHead({ title: 'Jiakun Zhao', description: 'Hi~' })
 
 const links = {
   '/posts': '博客',
