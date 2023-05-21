@@ -12,6 +12,7 @@
   "dependencies": {
     "@vueuse/core": "^10.1.2",
     "@vueuse/head": "^1.1.26",
+    "vite-plugin-vue-markdown": "^0.23.5",
     "vue": "^3.3.2",
     "vue-router": "^4.2.1"
   },

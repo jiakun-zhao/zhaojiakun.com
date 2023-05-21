@@ -4,7 +4,7 @@
 
 <br>
 
-![cover](/assets/images/hello-world.jpg)
+![cover](./hello-world.jpg)
 
 <br>
 

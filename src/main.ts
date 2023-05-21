@@ -4,7 +4,7 @@ import { createHead } from '@vueuse/head'
 import routes from '~pages'
 
 import 'uno.css'
-import '~/assets/styles/index.css'
+import '~/assets/index.css'
 
 createApp(RouterView)
   .use(createHead())
