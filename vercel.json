@@ -8,7 +8,8 @@
     {
       "source": "/api/openai/chat",
       "destination": "https://api.openai.com/v1/chat/completions"
-    }
+    },
+    { "source": "/:path*", "destination": "/index.html" }
   ],
   "headers": [
     {
