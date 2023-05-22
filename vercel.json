@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/api/github/:match*",
+      "destination": "https://api.github.com/:match*"
+    },
+    {
+      "source": "/api/openai/chat",
+      "destination": "https://api.openai.com/v1/chat/completions"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ],
+  "regions": ["hkg1"]
+}

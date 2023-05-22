@@ -10,7 +10,7 @@ useDefaultHead({ title: '404', description: '没找到网页呢~' })
   <IndexWrapper title="404" to="/">
     <p>
       <span>没找到网页呢</span>
-      <IndexRouteTip msg="点击标题去到列表" />
+      <IndexRouteTip msg="点击标题去到首页" />
     </p>
   </IndexWrapper>
 </template>

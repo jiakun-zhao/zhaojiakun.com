@@ -42,6 +42,11 @@ export default defineConfig(viteEnv => ({
           token.attrSet('loading', 'lazy')
           return self.renderToken(tokens, idx, options)
         }
+        md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+          if (tokens[idx].attrGet('href')?.startsWith('http'))
+            tokens[idx].attrSet('target', '_blank')
+          return self.renderToken(tokens, idx, options)
+        }
       },
     }),
     Pages({
