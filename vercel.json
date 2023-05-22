@@ -8,6 +8,10 @@
     {
       "source": "/api/openai/:match*",
       "destination": "https://api.openai.com/v1/:match*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "functions": {
