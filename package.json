@@ -10,7 +10,6 @@
     "extends": "@jiakun-zhao"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
     "@vueuse/core": "^10.1.2",
     "@vueuse/head": "^1.1.26",
     "nprogress": "^0.2.0",
@@ -22,6 +21,7 @@
     "@jiakun-zhao/eslint-config": "^0.0.9",
     "@types/node": "^20.1.7",
     "@types/nprogress": "^0.2.0",
+    "@vercel/node": "^2.14.3",
     "@vitejs/plugin-vue": "^4.2.3",
     "eslint": "^8.40.0",
     "sass": "^1.62.1",

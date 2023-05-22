@@ -6,21 +6,14 @@
       "destination": "https://api.github.com/:match*"
     },
     {
-      "source": "/api/openai/chat",
-      "destination": "https://api.openai.com/v1/chat/completions"
-    },
-    { "source": "/:path*", "destination": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/:path*",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
+      "source": "/api/openai/:match*",
+      "destination": "https://api.openai.com/v1/:match*"
     }
   ],
+  "functions": {
+    "api/netease-cloud-music/**/*.{js,ts}": {
+      "includeFiles": "api/netease-cloud-music/_utils.{js,ts}"
+    }
+  },
   "regions": ["hkg1"]
 }

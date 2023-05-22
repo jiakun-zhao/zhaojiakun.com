@@ -8,7 +8,7 @@ const to = computed(() => props.to)
 
 <template>
   <div slide-enter index-wrapper>
-    <RouterLink v-if="to" :to="to">
+    <RouterLink v-if="to" :to="to" class="t1!">
       <h3 slide-enter-1>{{ title }}</h3>
     </RouterLink>
     <h3 v-else>{{ title }}</h3>

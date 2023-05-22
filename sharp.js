@@ -14,6 +14,7 @@ async function handler(id, src) {
     const to = resolve('node_modules', '.sharp-images', `${src}.${quality}.webp`)
     const ctx = sharp(from)
     const { width, height } = await ctx.metadata()
+
     try {
       await access(to)
     } catch {
