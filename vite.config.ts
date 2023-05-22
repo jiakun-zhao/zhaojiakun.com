@@ -9,6 +9,7 @@ import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import Pages from 'vite-plugin-pages'
 import Markdown from 'vite-plugin-vue-markdown'
+
 import { BUNDLED_LANGUAGES } from 'shiki'
 
 type SharpFn = (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null

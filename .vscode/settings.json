@@ -1,6 +1,7 @@
 {
   "explorer.fileNesting.patterns": {
-    "*.md": "${capture}.*"
+    "*.md": "${capture}.*",
+    "package.json": "*"
   },
   "json.schemas": [
     {

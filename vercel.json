@@ -1,23 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "name": "personal-website",
   "rewrites": [
-    {
-      "source": "/api/github/:match*",
-      "destination": "https://api.github.com/:match*"
-    },
-    {
-      "source": "/api/openai/:match*",
-      "destination": "https://api.openai.com/v1/:match*"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "functions": {
-    "api/netease-cloud-music/**/*.{js,ts}": {
-      "includeFiles": "api/netease-cloud-music/_utils.{js,ts}"
-    }
-  },
-  "regions": ["hkg1"]
+  ]
 }
