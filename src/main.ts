@@ -3,6 +3,7 @@ import { RouterView, createRouter, createWebHistory } from 'vue-router'
 import { createHead } from '@vueuse/head'
 import { vShiki } from '~/utils'
 import routes from '~pages'
+import NeteaseMusicCard from '~/components/NeteaseMusicCard.vue'
 
 import 'uno.css'
 import '~/assets/index.css'
@@ -19,5 +20,6 @@ router.afterEach(() => rootLoad.style.display = 'none')
 createApp(RouterView)
   .use(router)
   .use(createHead())
+  .component('NeteaseMusicCard', NeteaseMusicCard)
   .directive('shiki', vShiki)
   .mount('#root')

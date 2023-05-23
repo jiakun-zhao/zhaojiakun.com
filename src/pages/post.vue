@@ -32,7 +32,7 @@ useDefaultHead(frontmatter.value, {
 <template>
   <IndexWrapper :title="frontmatter.title" to="/posts">
     <p class="text-xs!" pb-12>
-      <span>{{ frontmatter.date.slice(0, -3) }}</span>
+      <span>{{ frontmatter.date.substring(0, 10) }} {{ frontmatter.date.substring(11, 16) }}</span>
       <IndexRouteTip msg="点击标题去到博客列表" />
     </p>
     <RouterView />
