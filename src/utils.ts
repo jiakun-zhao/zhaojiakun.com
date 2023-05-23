@@ -18,9 +18,9 @@ export function useDefaultHead(frontMatter: DefaultFrontMatter, other?: UseHeadI
       { name: 'og:title', content: title },
       { name: 'twitter:title', content: title },
 
-      { name: 'description', content: description },
-      { name: 'og:description', content: description },
-      { name: 'twitter:description', content: description },
+      { name: 'description', content: description ?? title },
+      { name: 'og:description', content: description ?? title },
+      { name: 'twitter:description', content: description ?? title },
 
       { name: 'og:image', content: `${BASE_URL}/${og_image ?? 'og.jpg'}` },
       { name: 'twitter:image', content: `${BASE_URL}/${og_image ?? 'og.jpg'}` },

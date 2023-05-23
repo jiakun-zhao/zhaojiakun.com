@@ -29,7 +29,7 @@ useDefaultHead({ title: '博客', description: '浏览我的所知所想。' })
     </p>
     <div mt16>
       <p v-for="route of routes" :key="route.name">
-        <span text-xs t3 mr2>{{ route.meta.frontmatter.date.slice(5, -9) }}</span>
+        <span text-xs t3 mr2>{{ route.meta.frontmatter.date.substring(5, 10) }}</span>
         <RouterLink :to="route.path">{{ route.meta.frontmatter.title }}</RouterLink>
       </p>
     </div>

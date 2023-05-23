@@ -11,6 +11,7 @@ import Pages from 'vite-plugin-pages'
 import Markdown from 'vite-plugin-vue-markdown'
 
 import { BUNDLED_LANGUAGES } from 'shiki'
+import matter from 'gray-matter'
 
 type SharpFn = (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
 const sharpFnPath = createRequire(import.meta.url).resolve('./sharp')
@@ -57,11 +58,11 @@ export default defineConfig(viteEnv => ({
         { dir: 'contents/posts', baseRoute: '/post' },
       ],
       extendRoute(route) {
-        const component = route.component.slice(1)
-        if (/^contents\/posts\/(.+)\.md$/.test(component)) {
-          const path = resolve(__dirname, route.component.slice(1))
-          const frontmatter = JSON.parse(readFileSync(`${path}.json`, 'utf-8'))
-          route.meta = Object.assign(route.meta || {}, { frontmatter, isPost: true })
+        const component: string = route.component.slice(1)
+        if (component.startsWith('contents/posts/') && component.endsWith('.md')) {
+          const md = readFileSync(resolve(__dirname, component), 'utf-8')
+          const { data } = matter(md)
+          route.meta = Object.assign(route.meta || {}, { frontmatter: data, isPost: true })
         }
         return route
       },

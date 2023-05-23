@@ -1,6 +1,12 @@
+---
+title: 莘野起始页
+description: 一个极简的起始页。
+date: 2023-04-20 19:19:00
+---
+
 在见到花样繁多的起始页后，可能你会需要一个极简的版本。
 
-![Start Page Cover](./start-page.png)
+![Start Page Cover](./start-page.png?q=80)
 
 - 项目地址：[start.zhaojiakun.com](https://start.zhaojiakun.com)
 - 项目源码：[jiakun-zhao/start-page](https://github.com/jiakun-zhao/start-page)
