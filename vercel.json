@@ -1,10 +1,21 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ],
+      "source": "/assets/(.*)"
+    }
+  ],
   "name": "personal-website",
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "source": "/(.*)"
     }
   ]
 }
