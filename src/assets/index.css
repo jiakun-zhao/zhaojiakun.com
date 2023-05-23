@@ -24,9 +24,8 @@ details summary::-webkit-details-marker {
 
 ::selection {
   background-color: #6054ba;
-  color: #fff;
+  color: #ffffff;
 }
-
 
 pre.shiki.vitesse-dark {
   display: none;
@@ -34,14 +33,14 @@ pre.shiki.vitesse-dark {
 
 @media (prefers-color-scheme: dark) {
   pre.shiki.vitesse-dark {
-      display: block;
+    display: block;
   }
 
   pre.shiki.vitesse-light {
-      display: none;
+    display: none;
   }
 }
 
-#nprogress  .bar {
-  background: #6054ba !important;
+#root_load {
+  display: none;
 }

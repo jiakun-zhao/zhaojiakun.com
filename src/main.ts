@@ -1,21 +1,20 @@
 import { createApp } from 'vue'
 import { RouterView, createRouter, createWebHistory } from 'vue-router'
 import { createHead } from '@vueuse/head'
-import NProgress from 'nprogress'
 import { vShiki } from '~/utils'
 import routes from '~pages'
 
 import 'uno.css'
-import 'nprogress/nprogress.css'
 import '~/assets/index.css'
 
+const rootLoad = document.querySelector('#root_load') as HTMLDivElement
+
 const router = createRouter({ routes, history: createWebHistory() })
-NProgress.configure({ showSpinner: false })
 router.beforeEach(async (to, from, next) => {
-  NProgress.start()
+  rootLoad.style.display = 'block'
   next()
 })
-router.afterEach(() => NProgress.done())
+router.afterEach(() => rootLoad.style.display = 'none')
 
 createApp(RouterView)
   .use(router)
