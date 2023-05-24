@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { RouterView, createRouter, createWebHistory } from 'vue-router'
 import { createHead } from '@vueuse/head'
-import { vShiki } from '~/utils'
+import { vImageFigure, vShiki } from '~/utils'
 import routes from '~pages'
 import NeteaseMusicCard from '~/components/NeteaseMusicCard.vue'
 
@@ -22,4 +22,5 @@ createApp(RouterView)
   .use(createHead())
   .component('NeteaseMusicCard', NeteaseMusicCard)
   .directive('shiki', vShiki)
+  .directive('image-figure', vImageFigure)
   .mount('#root')

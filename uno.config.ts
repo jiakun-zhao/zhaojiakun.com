@@ -98,5 +98,12 @@ export default defineConfig<Theme>({
       'p8',
       'mx-auto',
     ],
+
+    'uno-figure': [
+      'm-0',
+      '[&_figcaption]:text-xs',
+      '[&_figcaption]:t3',
+      '[&_figcaption]:py-4',
+    ],
   },
 })

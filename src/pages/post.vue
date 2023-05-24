@@ -43,4 +43,5 @@ useDefaultHead(frontmatter.value, {
     </p>
     <div class="giscus" />
   </IndexWrapper>
+  <!-- <figure class="uno-figure" /> -->
 </template>

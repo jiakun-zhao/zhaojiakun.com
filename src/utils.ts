@@ -63,3 +63,15 @@ export const vShiki: Directive = {
       .catch(console.error)
   },
 }
+
+export const vImageFigure: Directive = {
+  mounted: (el: HTMLImageElement) => {
+    const figure = document.createElement('figure')
+    figure.className = 'uno-figure'
+    figure.appendChild(el.cloneNode(true))
+    const figcaption = document.createElement('figcaption')
+    figcaption.textContent = `[ ${el.getAttribute('title')} ]`
+    figure.appendChild(figcaption)
+    el.replaceWith(figure)
+  },
+}

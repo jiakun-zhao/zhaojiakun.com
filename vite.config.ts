@@ -40,6 +40,9 @@ export default defineConfig(viteEnv => ({
             token.attrSet('style', `aspect-ratio:${width}/${height}`)
             token.attrSet('src', viteEnv.mode === 'production' ? to : relative(from, to))
           }
+          if (token.attrGet('title'))
+            token.attrSet('v-image-figure', '')
+
           token.attrSet('alt', token.content)
           token.attrSet('loading', 'lazy')
           return self.renderToken(tokens, idx, options)

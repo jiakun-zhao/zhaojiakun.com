@@ -14,15 +14,16 @@ const { playing } = useMediaControls(audio, { src: () => detail.value?.file?.url
   <div v-if="detail && detail.file.url" flex gap-4 bg2 p-1.8 rounded-6px mb-8>
     <div
       flex items-center justify-center w-16 h-16 relative
-      cursor-pointer select-none
+      cursor-pointer select-none rounded-5px
       @click="playing = !playing"
     >
       <img
         v-if="detail.album.cover" :src="detail.album.cover" :alt="detail.album.id"
-        w-full op-70 aspect="1/1" rounded-5px
+        w-full aspect="1/1" rounded-inherit
       >
+      <div absolute bg-black:20 w-full h-full></div>
       <div
-        absolute text-2xl
+        absolute text-2xl text-white
         :class="playing ? 'i-ph:pause-circle-fill' : 'i-ph:play-circle-fill'"
       />
     </div>
