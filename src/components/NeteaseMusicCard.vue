@@ -7,7 +7,7 @@ const props = defineProps<{ id: string }>()
 const { data, isFinished, error } = useFetch(() => `https://fun.zhaojiakun.com/api/netease-cloud-music/${props.id}`).json()
 const detail: any | null = computed(() => (!error.value && isFinished.value) ? data.value : null)
 const audio = ref<HTMLMediaElement>()
-const { playing } = useMediaControls(audio, { src: () => detail.value?.file?.url })
+const { playing } = useMediaControls(audio, { src: () => detail.value?.file?.url?.replace('http://', 'https://') })
 </script>
 
 <template>
