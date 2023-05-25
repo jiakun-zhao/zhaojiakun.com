@@ -18,8 +18,8 @@ export function useDefaultHead(frontMatter: DefaultFrontMatter, other: UseHeadIn
       { name: 'og:description', content: description ?? title },
       { name: 'twitter:description', content: description ?? title },
 
-      { name: 'og:image', content: `${BASE_URL}/${og_image ?? 'og.jpg'}` },
-      { name: 'twitter:image', content: `${BASE_URL}/${og_image ?? 'og.jpg'}` },
+      { name: 'og:image', content: `${BASE_URL}/${og_image ?? 'og/icon.jpg'}` },
+      { name: 'twitter:image', content: `${BASE_URL}/${og_image ?? 'og/icon.jpg'}` },
 
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:creator', content: '@JiakunZhao' },
