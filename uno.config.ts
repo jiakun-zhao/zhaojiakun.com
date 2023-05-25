@@ -11,14 +11,19 @@ export default defineConfig<Theme>({
     }),
   ],
   rules: [
-    [/^slide-enter-(\d+)$/, m => ({ '--enter-stage': `${m[1]}`, 'animation': 'inherit', 'animation-delay': 'inherit' })],
+    [
+      /^slide-enter-(\d+)$/,
+      m => ({ '--enter-stage': `${m[1]}`, 'animation': 'inherit', 'animation-delay': 'inherit' }),
+    ],
   ],
   theme: {
     colors: {
-      accent: '#6054ba',
+      'accent': '#6054ba',
+      'text-primary': 'rgb(var(--text-primary))',
     },
   },
   shortcuts: {
+
     'bg1': 'bg-#ffffff dark:bg-#111111',
     'bg2': 'bg-#f2f2f2 dark:bg-#191919',
 
@@ -95,15 +100,10 @@ export default defineConfig<Theme>({
       'tracking-wider',
       'w-full',
       'max-w-3xl',
-      'p8',
+      'p-8',
       'mx-auto',
     ],
 
-    'uno-figure': [
-      'm-0',
-      '[&_figcaption]:text-xs',
-      '[&_figcaption]:t3',
-      '[&_figcaption]:py-4',
-    ],
+    'uno-figure': ['m-0', '[&_figcaption]:text-xs', '[&_figcaption]:t3', '[&_figcaption]:py-4'],
   },
 })

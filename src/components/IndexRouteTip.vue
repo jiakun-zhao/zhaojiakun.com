@@ -8,7 +8,7 @@ const msg = computed(() => props.msg)
 <template>
   <span
     animate-fade-out animate-delay-1000 animate-duration-2000 animate-fill-forwards
-    font-normal text-xs ml2 t3
+    font-normal text-xs ml-2 t3
   >
     {{ msg }}
   </span>
