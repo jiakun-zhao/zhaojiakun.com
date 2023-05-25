@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { relative, resolve } from 'node:path'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { defineConfig } from 'vite'
 import { createSyncFn } from 'synckit'
@@ -16,7 +16,8 @@ import matter from 'gray-matter'
 type SharpFn = (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
 const sharpFnPath = createRequire(import.meta.url).resolve('./sharp')
 const sharpFn: SharpFn = createSyncFn(sharpFnPath)
-const shikiLangs = BUNDLED_LANGUAGES.map(({ id, aliases }) => [id, ...aliases ?? []]).flat()
+const shikiLangs = BUNDLED_LANGUAGES.map(({ id, aliases }) => [id, ...(aliases ?? [])]).flat()
+const douyinEmojis = readdirSync('src/public/assets/douyin-emoji')
 
 export default defineConfig(viteEnv => ({
   plugins: [
@@ -32,6 +33,7 @@ export default defineConfig(viteEnv => ({
         },
       },
       markdownItSetup(md) {
+        // Image Auto Compression
         md.renderer.rules.image = (tokens, idx, options, env, self) => {
           const token = tokens[idx]
           const metadata = sharpFn(env.id, token.attrGet('src'))
@@ -47,10 +49,19 @@ export default defineConfig(viteEnv => ({
           token.attrSet('loading', 'lazy')
           return self.renderToken(tokens, idx, options)
         }
+        // External Link
         md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
           if (tokens[idx].attrGet('href')?.startsWith('http'))
             tokens[idx].attrSet('target', '_blank')
           return self.renderToken(tokens, idx, options)
+        }
+        // Douyin Emoji
+        const defaultRenderCodeInline = md.renderer.rules.code_inline!
+        md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+          const token = tokens[idx]
+          if (douyinEmojis.includes(token.content))
+            return `<img src="/assets/douyin-emoji/${token.content}" style="display:inline-block;width:1rem;vertical-align:sub;"/>`
+          return defaultRenderCodeInline(tokens, idx, options, env, self)
         }
       },
     }),

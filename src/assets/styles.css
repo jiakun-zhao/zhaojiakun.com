@@ -1,0 +1,33 @@
+@import './styles/slide-enter.css';
+@import './styles/index-.css';
+
+* {
+  box-sizing: border-box;
+}
+
+details summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  background-color: rgb(var(--accent));
+  color: white;
+}
+
+pre.shiki.vitesse-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre.shiki.vitesse-dark {
+    display: block;
+  }
+
+  pre.shiki.vitesse-light {
+    display: none;
+  }
+}

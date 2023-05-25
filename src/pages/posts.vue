@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router'
 import type { PostFrontMatter } from '~/types'
 import { useDefaultHead } from '~/utils'
 import IndexWrapper from '~/components/IndexWrapper.vue'
-import IndexRouteTip from '~/components/IndexRouteTip.vue'
 
 interface Route extends RouteRecordNormalized {
   meta: {
@@ -23,15 +22,13 @@ useDefaultHead({ title: '博客', description: '浏览我的所知所想。' })
 
 <template>
   <IndexWrapper title="博客" to="/">
-    <p>
+    <p index-sub-title>
       <span>浏览我的所知所想</span>
-      <IndexRouteTip msg="点击标题去到首页" />
+      <span index-route-tip>点击标题去到首页</span>
     </p>
-    <div mt-16>
-      <p v-for="route of routes" :key="route.name">
-        <span text-xs t3 mr-2>{{ route.meta.frontmatter.date.substring(5, 10) }}</span>
-        <RouterLink :to="route.path">{{ route.meta.frontmatter.title }}</RouterLink>
-      </p>
-    </div>
+    <p v-for="route of routes" :key="route.name">
+      <span text-xs text-secondary mr-2>{{ route.meta.frontmatter.date.substring(5, 10) }}</span>
+      <RouterLink :to="route.path">{{ route.meta.frontmatter.title }}</RouterLink>
+    </p>
   </IndexWrapper>
 </template>

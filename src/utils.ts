@@ -6,12 +6,8 @@ import type { DefaultFrontMatter } from '~/types'
 
 export const BASE_URL = location.origin
 
-export function useDefaultHead(frontMatter: DefaultFrontMatter, other?: UseHeadInput) {
-  const {
-    title,
-    description,
-    og_image,
-  } = frontMatter
+export function useDefaultHead(frontMatter: DefaultFrontMatter, other: UseHeadInput = {}) {
+  const { title, description, og_image } = frontMatter
   useHead({
     title,
     meta: [
@@ -28,8 +24,8 @@ export function useDefaultHead(frontMatter: DefaultFrontMatter, other?: UseHeadI
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:creator', content: '@JiakunZhao' },
     ],
-    ...other,
   })
+  useHead(other)
 }
 
 export const loadJavaScript = async function (src: string) {
@@ -67,7 +63,6 @@ export const vShiki: Directive = {
 export const vImageFigure: Directive = {
   mounted: (el: HTMLImageElement) => {
     const figure = document.createElement('figure')
-    figure.className = 'uno-figure'
     figure.appendChild(el.cloneNode(true))
     const figcaption = document.createElement('figcaption')
     figcaption.textContent = `[ ${el.getAttribute('title')} ]`

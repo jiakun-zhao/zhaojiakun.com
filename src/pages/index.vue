@@ -2,7 +2,7 @@
 import { useDefaultHead } from '~/utils'
 import IndexWrapper from '~/components/IndexWrapper.vue'
 
-useDefaultHead({ title: 'Hi~', description: 'Hi~' })
+useDefaultHead({ title: 'Hi~' })
 
 const links = {
   '/posts': '博客',
@@ -20,16 +20,5 @@ const links = {
         <span>, </span>
       </template>
     </p>
-    <!--
-      <p flex="~ gap-2">
-        <a href="https://space.bilibili.com/35245056" target="_blank">哔哩哔哩</a>
-        <a href="https://github.com/jiakun-zhao" target="_blank">GitHub</a>
-        <a href="https://twitter.com/JiakunZhao" target="_blank">Twitter</a>
-        <a href="https://mas.to/@zhaojiakun" target="_blank">Mastodon</a>
-      </p>
-      <p>
-        <a href="mailto:hi@zhaojiakun.com">hi@zhaojiakun.com</a>
-      </p>
-    -->
   </IndexWrapper>
 </template>

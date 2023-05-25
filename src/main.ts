@@ -5,23 +5,23 @@ import { vImageFigure, vShiki } from '~/utils'
 import routes from '~pages'
 import NeteaseMusicCard from '~/components/NeteaseMusicCard.vue'
 
+import '~/assets/styles.css'
 import 'uno.css'
-import '~/assets/index.css'
 
-const rootLoad = document.querySelector('#root_load') as HTMLDivElement
+const root_load = document.querySelector('#root_load') as HTMLDivElement
 
 const router = createRouter({ routes, history: createWebHistory() })
 router.beforeEach((to, from, next) => {
-  rootLoad.style.display = 'block'
+  root_load.style.display = 'block'
   if (!import.meta.env.DEV) {
-    fetch('https://fun.zhaojiakun.com/api/personal-website/analytics', {
-      method: 'HEAD',
-      headers: { 'X-To-Path': to.fullPath, 'X-From-Path': from.fullPath },
-    }).then().catch()
+    const url = 'https://fun.zhaojiakun.com/api/personal-website/analytics'
+    const headers = { 'X-To-Path': to.fullPath, 'X-From-Path': from.fullPath }
+    fetch(url, { method: 'HEAD', headers }).catch(console.error)
   }
   next()
 })
-router.afterEach(() => rootLoad.style.display = 'none')
+
+router.afterEach(() => root_load.style.display = 'none')
 
 createApp(RouterView)
   .use(router)

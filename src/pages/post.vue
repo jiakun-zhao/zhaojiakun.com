@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router'
 import IndexWrapper from '~/components/IndexWrapper.vue'
 import type { PostFrontMatter } from '~/types'
 import { BASE_URL, useDefaultHead } from '~/utils'
-import IndexRouteTip from '~/components/IndexRouteTip.vue'
 
 const route = useRoute()
 const frontmatter = computed<PostFrontMatter>(() => route.meta.frontmatter)
@@ -27,21 +26,31 @@ useDefaultHead(frontmatter.value, {
     'defer': true,
   }],
 })
+
+function toTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 </script>
 
 <template>
   <IndexWrapper :title="frontmatter.title" to="/posts">
-    <p class="text-xs!" pb-12>
+    <p index-sub-title>
       <span>{{ frontmatter.date.substring(0, 10) }} {{ frontmatter.date.substring(11, 16) }}</span>
-      <IndexRouteTip msg="点击标题去到博客列表" />
+      <span index-route-tip>点击标题去到博客列表</span>
     </p>
     <RouterView />
-    <hr w-16 b2 my-16 border-1>
-    <p pl-2 class="leading-6! text-xs!">
-      <a class="hover:text-accent! t2!" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">遵循 CC BY-NC-SA 4. 协议</a>
-      <span>，转载的内容请参阅原地址协议。</span>
-    </p>
+    <hr w-16 border="secondary 1" my-16>
+    <div pl-2 leading-6 class="[&_p]:text-xs!">
+      <p>
+        <RouterLink to="/">首页</RouterLink>,
+        <RouterLink to="/posts">博客列表</RouterLink>,
+        <a href="javascript:void(0);" @click="toTop">去到顶部</a>。
+      </p>
+      <p my-8>
+        <a hover:text-accent text-secondary target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">遵循 CC BY-NC-SA 4. 协议</a>
+        <span>，转载的内容请参阅原地址协议。</span>
+      </p>
+    </div>
     <div class="giscus" />
   </IndexWrapper>
-  <!-- <figure class="uno-figure" /> -->
 </template>

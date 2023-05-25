@@ -11,15 +11,15 @@ const { playing } = useMediaControls(audio, { src: () => detail.value?.file?.url
 </script>
 
 <template>
-  <div v-if="detail && detail.file.url" flex gap-4 bg2 p-1.8 rounded-6px mb-8>
+  <div v-if="detail && detail.file.url" flex gap-4 bg-secondary p-1.8 rd-6px mb-8>
     <div
       flex items-center justify-center w-16 h-16 relative
-      cursor-pointer select-none rounded-5px
+      cursor-pointer select-none rd-6px
       @click="playing = !playing"
     >
       <img
         v-if="detail.album.cover" :src="detail.album.cover" :alt="detail.album.id"
-        w-full aspect="1/1" rounded-inherit
+        w-full aspect="1/1" rd-inherit
       >
       <div absolute bg-black:20 w-full h-full></div>
       <div
@@ -29,7 +29,7 @@ const { playing } = useMediaControls(audio, { src: () => detail.value?.file?.url
     </div>
     <div flex="~ col" justify-around>
       <h4 my-0 mt-5px>{{ detail.name || 'Unknown' }}</h4>
-      <p my-0 mb-2 class="text-xs!">{{ detail.singers.map((i:any) => i.name).join(',') || 'Unknown' }}</p>
+      <p my-0 mb-2 class="text-xs">{{ detail.singers.map((i:any) => i.name).join(',') || 'Unknown' }}</p>
     </div>
   </div>
   <audio ref="audio" height="0" width="0" />
