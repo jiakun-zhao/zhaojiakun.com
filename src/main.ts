@@ -14,7 +14,7 @@ const router = createRouter({ routes, history: createWebHistory() })
 router.beforeEach((to, from, next) => {
   rootLoad.style.display = 'block'
   if (!import.meta.env.DEV) {
-    fetch('https://fun.zhaojiakun.com/api/personal-website/', {
+    fetch('https://fun.zhaojiakun.com/api/personal-website/analytics', {
       method: 'HEAD',
       headers: { 'X-To-Path': to.fullPath, 'X-From-Path': from.fullPath },
     }).then().catch()
