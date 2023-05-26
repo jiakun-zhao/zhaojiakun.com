@@ -64,6 +64,7 @@ export const vShiki: Directive = {
   },
 }
 
+// TODO: 使用 MarkdownIt 来转换
 export const vImageFigure: Directive = {
   mounted: (el: HTMLImageElement) => {
     const figure = document.createElement('figure')
