@@ -44,6 +44,10 @@ async function getShiki() {
   return window.shiki!
 }
 
+export function unoAttribute(el: Element, attrs: string) {
+  attrs.split(' ').filter(Boolean).forEach(attr => el.setAttribute(attr, ''))
+}
+
 export const vShiki: Directive = {
   mounted: (el) => {
     const themes = ['vitesse-dark', 'vitesse-light']
