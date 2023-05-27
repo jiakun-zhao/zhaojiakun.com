@@ -28,9 +28,12 @@ export default defineConfig(viteEnv => ({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.ts$/],
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
       dirs: ['./src/logic'],
-      dts: true,
+      dts: './src/auto-imports.d.ts',
     }),
-    Components({ dts: true, include: [/\.vue$/, /\.vue\?vue/, /\.md$/] }),
+    Components({
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      dts: './src/components.d.ts',
+    }),
     Markdown({
       wrapperClasses: null,
       transforms: { after: code => code.slice(5, -6) },

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { useImage } from '@vueuse/core'
 import { ref, watchEffect } from 'vue'
-import { unoAttribute } from '~/utils'
 
 const props = defineProps<{
   src: string
@@ -28,7 +27,7 @@ watchEffect(() => {
     const canvas = document.createElement('canvas')
     canvas.width = props.width
     canvas.height = props.height
-    unoAttribute(canvas, 'absolute top-0 left-0')
+    canvas.className = 'absolute top-0 left-0'
     box.value?.appendChild(canvas)
 
     const ctx = canvas.getContext('2d')!
