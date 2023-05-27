@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import IndexWrapper from '~/components/IndexWrapper.vue'
-
-import { useDefaultHead } from '~/utils'
-
-useDefaultHead({ title: '制作', description: '正在`制作`制作...' })
+useMeta({ title: '制作', description: '正在`制作`制作...' })
 </script>
 
 <template>

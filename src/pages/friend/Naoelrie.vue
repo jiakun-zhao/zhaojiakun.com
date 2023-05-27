@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-import { useDefaultHead } from '~/utils'
 import naoelrie from '~/assets/naoelrie.jpg'
-import IndexWrapper from '~/components/IndexWrapper.vue'
 
-useDefaultHead({ title: 'Naoelrie', description: 'Naoelrie info.' })
+useMeta({ title: 'Naoelrie', description: 'Naoelrie info.' })
 </script>
 
 <template>

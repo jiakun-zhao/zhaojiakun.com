@@ -8,10 +8,10 @@ async function handler(id, src) {
     return null
 
   try {
-    const quality = +(src.match(/.*\?q=(100|\d\d|[1-9])$/)?.[1] ?? 0)
-    if (quality)
-      src = src.slice(0, src.lastIndexOf('?'))
-    else return null
+    const quality = +(src.match(/.*\?q=(100|\d\d|[1-9])$/)?.[1] ?? 80)
+    const indexOfSeparator = src.lastIndexOf('?')
+    if (indexOfSeparator !== -1)
+      src = src.slice(0, indexOfSeparator)
 
     const from = resolve(id, '..', src)
     const to = resolve('node_modules', '.sharp-images', `${src}.${quality}.webp`)

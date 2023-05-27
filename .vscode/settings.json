@@ -1,50 +1,7 @@
 {
   "explorer.fileNesting.patterns": {
     "*.md": "${capture}.*",
-    "package.json": "*"
+    "vite.config.ts": "sharp.js, index.html"
   },
-  "json.schemas": [
-    {
-      "fileMatch": ["contents/posts/*.md.json"],
-      "schema": {
-        "additionalProperties": false,
-        "properties": {
-          "date": {
-            "description": "YYYY-MM-DD HH:mm",
-            "pattern": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$",
-            "type": "string"
-          },
-          "description": {
-            "pattern": "\\S+",
-            "type": "string"
-          },
-          "title": {
-            "pattern": "\\S+",
-            "type": "string"
-          },
-          "og_image": {
-            "pattern": "og/\\S+",
-            "type": "string"
-          },
-          "draft": {
-            "type": "boolean"
-          },
-          "images": {
-            "type": "object",
-            "patternProperties": {
-              ".*": {
-                "type": "number"
-              }
-            }
-          }
-        },
-        "required": ["title", "description", "date"],
-        "type": "object"
-      }
-    }
-  ],
-  "cSpell.words": [
-    "Binaryify",
-    "douyin"
-  ]
+  "cSpell.words": ["douyin"]
 }

@@ -36,6 +36,7 @@ watchEffect(() => {
 
     let angle = 0
     let direction = Math.random() < 0.6 ? 1 : -1
+    // 基于 location 的缩放
     const imageDisplaySize = imageMaxSize - (x + y) * large / 7
     // 前面是个裁切图片，待定...
     const sx = imageDisplaySize / 2 * x

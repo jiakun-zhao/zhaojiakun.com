@@ -5,7 +5,16 @@ import { computed, ref } from 'vue'
 
 const props = defineProps<{ id: string }>()
 
-const { data, isFinished, error } = useFetch(() => `https://fun.zhaojiakun.com/api/netease-cloud-music/${props.id}`).json()
+const { data, isFinished, error } = useFetch(() => `https://fun.zhaojiakun.com/api/netease-cloud-music/${props.id}`, {
+  afterFetch: (ctx) => {
+    const { data: { code, data: [data] }, response: { status } } = ctx
+    if (status !== 200 || code !== 200 || !data)
+      throw new Error('Fetch failed')
+    console.log(data)
+    return ctx
+  },
+}).json()
+
 const detail: ComputedRef<any | null> = computed(() => (!error.value && isFinished.value) ? data.value : null)
 const audio = ref<HTMLMediaElement>()
 const { playing } = useMediaControls(audio, { src: () => detail.value?.file?.url?.replace('http://', 'https://') })

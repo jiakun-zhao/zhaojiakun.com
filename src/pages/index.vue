@@ -1,8 +1,5 @@
 <script lang="ts" setup>
-import { useDefaultHead } from '~/utils'
-import IndexWrapper from '~/components/IndexWrapper.vue'
-
-useDefaultHead({ title: 'Hi~' })
+useMeta({ title: 'Hi~' })
 
 const links = {
   '/posts': '博客',
