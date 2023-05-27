@@ -27,7 +27,7 @@ export default defineConfig(viteEnv => ({
     AutoImport({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.ts$/],
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
-      dirs: ['./src/composables'],
+      dirs: ['./src/logic'],
     }),
     Components({ include: [/\.vue$/, /\.vue\?vue/, /\.md$/] }),
     Markdown({

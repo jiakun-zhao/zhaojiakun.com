@@ -1,6 +1,6 @@
 ---
 title: 莘野起始页
-description: 一个极简的起始页。
+description: 一个极简的起始页项目。
 date: 2023-04-20 19:19:00
 ---
 

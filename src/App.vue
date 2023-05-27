@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+useHead(() => ({
+  meta: [{ name: 'theme-color', content: isDark.value ? '#111111' : '#ffffff' }],
+}))
+
 const isLoadIconShow = ref(true)
 const router = useRouter()
 router.beforeEach((to, from, next) => {
