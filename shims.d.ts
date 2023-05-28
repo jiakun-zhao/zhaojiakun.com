@@ -9,12 +9,9 @@ declare module 'vue-router' {
     title: string
     description?: string
     og_image?: string
-
-    post?: {
-      date: string
-      draft?: boolean
-      is0x00?: boolean
-      keywords?: string[]
-    }
+    date?: string
+    draft?: boolean
+    is0x00?: boolean
+    backTo?: string
   }
 }

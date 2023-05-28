@@ -1,9 +1,7 @@
 ---
-title: "0x01"
+title: "0x00"
 description: 大火之后，我知道那是我的家，但是回不去了。
-post:
-  is0x00: true
-  date: 2023-05-23 23:08:41
+date: 2023-05-23 23:08:41
 ---
 
 <NeteaseMusicCard id="31517167" />

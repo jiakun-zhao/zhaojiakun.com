@@ -1,9 +1,8 @@
 ---
 title: Personal website favorites
 description: A list of personal websites that I like
-post:
-  date: 2023-04-16 15:46:00
-  draft: true
+date: 2023-04-16 15:46:00
+draft: true
 ---
 
 - [Anthony Fu](https://antfu.me)

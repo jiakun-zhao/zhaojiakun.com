@@ -34,9 +34,7 @@ export default defineConfig<Theme>({
       },
     }),
   ],
-  transformers: [
-    transformerDirectives(),
-  ],
+  transformers: [transformerDirectives()],
   theme: {
     fontFamily: {
       sans: 'Inter, PingFang TC, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
@@ -48,15 +46,7 @@ export default defineConfig<Theme>({
       },
     },
   },
-  rules: [
-    [
-      /^slide-enter-(\d+)$/, m => ({
-        '--enter-stage': `${m[1]}`,
-        'animation': 'inherit',
-        'animation-delay': 'inherit',
-      }),
-    ],
-  ],
+  rules: [[/^slide-enter-(\d+)$/, ([, n]) => ({ '--enter-stage': n })]],
   shortcuts: {
     'base-item-style': 'w-full max-w-3xl px-8 mx-auto font-sans tracking-wider [&_code]:font-mono',
     'safe-bottom': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',

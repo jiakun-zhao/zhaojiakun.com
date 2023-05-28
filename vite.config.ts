@@ -15,8 +15,6 @@ import Components from 'unplugin-vue-components/vite'
 import type MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
 
-type SharpFn = (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
-const sharpFn: SharpFn = createSyncFn(createRequire(import.meta.url).resolve('./sharp'))
 const douyinEmojis = readdirSync('src/public/assets/douyin-emoji')
 
 export default defineConfig(viteEnv => ({
@@ -40,21 +38,7 @@ export default defineConfig(viteEnv => ({
         MarkdownItLinkTarget,
       ],
       markdownItSetup(md) {
-        // Image Auto Compression
-        md.renderer.rules.image = (tokens, idx, options, env, self) => {
-          const token = tokens[idx]
-          const metadata = sharpFn(env.id, token.attrGet('src'))
-          if (metadata) {
-            const { width, height, from, to } = metadata
-            token.attrSet('style', `aspect-ratio:${width}/${height}`)
-            token.attrSet('src', viteEnv.mode === 'production' ? to : relative(from, to))
-          }
-          token.attrSet('alt', token.content)
-          token.attrSet('loading', 'lazy')
-          const imageStr = self.renderToken(tokens, idx, options)
-          const title = token.attrGet('title')
-          return title ? `<figure>${imageStr}<figcaption>[ ${title} ]</figcaption></figure>` : imageStr
-        }
+        MarkdownItImage(md, viteEnv.mode)
         // TODO: Douyin Emoji
         const defaultRenderCodeInline = md.renderer.rules.code_inline!
         md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
@@ -69,9 +53,11 @@ export default defineConfig(viteEnv => ({
       extensions: ['vue', 'md'],
       dirs: 'contents',
       extendRoute(route) {
-        const path = route.component.slice(1)
-        const { data } = matter(readFileSync(path, 'utf-8'))
-        route.meta = Object.assign(route.meta || {}, data)
+        if (route.component.endsWith('.md')) {
+          const path = route.component.slice(1)
+          const { data } = matter(readFileSync(path, 'utf-8'))
+          route.meta = Object.assign(route.meta || {}, checkRouteMeta(route, data))
+        }
         return route
       },
     }),
@@ -80,6 +66,19 @@ export default defineConfig(viteEnv => ({
   resolve: { alias: { '~': fileURLToPath(new URL('./src', import.meta.url)) } },
   server: { host: true },
 }))
+
+function checkRouteMeta(route: any, data: any) {
+  if (route.path.startsWith('/post/')) {
+    if (!data.date)
+      throw new Error(`Missing date in ${route.path}`)
+    if (data.title.startsWith('0x') && !data.description)
+      throw new Error(`Missing description in ${route.path}`)
+    data.backTo = 'posts'
+  }
+  if (route.name !== 'index' && !data.backTo)
+    throw new Error(`Missing backTo in ${route.path}`)
+  return data
+}
 
 function MarkdownItLinkTarget(md: MarkdownIt) {
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
@@ -94,5 +93,25 @@ function MarkdownItLinkTarget(md: MarkdownIt) {
 function MarkdownItHighlight(md: MarkdownIt) {
   md.options.highlight = (code, lang) => {
     return `<pre><MarkdownShiki lang="${lang}">${code}</MarkdownShiki></pre>`
+  }
+}
+
+const sharpFn: (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
+ = createSyncFn(createRequire(import.meta.url).resolve('./sharp'))
+
+function MarkdownItImage(md: MarkdownIt, mode: string) {
+  md.renderer.rules.image = (tokens, idx, options, env, self) => {
+    const token = tokens[idx]
+    const metadata = sharpFn(env.id, token.attrGet('src'))
+    if (metadata) {
+      const { width, height, from, to } = metadata
+      token.attrSet('style', `aspect-ratio:${width}/${height}`)
+      token.attrSet('src', mode === 'production' ? to : relative(from, to))
+    }
+    token.attrSet('alt', token.content)
+    token.attrSet('loading', 'lazy')
+    const imageStr = self.renderToken(tokens, idx, options)
+    const title = token.attrGet('title')
+    return title ? `<figure>${imageStr}<figcaption>[ ${title} ]</figcaption></figure>` : imageStr
   }
 }

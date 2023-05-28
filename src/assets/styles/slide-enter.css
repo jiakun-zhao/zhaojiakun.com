@@ -98,8 +98,4 @@
   [slide-enter] > *:nth-child(20) {
     --enter-stage: 20;
   }
-
-  pre.shiki {
-    --enter-stage: 0 !important;
-  }
 }
