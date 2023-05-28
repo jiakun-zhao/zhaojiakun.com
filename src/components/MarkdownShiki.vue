@@ -17,7 +17,7 @@ useScriptTag(`https://cdn.jsdelivr.net/npm/shiki@${shikiVersion}`, () => {
     .then((h) => {
       const wrapper = document.createElement('div')
       wrapper.innerHTML = themes.map(theme => h.codeToHtml(code.value?.textContent ?? '', { lang: props.lang, theme })).join('')
-      code.value?.parentElement?.replaceWith(...Array.from(wrapper.childNodes))
+      code.value?.parentElement?.replaceWith(wrapper)
     })
     .catch(console.error)
 })

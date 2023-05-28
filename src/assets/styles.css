@@ -14,20 +14,82 @@ details summary::-webkit-details-marker {
 }
 
 ::selection {
-  background-color: rgb(var(--accent));
-  color: white;
+  --uno: bg-accent text-white;
 }
 
-pre.shiki.vitesse-dark {
-  display: none;
+main {
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
-@media (prefers-color-scheme: dark) {
-  pre.shiki.vitesse-dark {
-    display: block;
-  }
+main a {
+  border-bottom: 1px solid;
+  text-decoration: none;
+  --uno: text-primary border-primary transition-500;
+}
 
-  pre.shiki.vitesse-light {
-    display: none;
-  }
+main a:hover {
+  --uno: text-accent border-current;
+}
+
+main ul,
+main ol {
+  --uno: ps-6;
+}
+
+main img {
+  display: block;
+  width: 100%;
+}
+
+main pre {
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
+  overflow-x: auto;
+  line-height: 1.4rem;
+  --uno: text-accent bg-secondary text-sm;
+}
+
+main code:not(pre > code) {
+  border-radius: 6px;
+  line-height: normal;
+  padding: 2px 5px;
+  --uno: text-primary bg-secondary;
+}
+
+main blockquote {
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  --uno: bg-secondary mx-0;
+}
+main blockquote p {
+  margin: 0;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6,
+main strong {
+  --uno: text-primary;
+}
+
+main figure {
+  margin: 0;
+}
+
+main figure figcaption {
+  padding: 1rem 0;
+  --uno: text-thirdly text-xs;
+}
+
+main pre.shiki.vitesse-dark {
+  --uno: 'bg-secondary! hidden dark:block';
+}
+
+main pre.shiki.vitesse-light {
+  --uno: 'bg-secondary! block dark:hidden';
 }

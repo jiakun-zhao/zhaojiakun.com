@@ -11,13 +11,12 @@ import Pages from 'vite-plugin-pages'
 import Markdown from 'vite-plugin-vue-markdown'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import MarkdownItLinkAttributes from 'markdown-it-link-attributes'
 
+import type MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
 
 type SharpFn = (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
-const sharpFnPath = createRequire(import.meta.url).resolve('./sharp')
-const sharpFn: SharpFn = createSyncFn(sharpFnPath)
+const sharpFn: SharpFn = createSyncFn(createRequire(import.meta.url).resolve('./sharp'))
 const douyinEmojis = readdirSync('src/public/assets/douyin-emoji')
 
 export default defineConfig(viteEnv => ({
@@ -27,7 +26,6 @@ export default defineConfig(viteEnv => ({
     AutoImport({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.ts$/],
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
-      dirs: ['./src/logic'],
       dts: './src/auto-imports.d.ts',
     }),
     Components({
@@ -37,17 +35,9 @@ export default defineConfig(viteEnv => ({
     Markdown({
       wrapperClasses: null,
       transforms: { after: code => code.slice(5, -6) },
-      markdownItOptions: {
-        highlight: (code, lang) => `<pre><MarkdownShiki lang="${lang}">${code}</MarkdownShiki></pre>`,
-      },
       markdownItUses: [
-        [
-          MarkdownItLinkAttributes,
-          {
-            matcher: (link: string) => /^https?:\/\//.test(link),
-            attrs: { target: '_blank' },
-          },
-        ],
+        MarkdownItHighlight,
+        MarkdownItLinkTarget,
       ],
       markdownItSetup(md) {
         // Image Auto Compression
@@ -63,9 +53,7 @@ export default defineConfig(viteEnv => ({
           token.attrSet('loading', 'lazy')
           const imageStr = self.renderToken(tokens, idx, options)
           const title = token.attrGet('title')
-          return title
-            ? `<figure>${imageStr}<figcaption>[ ${title} ]</figcaption></figure>`
-            : imageStr
+          return title ? `<figure>${imageStr}<figcaption>[ ${title} ]</figcaption></figure>` : imageStr
         }
         // TODO: Douyin Emoji
         const defaultRenderCodeInline = md.renderer.rules.code_inline!
@@ -79,27 +67,32 @@ export default defineConfig(viteEnv => ({
     }),
     Pages({
       extensions: ['vue', 'md'],
-      dirs: [
-        { dir: 'src/pages', baseRoute: '' },
-        { dir: 'contents/posts', baseRoute: '/post' },
-        { dir: 'contents/notes', baseRoute: '/note' },
-      ],
+      dirs: 'contents',
       extendRoute(route) {
-        const match = route.component.match(/^\/(contents\/(.+)\/.+\.md)$/)
-        if (match) {
-          const { data } = matter(readFileSync(match[1], 'utf-8'))
-          route.meta = Object.assign(route.meta || {}, { ...data, type: match[2] })
-        }
+        const path = route.component.slice(1)
+        const { data } = matter(readFileSync(path, 'utf-8'))
+        route.meta = Object.assign(route.meta || {}, data)
         return route
       },
     }),
   ],
-  resolve: {
-    alias: {
-      '~': fileURLToPath(new URL('./src', import.meta.url)),
-      '@': fileURLToPath(new URL('./contents', import.meta.url)),
-    },
-  },
   publicDir: 'src/public',
+  resolve: { alias: { '~': fileURLToPath(new URL('./src', import.meta.url)) } },
   server: { host: true },
 }))
+
+function MarkdownItLinkTarget(md: MarkdownIt) {
+  md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+    const token = tokens[idx]
+    const href = token.attrGet('href')
+    if (href && /^https?:\/\//.test(href))
+      token.attrSet('target', '_blank')
+    return self.renderToken(tokens, idx, options)
+  }
+}
+
+function MarkdownItHighlight(md: MarkdownIt) {
+  md.options.highlight = (code, lang) => {
+    return `<pre><MarkdownShiki lang="${lang}">${code}</MarkdownShiki></pre>`
+  }
+}

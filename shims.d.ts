@@ -1,18 +1,20 @@
 import 'vue-router'
 
+declare global {
+  var shiki: typeof import('shiki') | undefined
+}
+
 declare module 'vue-router' {
   interface RouteMeta {
     title: string
     description?: string
     og_image?: string
 
-    type?: 'posts' | 'notes'
-
-    date: RouteMeta['type'] extends undefined ? undefined : string
-    draft:  RouteMeta['type'] extends undefined ? undefined : boolean
+    post?: {
+      date: string
+      draft?: boolean
+      is0x00?: boolean
+      keywords?: string[]
+    }
   }
-}
-
-declare global {
-  var shiki: typeof import('shiki') | undefined
 }

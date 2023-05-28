@@ -1,6 +1,7 @@
 import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
 import presetColors from 'unocss-preset-colors'
+import transformerDirectives from '@unocss/transformer-directives'
 
 export default defineConfig<Theme>({
   presets: [
@@ -33,10 +34,18 @@ export default defineConfig<Theme>({
       },
     }),
   ],
+  transformers: [
+    transformerDirectives(),
+  ],
   theme: {
     fontFamily: {
       sans: 'Inter, PingFang TC, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
       mono: 'Input, Input Mono, DM Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;',
+    },
+    animation: {
+      keyframes: {
+        'flash-header-tip': '{ 0% {opacity:0} 40% {opacity:1} 100% {opacity:0} }',
+      },
     },
   },
   rules: [
@@ -49,14 +58,7 @@ export default defineConfig<Theme>({
     ],
   ],
   shortcuts: {
+    'base-item-style': 'w-full max-w-3xl px-8 mx-auto font-sans tracking-wider [&_code]:font-mono',
     'safe-bottom': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
-
-    'index-': [
-      '[&_a]:transition-500',
-      '[&_code]:font-mono',
-    ],
-
-    'index-sub-title': 'text-xs! pb-16',
-    'index-route-tip': 'font-normal ml-2 text-thirdly animate-fade-out animate-delay-1000 animate-duration-2000 animate-forwards',
   },
 })
