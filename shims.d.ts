@@ -11,7 +11,6 @@ declare module 'vue-router' {
     og_image?: string
     date?: string
     draft?: boolean
-    is0x00?: boolean
-    backTo?: string
+    music?: number
   }
 }

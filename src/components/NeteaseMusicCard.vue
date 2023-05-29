@@ -1,36 +1,53 @@
 <script lang="ts" setup>
-import { useFetch, useMediaControls } from '@vueuse/core'
-import { ref } from 'vue'
+import { useFetch } from '@vueuse/core'
+import { useApp } from '~/logic'
 
-const props = defineProps<{ id: string }>()
-const url = () => `https://fun.zhaojiakun.com/api/netease-cloud-music/${props.id}`
-const { data } = useFetch(url).json()
+const props = defineProps<{ id: number }>()
 
-const audio = ref<HTMLMediaElement>()
-const { playing } = useMediaControls(audio, { src: () => data.value?.url?.replace('http://', 'https://') })
+const { musicFromPage, musicControls, musicFromPlay } = useApp()
+const { data } = useFetch(() => `https://fun.zhaojiakun.com/api/netease-cloud-music/${props.id}`, {
+  afterFetch: (ctx) => {
+    if (ctx.response.status === 200 && ctx.data) {
+      ctx.data.url = ctx.data.url?.replace('http://', 'https://')
+      musicFromPage.value = ctx.data
+    }
+    return ctx
+  },
+}).json()
+
+function onPlay() {
+  if (musicControls.playing.value) {
+    musicControls.playing.value = false
+    return
+  }
+  musicFromPlay.value = musicFromPage.value
+  musicControls.playing.value = true
+}
 </script>
 
 <template>
-  <div v-if="data && data.url" flex gap-4 bg-secondary p-1.8 rd-6px mb-8>
+  <div flex gap-4 bg-secondary p-1.8 rd-10px mb-12>
     <div
       flex items-center justify-center w-16 h-16 relative
-      cursor-pointer select-none rd-4px
-      @click="playing = !playing"
+      cursor-pointer select-none rd-6px
     >
-      <img
-        v-if="data.al.picUrl" :src="data.al.picUrl" :alt="data.al.id"
-        w-full aspect="1/1" rd-inherit
-      >
+      <Transition name="fade">
+        <img
+          v-if="data?.al?.picUrl" :src="data.al.picUrl" :alt="data?.al?.id"
+          w-full rd-inherit aspect="1/1"
+        >
+      </Transition>
       <div absolute bg-black:20 w-full h-full rd-inherit></div>
       <div
+        v-if="musicFromPage && !musicControls.waiting.value"
         absolute text-2xl text-white
-        :class="playing ? 'i-ph:pause-circle-fill' : 'i-ph:play-circle-fill'"
+        :class="musicControls.playing.value ? 'i-ph:pause-circle-fill' : 'i-ph:play-circle-fill'"
+        @click="onPlay"
       />
     </div>
     <div flex="~ col" justify-around>
-      <h4 my-0 mt-5px>{{ data.name || 'Unknown' }}</h4>
-      <p my-0 mb-2 class="text-xs!">{{ data.ar.map((i:any) => i.name).join(',') || 'Unknown' }}</p>
+      <h4 mt--1 mb-0>{{ data?.name || '' }}</h4>
+      <p mt-0 mb-2 text-xs>{{ data?.ar?.map((i:any) => i.name).join(',') || '' }}</p>
     </div>
   </div>
-  <audio ref="audio" height="0" width="0" />
 </template>

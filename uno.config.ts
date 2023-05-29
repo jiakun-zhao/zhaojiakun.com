@@ -59,7 +59,8 @@ export default defineConfig<Theme>({
     [/^slide-enter-(\d+)$/, ([, n]) => ({ '--enter-stage': `${n} !important` })],
   ],
   shortcuts: {
-    'base-item-style': 'w-full max-w-3xl px-8 mx-auto font-sans tracking-wider [&_code]:font-mono',
+    'container': 'w-full max-w-3xl px-8 mx-auto',
+    'tip-text': 'text-thirdly animate-fade-out animate-delay-1000 animate-duration-2000 animate-forwards',
     'safe-bottom': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
   },
 })

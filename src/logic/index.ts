@@ -1,4 +1,4 @@
-export const isDark = usePreferredDark()
+export { useApp } from './app'
 
 export function formatDate(str: string, isShort = true) {
   const date = new Date(str)

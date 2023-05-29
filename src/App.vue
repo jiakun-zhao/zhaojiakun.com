@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { formatDate, isDark } from '~/logic'
+import { formatDate, useApp } from '~/logic'
 
+const { isPost, isIndex, isMenuShow } = useApp()
 const router = useRouter()
 const route = useRoute()
-const isPost = computed(() => route.path.startsWith('/post/'))
+const isDark = usePreferredDark()
 const isJumping = ref(true)
 
 router.afterEach(() => isJumping.value = false)
@@ -16,6 +17,7 @@ useHead(() => {
   const { title, description = 'Hi there 👋', og_image = 'og/icon.jpg' } = route.meta
   return {
     title,
+    bodyAttrs: { class: { 'of-hidden': isMenuShow.value } },
     meta: [
       { name: 'description', content: description },
       { name: 'og:title', content: title },
@@ -29,12 +31,26 @@ useHead(() => {
 
 <template>
   <div v-show="isJumping" animate-fade-in fixed top-4 right-4 z-2147483647 i-svg-spinners:90-ring-with-bg></div>
+
   <AppMenu />
-  <div class="-" slide-enter>
-    <h3 :key="route.path" mt-16 leading-8 text-4.5> {{ route.meta.title }}</h3>
-    <p v-show="route.name !== 'index'" :key="route.path" text-xs text-secondary pb-10>
-      {{ isPost ? formatDate(route.meta.date!, false) : (route.meta.description ?? route.meta.title) }}
+
+  <div class="-" slide-enter container>
+    <h3
+      :key="route.path"
+      :class="!isIndex ? 'cursor-pointer hover:text-accent' : 'cursor-default'"
+      pt-16 m-0 leading-8 text-4.5 select-none transition-color duration-600
+      @click="!isIndex && (isMenuShow = !isMenuShow)"
+    >
+      {{ route.meta.title }}
+    </h3>
+
+    <p v-show="!isIndex" :key="route.path" text-xs text-secondary pb-10>
+      <span>{{ isPost ? formatDate(route.meta.date!, false) : (route.meta.description ?? route.meta.title) }}</span>
+      <span ml-2 tip-text>点击标题显示菜单</span>
     </p>
+
+    <NeteaseMusicCard v-if="route.meta.music" :id="route.meta.music" />
+
     <RouterView />
     <AppPostFooter v-if="isPost" />
   </div>
