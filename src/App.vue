@@ -2,17 +2,14 @@
 import { formatDate, isDark } from '~/logic'
 
 const router = useRouter()
-const routes = router.getRoutes()
 const route = useRoute()
-const backRoute = computed(() => routes.find(i => i.name === route.meta.backTo))
+const isPost = computed(() => route.path.startsWith('/post/'))
+const isJumping = ref(true)
 
-const isLoadIconShow = ref(true)
+router.afterEach(() => isJumping.value = false)
 router.beforeEach((to, from, next) => {
-  isLoadIconShow.value = true
+  isJumping.value = true
   next()
-})
-router.afterEach(() => {
-  isLoadIconShow.value = false
 })
 
 useHead(() => {
@@ -31,19 +28,14 @@ useHead(() => {
 </script>
 
 <template>
-  <div v-show="isLoadIconShow" animate-fade-in fixed top-4 right-4 z-2147483647 i-svg-spinners:90-ring-with-bg></div>
-  <header slide-enter base-item-style pt-8>
-    <h3 v-if="!backRoute">{{ route.meta.title }}</h3>
-    <AppHeader
-      v-else
-      :title="route.meta.title"
-      :back-path="backRoute.path"
-      :back-info="backRoute.name === 'index' ? '首页' : backRoute.meta.title"
-      :description="backRoute.name === 'posts' ? formatDate(route.meta.date!, false) : route.meta.description"
-    />
-  </header>
-  <main slide-enter base-item-style text-sm leading-8 text-secondary>
+  <div v-show="isJumping" animate-fade-in fixed top-4 right-4 z-2147483647 i-svg-spinners:90-ring-with-bg></div>
+  <AppMenu />
+  <div class="-" slide-enter>
+    <h3 :key="route.path" mt-16 leading-8 text-4.5> {{ route.meta.title }}</h3>
+    <p v-show="route.name !== 'index'" :key="route.path" text-xs text-secondary pb-10>
+      {{ isPost ? formatDate(route.meta.date!, false) : (route.meta.description ?? route.meta.title) }}
+    </p>
     <RouterView />
-    <AppPostFooter v-if="route.path.startsWith('/post/')" />
-  </main>
+    <AppPostFooter v-if="isPost" />
+  </div>
 </template>

@@ -20,7 +20,7 @@ const list = computed(() => {
 <template>
   <p v-for="item of list" :key="item.name" flex>
     <span leading-inherit text-xs text-thirdly mr-4>{{ formatDate(item.meta.date!) }}</span>
-    <RouterLink :to="item.path" flex-1 border-none>
+    <RouterLink :to="item.path" class="b-none!" flex-1>
       {{ is0xPost(item.meta) ? item.meta.description! : item.meta.title }}
     </RouterLink>
   </p>

@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
 import presetColors from 'unocss-preset-colors'
@@ -11,6 +12,11 @@ export default defineConfig<Theme>({
       scale: 1.2,
       extraProperties: { 'display': 'inline-block', 'vertical-align': 'bottom' },
       autoInstall: true,
+      collections: {
+        u: {
+          favicon: () => readFileSync('src/public/favicon.svg', 'utf-8'),
+        },
+      },
     }),
     presetColors({
       colors: {
@@ -45,8 +51,13 @@ export default defineConfig<Theme>({
         'flash-header-tip': '{ 0% {opacity:0} 40% {opacity:1} 100% {opacity:0} }',
       },
     },
+    media: {
+      motion_ok: '(prefers-reduced-motion: no-preference)',
+    },
   },
-  rules: [[/^slide-enter-(\d+)$/, ([, n]) => ({ '--enter-stage': n })]],
+  rules: [
+    [/^slide-enter-(\d+)$/, ([, n]) => ({ '--enter-stage': `${n} !important` })],
+  ],
   shortcuts: {
     'base-item-style': 'w-full max-w-3xl px-8 mx-auto font-sans tracking-wider [&_code]:font-mono',
     'safe-bottom': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',

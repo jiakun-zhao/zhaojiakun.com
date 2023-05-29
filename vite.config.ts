@@ -1,4 +1,4 @@
-import { fileURLToPath } from 'node:url'
+import { URL, fileURLToPath } from 'node:url'
 import { readFileSync, readdirSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { relative } from 'node:path'
@@ -17,7 +17,10 @@ import matter from 'gray-matter'
 
 const douyinEmojis = readdirSync('src/public/assets/douyin-emoji')
 
-export default defineConfig(viteEnv => ({
+export default defineConfig({
+  publicDir: 'src/public',
+  server: { host: true },
+  resolve: { alias: { '~': fileURLToPath(new URL('./src', import.meta.url)) } },
   plugins: [
     Vue({ include: [/\.vue$/, /\.md$/] }),
     UnoCSS(),
@@ -34,20 +37,11 @@ export default defineConfig(viteEnv => ({
       wrapperClasses: null,
       transforms: { after: code => code.slice(5, -6) },
       markdownItUses: [
+        MarkdownItImage,
         MarkdownItHighlight,
         MarkdownItLinkTarget,
+        MarkdownItDouyinEmoji,
       ],
-      markdownItSetup(md) {
-        MarkdownItImage(md, viteEnv.mode)
-        // TODO: Douyin Emoji
-        const defaultRenderCodeInline = md.renderer.rules.code_inline!
-        md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
-          const token = tokens[idx]
-          if (douyinEmojis.includes(token.content))
-            return `<img src="/assets/douyin-emoji/${token.content}" style="display:inline-block;width:1rem;vertical-align:sub;"/>`
-          return defaultRenderCodeInline(tokens, idx, options, env, self)
-        }
-      },
     }),
     Pages({
       extensions: ['vue', 'md'],
@@ -62,10 +56,7 @@ export default defineConfig(viteEnv => ({
       },
     }),
   ],
-  publicDir: 'src/public',
-  resolve: { alias: { '~': fileURLToPath(new URL('./src', import.meta.url)) } },
-  server: { host: true },
-}))
+})
 
 function checkRouteMeta(route: any, data: any) {
   if (route.path.startsWith('/post/')) {
@@ -78,6 +69,16 @@ function checkRouteMeta(route: any, data: any) {
   if (route.name !== 'index' && !data.backTo)
     throw new Error(`Missing backTo in ${route.path}`)
   return data
+}
+
+function MarkdownItDouyinEmoji(md: MarkdownIt) {
+  const defaultRenderCodeInline = md.renderer.rules.code_inline!
+  md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+    const token = tokens[idx]
+    if (douyinEmojis.includes(token.content))
+      return `<img src="/assets/douyin-emoji/${token.content}" style="display:inline-block;width:1rem;vertical-align:sub;"/>`
+    return defaultRenderCodeInline(tokens, idx, options, env, self)
+  }
 }
 
 function MarkdownItLinkTarget(md: MarkdownIt) {
@@ -99,14 +100,14 @@ function MarkdownItHighlight(md: MarkdownIt) {
 const sharpFn: (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
  = createSyncFn(createRequire(import.meta.url).resolve('./sharp'))
 
-function MarkdownItImage(md: MarkdownIt, mode: string) {
+function MarkdownItImage(md: MarkdownIt) {
   md.renderer.rules.image = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
     const metadata = sharpFn(env.id, token.attrGet('src'))
     if (metadata) {
       const { width, height, from, to } = metadata
       token.attrSet('style', `aspect-ratio:${width}/${height}`)
-      token.attrSet('src', mode === 'production' ? to : relative(from, to))
+      token.attrSet('src', process.env.NODE_ENV !== 'development' ? to : relative(from, to))
     }
     token.attrSet('alt', token.content)
     token.attrSet('loading', 'lazy')

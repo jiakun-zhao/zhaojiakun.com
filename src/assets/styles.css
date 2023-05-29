@@ -1,5 +1,4 @@
 @import './styles/slide-enter.css';
-@import './styles/index-.css';
 
 * {
   box-sizing: border-box;
@@ -17,33 +16,34 @@ details summary::-webkit-details-marker {
   --uno: bg-accent text-white;
 }
 
-main {
+.\- {
   text-align: justify;
   overflow-wrap: break-word;
   word-break: break-all;
+  --uno: w-full max-w-3xl px-8 mx-auto font-sans tracking-wider text-sm leading-8 text-secondary;
 }
 
-main a {
+.\- a {
   border-bottom: 1px solid;
   text-decoration: none;
   --uno: text-primary border-primary transition-500;
 }
 
-main a:hover {
+.\- a:hover {
   --uno: text-accent border-current;
 }
 
-main ul,
-main ol {
+.\- ul,
+.\- ol {
   --uno: ps-6;
 }
 
-main img {
+.\- img {
   display: block;
-  width: 100%;
+  max-width: 100%;
 }
 
-main pre {
+.\- pre {
   border-radius: 6px;
   padding: 0.875rem 1rem;
   overflow-x: auto;
@@ -51,45 +51,49 @@ main pre {
   --uno: text-accent bg-secondary text-sm;
 }
 
-main code:not(pre > code) {
+.\- code {
+  --uno: font-mono;
+}
+
+.\- code:not(pre > code) {
   border-radius: 6px;
   line-height: normal;
   padding: 2px 5px;
   --uno: text-primary bg-secondary;
 }
 
-main blockquote {
+.\- blockquote {
   border-radius: 6px;
   padding: 0.5rem 1rem;
   --uno: bg-secondary mx-0;
 }
-main blockquote p {
+.\- blockquote p {
   margin: 0;
 }
 
-main h1,
-main h2,
-main h3,
-main h4,
-main h5,
-main h6,
-main strong {
+.\- h1,
+.\- h2,
+.\- h3,
+.\- h4,
+.\- h5,
+.\- h6,
+.\- strong {
   --uno: text-primary;
 }
 
-main figure {
+.\- figure {
   margin: 0;
 }
 
-main figure figcaption {
+.\- figure figcaption {
   padding: 1rem 0;
   --uno: text-thirdly text-xs;
 }
 
-main pre.shiki.vitesse-dark {
+.\- pre.shiki.vitesse-dark {
   --uno: 'bg-secondary! hidden dark:block';
 }
 
-main pre.shiki.vitesse-light {
+.\- pre.shiki.vitesse-light {
   --uno: 'bg-secondary! block dark:hidden';
 }

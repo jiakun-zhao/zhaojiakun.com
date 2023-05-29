@@ -11,12 +11,15 @@ function isSupportedLang(langs: ILanguageRegistration[]) {
 }
 
 useScriptTag(`https://cdn.jsdelivr.net/npm/shiki@${shikiVersion}`, () => {
+  if (!code.value)
+    return
   if (!isSupportedLang(shiki?.BUNDLED_LANGUAGES ?? []))
     return
   shiki?.getHighlighter({ langs: [props.lang], themes })
     .then((h) => {
       const wrapper = document.createElement('div')
-      wrapper.innerHTML = themes.map(theme => h.codeToHtml(code.value?.textContent ?? '', { lang: props.lang, theme })).join('')
+      const toHtml = (theme: string) => h.codeToHtml(code.value?.textContent ?? '', { lang: props.lang, theme })
+      wrapper.innerHTML = themes.map(toHtml).join('')
       code.value?.parentElement?.replaceWith(wrapper)
     })
     .catch(console.error)

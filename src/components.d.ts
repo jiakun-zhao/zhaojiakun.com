@@ -10,10 +10,13 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppHeader: typeof import('./components/AppHeader.vue')['default']
+    AppMenu: typeof import('./components/AppMenu.vue')['default']
     AppPostFooter: typeof import('./components/AppPostFooter.vue')['default']
     AppPostList: typeof import('./components/AppPostList.vue')['default']
+    AppWrapper: typeof import('./components/AppWrapper.vue')['default']
     MarkdownShiki: typeof import('./components/MarkdownShiki.vue')['default']
     NeteaseMusicCard: typeof import('./components/NeteaseMusicCard.vue')['default']
+    PageIndexRouteList: typeof import('./components/PageIndexRouteList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WaterColorBackground: typeof import('./components/WaterColorBackground.vue')['default']
