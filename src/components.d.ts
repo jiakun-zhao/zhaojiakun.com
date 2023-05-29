@@ -15,7 +15,6 @@ declare module '@vue/runtime-core' {
     AppRouteLinks: typeof import('./components/AppRouteLinks.vue')['default']
     MarkdownShiki: typeof import('./components/MarkdownShiki.vue')['default']
     NeteaseMusicCard: typeof import('./components/NeteaseMusicCard.vue')['default']
-    NeteaseMusicCardV2: typeof import('./components/NeteaseMusicCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WaterColorBackground: typeof import('./components/WaterColorBackground.vue')['default']
