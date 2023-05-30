@@ -21,7 +21,7 @@ const routes: { name: string; path: string }[] = [
     <template v-if="route.path !== path">
       <!-- <span :class="icon" text-base align-mid></span> -->
       <RouterLink ml-0.5 :to="path">{{ name }}</RouterLink>
-      <span class="last-of-type:hidden" mr-1>, </span>
+      <span last-of-type:hidden mr-1>, </span>
     </template>
   </template>
 </template>

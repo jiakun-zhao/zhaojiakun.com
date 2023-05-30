@@ -1,9 +1,6 @@
 import { URL, fileURLToPath } from 'node:url'
-import { readFileSync, readdirSync } from 'node:fs'
-import { createRequire } from 'node:module'
-import { relative } from 'node:path'
+import { readFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
-import { createSyncFn } from 'synckit'
 
 import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
@@ -12,10 +9,8 @@ import Markdown from 'vite-plugin-vue-markdown'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 
-import type MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
-
-const douyinEmojis = readdirSync('src/public/assets/douyin-emoji')
+import { MarkdownItEmoji, MarkdownItHighlight, MarkdownItImage, MarkdownItLink } from './scripts/mdit'
 
 export default defineConfig({
   publicDir: 'src/public',
@@ -23,7 +18,9 @@ export default defineConfig({
   resolve: { alias: { '~': fileURLToPath(new URL('./src', import.meta.url)) } },
   plugins: [
     Vue({ include: [/\.vue$/, /\.md$/] }),
-    UnoCSS(),
+    UnoCSS({
+      configFile: './scripts/uno.config.ts',
+    }),
     AutoImport({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.ts$/],
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
@@ -39,8 +36,8 @@ export default defineConfig({
       markdownItUses: [
         MarkdownItImage,
         MarkdownItHighlight,
-        MarkdownItLinkTarget,
-        MarkdownItDouyinEmoji,
+        MarkdownItLink,
+        MarkdownItEmoji,
       ],
     }),
     Pages({
@@ -64,55 +61,6 @@ function checkRouteMeta(route: any, data: any) {
       throw new Error(`Missing date in ${route.path}`)
     if (data.title.startsWith('0x') && !data.description)
       throw new Error(`Missing description in ${route.path}`)
-    data.backTo = 'posts'
   }
-  if (route.name !== 'index' && !data.backTo)
-    throw new Error(`Missing backTo in ${route.path}`)
   return data
-}
-
-function MarkdownItDouyinEmoji(md: MarkdownIt) {
-  const defaultRenderCodeInline = md.renderer.rules.code_inline!
-  md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
-    const token = tokens[idx]
-    if (douyinEmojis.includes(token.content))
-      return `<img src="/assets/douyin-emoji/${token.content}" style="display:inline-block;width:1rem;vertical-align:sub;"/>`
-    return defaultRenderCodeInline(tokens, idx, options, env, self)
-  }
-}
-
-function MarkdownItLinkTarget(md: MarkdownIt) {
-  md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
-    const token = tokens[idx]
-    const href = token.attrGet('href')
-    if (href && /^https?:\/\//.test(href))
-      token.attrSet('target', '_blank')
-    return self.renderToken(tokens, idx, options)
-  }
-}
-
-function MarkdownItHighlight(md: MarkdownIt) {
-  md.options.highlight = (code, lang) => {
-    return `<pre><MarkdownShiki lang="${lang}">${code}</MarkdownShiki></pre>`
-  }
-}
-
-const sharpFn: (id: string, src: string | null) => { height: number; width: number; from: string; to: string } | null
- = createSyncFn(createRequire(import.meta.url).resolve('./sharp'))
-
-function MarkdownItImage(md: MarkdownIt) {
-  md.renderer.rules.image = (tokens, idx, options, env, self) => {
-    const token = tokens[idx]
-    const metadata = sharpFn(env.id, token.attrGet('src'))
-    if (metadata) {
-      const { width, height, from, to } = metadata
-      token.attrSet('style', `aspect-ratio:${width}/${height}`)
-      token.attrSet('src', process.env.NODE_ENV !== 'development' ? to : relative(from, to))
-    }
-    token.attrSet('alt', token.content)
-    token.attrSet('loading', 'lazy')
-    const imageStr = self.renderToken(tokens, idx, options)
-    const title = token.attrGet('title')
-    return title ? `<figure>${imageStr}<figcaption>[ ${title} ]</figcaption></figure>` : imageStr
-  }
 }

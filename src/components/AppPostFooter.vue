@@ -5,7 +5,7 @@ useHead({
 </script>
 
 <template>
-  <p mb-12 mt-24 text-xs ml-1 leading-inherit>
+  <p m="b12 t24 l1" t-xs lh-inherit>
     <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
       遵循 CC BY-NC-SA 4. 协议
     </a>

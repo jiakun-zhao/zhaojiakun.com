@@ -4,5 +4,8 @@
     "vite.config.ts": "sharp.js, index.html",
     "main.ts": "*.d.ts"
   },
-  "cSpell.words": ["douyin"]
+  "cSpell.words": [
+    "douyin",
+    "mdit"
+  ]
 }

@@ -37,20 +37,19 @@ useHead(() => {
   <div class="-" slide-enter container>
     <h3
       :key="route.path"
-      :class="!isIndex ? 'cursor-pointer hover:text-accent' : 'cursor-default'"
-      pt-16 m-0 leading-8 text-4.5 select-none transition-color duration-600
+      :class="!isIndex ? 'cursor-pointer hover:t-accent' : 'cursor-default'"
+      pt-16 m-0 lh-8 t-4.5 select-none transition="color 600"
       @click="!isIndex && (isMenuShow = !isMenuShow)"
     >
       {{ route.meta.title }}
     </h3>
 
-    <p v-show="!isIndex" :key="route.path" text-xs text-secondary pb-10>
+    <p v-show="!isIndex" :key="route.path" t="xs secondary" pb-10>
       <span>{{ isPost ? formatDate(route.meta.date!, false) : (route.meta.description ?? route.meta.title) }}</span>
       <span ml-2 tip-text>点击标题显示菜单</span>
     </p>
 
     <NeteaseMusicCard v-if="route.meta.music" :id="route.meta.music" />
-
     <RouterView />
     <AppPostFooter v-if="isPost" />
   </div>

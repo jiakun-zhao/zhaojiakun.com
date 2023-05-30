@@ -28,7 +28,7 @@ function onPlay() {
 <template>
   <div flex gap-4 bg-secondary p-1.8 rd-10px mb-12>
     <div
-      flex items-center justify-center w-16 h-16 relative
+      flex items-center justify-center wh-16 relative
       cursor-pointer select-none rd-6px
     >
       <Transition name="fade">
@@ -37,17 +37,17 @@ function onPlay() {
           w-full rd-inherit aspect="1/1"
         >
       </Transition>
-      <div absolute bg-black:20 w-full h-full rd-inherit></div>
+      <div absolute bg-black:20 wh-full rd-inherit></div>
       <div
         v-if="musicFromPage && !musicControls.waiting.value"
-        absolute text-2xl text-white
+        absolute t="2xl white"
         :class="musicControls.playing.value ? 'i-ph:pause-circle-fill' : 'i-ph:play-circle-fill'"
         @click="onPlay"
       />
     </div>
     <div flex="~ col" justify-around>
-      <h4 mt--1 mb-0>{{ data?.name || '' }}</h4>
-      <p mt-0 mb-2 text-xs>{{ data?.ar?.map((i:any) => i.name).join(',') || '' }}</p>
+      <h4 m="t--1 b0">{{ data?.name || '' }}</h4>
+      <p m="t0 b2" t-xs>{{ data?.ar?.map((i:any) => i.name).join(',') || '' }}</p>
     </div>
   </div>
 </template>

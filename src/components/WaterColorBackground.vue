@@ -71,7 +71,7 @@ watchEffect(() => {
   >
     <div
       ref="box"
-      relative w-full h-full transform-scale-120 bg-black
+      relative wh-full transform-scale-120 bg-black
       filter="blur-90 brightness-80 contrast-140"
     >
       <!-- blur-46 -->

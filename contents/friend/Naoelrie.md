@@ -1,7 +1,6 @@
 ---
 title: Naoelrie
 description: My best friend.
-backTo: index
 ---
 
 我最好的朋友，**Naoelrie** 是他许多社交平台的昵称，如果现实中你认识我想必也应该认识他。

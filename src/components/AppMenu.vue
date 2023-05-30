@@ -27,7 +27,7 @@ router.beforeEach((_, from, next) => {
           <AppRouteLinks />
         </div>
         <div v-if="musicFromPlay && musicControls.playing.value" mt-16>
-          <h4 op-30 text-xs>
+          <h4 op-30 t-xs>
             <span mr-2>正在播放</span>
             <span font-400>{{ musicFromPlay.ar?.map((i:any) => i.name)?.join(' / ') ?? '未知歌手' }} - {{ musicFromPlay.al?.name ?? '未知专辑' }}</span>
           </h4>
@@ -37,10 +37,10 @@ router.beforeEach((_, from, next) => {
           >
             {{ musicFromPlay.name }}
           </h1>
-          <span tip-text text-xs>点击歌曲名称关闭播放</span>
+          <span tip-text t-xs>点击歌曲名称关闭播放</span>
         </div>
       </div>
     </div>
   </Transition>
-  <audio ref="musicElement" w-0 h-0 />
+  <audio ref="musicElement" wh-0 />
 </template>
