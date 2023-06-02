@@ -1,9 +1,7 @@
 {
   "explorer.fileNesting.patterns": {
-    "main.tsx": "*.ts",
-    
     "*.jpg": "$(capture).*.webp",
     "*.jpeg": "$(capture).*.webp",
-    "*.png": "$(capture).*.webp",
+    "*.png": "$(capture).*.webp"
   }
 }

@@ -1,7 +1,6 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
+import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
-import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx'
 
 export default defineConfig<Theme>({
   presets: [
@@ -13,10 +12,7 @@ export default defineConfig<Theme>({
       autoInstall: true,
     }),
   ],
-  transformers: [
-    transformerDirectives(),
-    transformerAttributifyJsx(),
-  ],
+  transformers: [transformerDirectives()],
   theme: {
     colors: {
       accent: '#6054ba',
