@@ -21,6 +21,9 @@ devDependencies:
   '@jiakun-zhao/eslint-config':
     specifier: ^1.0.0
     version: 1.0.0(eslint@8.41.0)(typescript@5.1.3)
+  '@jiakun-zhao/utils':
+    specifier: ^0.0.8
+    version: 0.0.8
   '@types/markdown-it':
     specifier: ^12.2.3
     version: 12.2.3
@@ -36,6 +39,9 @@ devDependencies:
   eslint:
     specifier: ^8.41.0
     version: 8.41.0
+  fast-glob:
+    specifier: ^3.2.12
+    version: 3.2.12
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -499,6 +505,10 @@ packages:
       - jest
       - supports-color
       - typescript
+    dev: true
+
+  /@jiakun-zhao/utils@0.0.8:
+    resolution: {integrity: sha512-/SYt38dj6BG6vb3fDzashyjW7M071TJDMxaVD4DjnSVj5bG1LEqqRzmzTcpaw4rPLGTtCGaVw/A0Seb/KMT6qw==}
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:

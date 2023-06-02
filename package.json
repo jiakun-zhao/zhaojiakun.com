@@ -19,11 +19,13 @@
   },
   "devDependencies": {
     "@jiakun-zhao/eslint-config": "^1.0.0",
+    "@jiakun-zhao/utils": "^0.0.8",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^20.2.5",
     "@unocss/transformer-directives": "^0.52.7",
     "@vitejs/plugin-vue": "^4.2.3",
     "eslint": "^8.41.0",
+    "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
     "markdown-it": "^13.0.1",
     "typescript": "^5.1.3",
