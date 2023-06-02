@@ -1,11 +1,5 @@
 {
   "explorer.fileNesting.patterns": {
-    "*.md": "${capture}.*",
-    "vite.config.ts": "sharp.js, index.html",
-    "main.ts": "*.d.ts"
-  },
-  "cSpell.words": [
-    "douyin",
-    "mdit"
-  ]
+    "main.tsx": "*.ts"
+  }
 }

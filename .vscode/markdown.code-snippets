@@ -1,15 +1,13 @@
 {
-  "init": {
+  "Markdown frontmatter": {
     "body": [
       "---", 
       "title: $1",
       "description: $2",
-      "post: ",
-      "  date: $3",
       "---\n",
       "$4"
     ],
-    "prefix": "i",
+    "prefix": "md",
     "scope": "markdown"
-  }
+  },
 }
