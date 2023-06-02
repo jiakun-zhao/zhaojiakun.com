@@ -1,50 +1,27 @@
-@import './styles/slide-enter.css';
-@import './styles/transition.css';
-
-* {
-  box-sizing: border-box;
-}
-
-details summary {
-  list-style: none;
-}
-
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-::selection {
-  --uno: bg-accent text-white;
-}
-
-.\- {
+article {
   text-align: justify;
   overflow-wrap: break-word;
   word-break: break-all;
   --uno: leading-8 text-secondary font-sans tracking-wider text-sm;
 }
 
-.\- a {
+article a {
   border-bottom: 1px solid;
   text-decoration: none;
+  font-weight: 500;
   --uno: text-primary border-primary transition-500;
 }
 
-.\- a:hover {
+article a:hover {
   --uno: text-accent border-current;
 }
 
-.\- ul,
-.\- ol {
+article ul,
+article ol {
   --uno: ps-6;
 }
 
-.\- img {
-  display: block;
-  max-width: 100%;
-}
-
-.\- pre {
+article pre {
   border-radius: 6px;
   padding: 0.875rem 1rem;
   overflow-x: auto;
@@ -52,49 +29,49 @@ details summary::-webkit-details-marker {
   --uno: text-accent bg-secondary text-sm;
 }
 
-.\- code {
+article code {
   --uno: font-mono;
 }
 
-.\- code:not(pre > code) {
+article code:not(pre > code) {
   border-radius: 6px;
   line-height: normal;
   padding: 2px 5px;
   --uno: text-primary bg-secondary;
 }
 
-.\- blockquote {
+article blockquote {
   border-radius: 6px;
   padding: 0.5rem 1rem;
   --uno: bg-secondary mx-0;
 }
-.\- blockquote p {
+article blockquote p {
   margin: 0;
 }
 
-.\- h1,
-.\- h2,
-.\- h3,
-.\- h4,
-.\- h5,
-.\- h6,
-.\- strong {
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6,
+article strong {
   --uno: text-primary;
 }
 
-.\- figure {
+article figure {
   margin: 0;
 }
 
-.\- figure figcaption {
+article figure figcaption {
   padding: 1rem 0;
   --uno: text-thirdly text-xs;
 }
 
-.\- pre.shiki.vitesse-dark {
+article pre.shiki.vitesse-dark {
   --uno: 'bg-secondary! hidden dark:block';
 }
 
-.\- pre.shiki.vitesse-light {
+article pre.shiki.vitesse-light {
   --uno: 'bg-secondary! block dark:hidden';
 }

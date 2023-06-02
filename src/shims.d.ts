@@ -1,16 +1,8 @@
-import 'vue-router'
+// https://unocss.dev/presets/attributify#typescript-support-jsx-tsx
+import type { AttributifyAttributes } from 'unocss/preset-attributify'
 
-declare global {
-  var shiki: typeof import('shiki') | undefined
-}
-
-declare module 'vue-router' {
-  interface RouteMeta {
-    title: string
-    description?: string
-    og_image?: string
-    date?: string
-    draft?: boolean
-    music?: number
+declare module 'solid-js' {
+  namespace JSX {
+    interface HTMLAttributes<T> extends AttributifyAttributes {}
   }
 }

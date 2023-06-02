@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+details summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  --uno: text-white bg-accent;
+}

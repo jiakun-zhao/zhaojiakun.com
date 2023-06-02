@@ -2,18 +2,19 @@
   "compilerOptions": {
     "baseUrl": ".",
     "strict": true,
-    "target": "ESNext",
+    "target": "ES2018",
     "module": "ESNext",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": ["vite/client", "mdx"],
+    "types": ["vite/client", "mdx", "vite-plugin-pages/client-solid"],
     "noEmit": true,
     "isolatedModules": true,
     "paths": {
       "~/*": ["src/*"]
     }
-  }
+  },
+  "exclude": ["**/node_modules", "**/.*/", "**/dist"]
 }

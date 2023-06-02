@@ -1,7 +1,7 @@
 import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
-import presetColors from 'unocss-preset-colors'
 import transformerDirectives from '@unocss/transformer-directives'
+import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx'
 
 export default defineConfig<Theme>({
   presets: [
@@ -12,47 +12,36 @@ export default defineConfig<Theme>({
       extraProperties: { 'display': 'inline-block', 'vertical-align': 'bottom' },
       autoInstall: true,
     }),
-    presetColors({
-      colors: {
-        accent: '#6054ba',
-        text: {
-          primary: { light: '#000', dark: '#f2f2f2' },
-          secondary: { light: '#767676', dark: '#898989' },
-          thirdly: { light: '#bababa', dark: '#444' },
-        },
-        bg: {
-          primary: { light: '#fff', dark: '#111' },
-          secondary: { light: '#f2f2f2', dark: '#191919' },
-        },
-        border: {
-          primary: { light: '#ddd', dark: '#333' },
-          secondary: { light: '#eee', dark: '#222' },
-        },
-      },
-    }),
   ],
-  transformers: [transformerDirectives()],
+  transformers: [
+    transformerDirectives(),
+    transformerAttributifyJsx(),
+  ],
   theme: {
+    colors: {
+      accent: '#6054ba',
+    },
     fontFamily: {
       sans: 'Inter, PingFang TC, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
       mono: 'Input, Input Mono, DM Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;',
     },
-    animation: {
-      keyframes: {
-        'flash-header-tip': '{ 0% {opacity:0} 40% {opacity:1} 100% {opacity:0} }',
-      },
-    },
   },
-  rules: [
-    [/^slide-enter-(\d+)$/, ([, n]) => ({ '--enter-stage': `${n} !important` })],
-  ],
   shortcuts: [
-    {
-      'container': 'w-full max-w-3xl px-8 mx-auto',
-      'tip-text': 'text-thirdly animate-fade-out animate-delay-1000 animate-duration-2000 animate-forwards',
-      'safe-bottom': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
-    },
     [/^wh-(.*)$/, ([, n]) => `w-${n} h-${n}`],
-    [/^t-(.*)$/, ([, n]) => `text-${n}`],
+    {
+      'text-primary': 'text-#000 dark:text-#f2f2f2',
+      'text-secondary': 'text-#767676 dark:text-#898989',
+      'text-thirdly': 'text-#bababa dark:text-#444',
+    }, {
+      'bg-primary': 'bg-#fff dark:bg-#111',
+      'bg-secondary': 'bg-#f2f2f2 dark:bg-#191919',
+    }, {
+      'border-primary': 'border-#ddd dark:border-#333',
+      'border-secondary': 'border-#eee dark:border-#222',
+    }, {
+      'shortcut-container': 'w-full max-w-3xl px-6 mx-auto',
+      'shortcut-header': 'pt-16 m-0 lh-8 select-none transition-color duration-600',
+      'shortcut-safe-bottom': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
+    },
   ],
 })

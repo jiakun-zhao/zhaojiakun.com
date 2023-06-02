@@ -10,7 +10,7 @@ date: 2023-04-07 01:53:00
 
 <br>
 
-![cover](./hello-world.jpg?q=70)
+![cover](/assets/images/hello-world.jpg.70.webp?width=1080&height=424)
 
 <br>
 
