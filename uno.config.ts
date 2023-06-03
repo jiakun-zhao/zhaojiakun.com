@@ -34,6 +34,7 @@ export default defineConfig<Theme>({
     }, {
       'bg-primary': 'bg-#fff dark:bg-#111',
       'bg-secondary': 'bg-#f8f8f8 dark:bg-#191919',
+      'bg-inline-code': 'bg-#f0f0f0 dark:bg-#222',
     }, {
       'border-primary': 'border-#ddd dark:border-#333',
       'border-secondary': 'border-#eee dark:border-#222',

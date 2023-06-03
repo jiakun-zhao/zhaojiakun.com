@@ -37,7 +37,7 @@ article code:not(pre > code) {
   border-radius: 6px;
   line-height: normal;
   padding: 2px 5px;
-  --uno: text-primary bg-secondary;
+  --uno: bg-inline-code;
 }
 
 article blockquote {

@@ -13,7 +13,7 @@ const date = computed(() => {
 })
 
 useHead({
-  script: [{ 'src': 'https://giscus.app/client.js', 'data-theme': `${location.origin}/assets/giscus-3.0.css`, 'data-repo': 'jiakun-zhao/zhaojiakun.com', 'data-repo-id': 'R_kgDOJWuyVg', 'data-category': 'BLOG', 'data-category-id': 'DIC_kwDOJWuyVs4CVzNG', 'data-mapping': 'title', 'data-strict': '1', 'data-reactions-enabled': '0', 'data-emit-metadata': '0', 'data-input-position': 'top', 'data-lang': 'zh-CN', 'crossorigin': 'anonymous', 'defer': true }],
+  script: [{ 'src': 'https://giscus.app/client.js', 'data-theme': `${location.origin}/assets/giscus-4.0.css`, 'data-repo': 'jiakun-zhao/zhaojiakun.com', 'data-repo-id': 'R_kgDOJWuyVg', 'data-category': 'BLOG', 'data-category-id': 'DIC_kwDOJWuyVs4CVzNG', 'data-mapping': 'title', 'data-strict': '1', 'data-reactions-enabled': '0', 'data-emit-metadata': '0', 'data-input-position': 'top', 'data-lang': 'zh-CN', 'crossorigin': 'anonymous', 'defer': true }],
 })
 </script>
 
