@@ -4,10 +4,10 @@ import Navigation from '~/components/Navigation.vue'
 </script>
 
 <template>
-  <DefaultLayout :head="{ title: 'Hi~', description: '-' }">
+  <DefaultLayout :head="{ title: '404', description: 'Not found.' }">
     <template #article>
       <p max-w-lg>
-        <span>我正在思索如何设计与构建一个足够令人满意的个人网站，那么在此之前让这些以最简单的方式呈现：</span>
+        <span>没有找到页面：</span>
         <Navigation :is-index="true" />
       </p>
     </template>

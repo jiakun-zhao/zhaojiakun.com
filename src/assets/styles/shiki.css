@@ -1,0 +1,20 @@
+.shiki-dark,
+.shiki-light {
+  --uno: 'bg-secondary!';
+}
+
+.shiki > code:has(.highlighted) > span.line:not(.highlighted) > span {
+  --uno: 'text-thirdly!';
+}
+
+@media (prefers-color-scheme: dark) {
+  .shiki-light {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+  .shiki-dark {
+    display: none;
+  }
+}

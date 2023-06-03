@@ -14,7 +14,7 @@ date: 2023-05-04 10:15:00
 
 <br>
 
-![咖啡店](/assets/images/a-big-step-for-me.jpg.60.webp?width=1080&height=1080)
+![咖啡店](/assets/images/a-big-step-for-me.jpg.60.webp?w=1080&h=1080)
 
 finally，尝试了咖啡店写代码，总结就是比家里更能静下心。去的办公楼下的瑞幸不是星巴克，这个时间点多是急急忙忙的早 8 人，嘈杂的声音像白噪音一样，甚至比潮汐还有用。
 

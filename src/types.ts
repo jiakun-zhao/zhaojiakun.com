@@ -1,15 +1,16 @@
-export interface MetaProps {
+import 'vue-router'
+
+declare module 'vue-router' {
+  interface RouteMeta extends Head {}
+}
+
+export interface Head {
   title: string
   description?: string
   author?: string
   ogImage?: string
-}
-
-export type Post = MetaProps & {
-  description: string
-  date: string
-  path: `/${string}`
-  // component: ReturnType<typeof lazy>
+  date?: string
   draft?: boolean
   music?: number
+  icons?: string[]
 }

@@ -3,5 +3,8 @@
     "*.jpg": "$(capture).*.webp",
     "*.jpeg": "$(capture).*.webp",
     "*.png": "$(capture).*.webp"
-  }
+  },
+  "cSpell.words": [
+    "douyin"
+  ]
 }

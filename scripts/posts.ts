@@ -7,7 +7,7 @@ import glob from 'fast-glob'
 const moduleName = 'virtual:posts'
 const moduleId = `\0${moduleName}`
 
-export default function (path = 'src/pages/posts'): Plugin {
+export default function (path = 'src/assets/posts'): Plugin {
   let root: string
 
   return {
@@ -35,7 +35,7 @@ export default function (path = 'src/pages/posts'): Plugin {
         const items = [
           `path: '/post/${name}'`,
           `name: 'post-${name}'`,
-          `meta: ${JSON.stringify(meta)}`,
+          `meta: ${JSON.stringify({ ...meta, isPost: true })}`,
           `component: ()=>import('${filePath}')`,
         ]
 

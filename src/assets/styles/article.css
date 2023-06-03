@@ -26,7 +26,7 @@ article pre {
   padding: 0.875rem 1rem;
   overflow-x: auto;
   line-height: 1.4rem;
-  --uno: text-accent bg-secondary text-sm;
+  --uno: text-secondary bg-secondary text-sm;
 }
 
 article code {
@@ -59,19 +59,7 @@ article strong {
   --uno: text-primary;
 }
 
-article figure {
-  margin: 0;
+article img[src^="/assets/douyin-emoji"]{
+  --uno: inline w-4 h-4 align-mid;
 }
 
-article figure figcaption {
-  padding: 1rem 0;
-  --uno: text-thirdly text-xs;
-}
-
-article pre.shiki.vitesse-dark {
-  --uno: 'bg-secondary! hidden dark:block';
-}
-
-article pre.shiki.vitesse-light {
-  --uno: 'bg-secondary! block dark:hidden';
-}

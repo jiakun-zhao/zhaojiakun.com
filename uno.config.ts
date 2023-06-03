@@ -22,6 +22,9 @@ export default defineConfig<Theme>({
       mono: 'Input, Input Mono, DM Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;',
     },
   },
+  rules: [
+    [/^slide-enter-(\d+)$/, ([_, d]) => ({ '--enter-initial': d })],
+  ],
   shortcuts: [
     [/^wh-(.*)$/, ([, n]) => `w-${n} h-${n}`],
     {
@@ -30,14 +33,16 @@ export default defineConfig<Theme>({
       'text-thirdly': 'text-#bababa dark:text-#444',
     }, {
       'bg-primary': 'bg-#fff dark:bg-#111',
-      'bg-secondary': 'bg-#f2f2f2 dark:bg-#191919',
+      'bg-secondary': 'bg-#f8f8f8 dark:bg-#191919',
     }, {
       'border-primary': 'border-#ddd dark:border-#333',
       'border-secondary': 'border-#eee dark:border-#222',
     }, {
-      'shortcut-container': 'w-full max-w-3xl px-6 mx-auto',
-      'shortcut-header': 'pt-16 m-0 lh-8 select-none transition-color duration-600',
-      'shortcut-safe-bottom': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
+      'container': 'w-full max-w-3xl px-6 mx-auto',
+      'container-header': 'pt-16 m-0 lh-8 select-none transition-color duration-600',
+      'container-subtitle': 'text-xs text-secondary pb-10 tracking-wider',
+      'container-subtitle-tip': 'text-thirdly animate-fade-out animate-delay-1000 animate-duration-2000 animate-forwards',
+      'b-safe': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
     },
   ],
 })
