@@ -17,7 +17,7 @@ const { waiting, playing } = useMediaControls(audioEl, { src: () => data.value.u
 <template>
   <div flex gap-4 bg-secondary p-1.8 rd-10px mb-12>
     <div
-      flex items-center justify-center wh-16 relative
+      flex items-center justify-center w-16 h-16 relative
       cursor-pointer select-none rd-6px
     >
       <Transition name="fade">
@@ -26,7 +26,7 @@ const { waiting, playing } = useMediaControls(audioEl, { src: () => data.value.u
           w-full rd-inherit aspect="1/1"
         >
       </Transition>
-      <div absolute bg-black:20 wh-full rd-inherit></div>
+      <div absolute bg-black:20 w-full h-full rd-inherit></div>
       <div
         v-if="!waiting"
         absolute t="2xl white"
@@ -39,5 +39,5 @@ const { waiting, playing } = useMediaControls(audioEl, { src: () => data.value.u
       <p my-0 t-xs>{{ data?.ar?.map((i:any) => i.name).join(',') || '' }}</p>
     </div>
   </div>
-  <audio ref="audioEl" wh-0 />
+  <audio ref="audioEl" w-0 h-0 />
 </template>

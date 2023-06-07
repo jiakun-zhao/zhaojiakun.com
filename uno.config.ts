@@ -21,12 +21,16 @@ export default defineConfig<Theme>({
       sans: 'Inter, PingFang TC, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif',
       mono: 'Input, Input Mono, DM Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;',
     },
+    animation: {
+      keyframes: {
+        rotate: '{ 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }',
+      },
+    },
   },
   rules: [
     [/^slide-enter-(\d+)$/, ([_, d]) => ({ '--enter-initial': d })],
   ],
   shortcuts: [
-    [/^wh-(.*)$/, ([, n]) => `w-${n} h-${n}`],
     {
       'text-primary': 'text-#000 dark:text-#f2f2f2',
       'text-secondary': 'text-#767676 dark:text-#898989',

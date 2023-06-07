@@ -22,6 +22,7 @@ createApp(App)
       { path: '/posts', component: () => import('~/pages/Posts.vue') },
       { path: '/post', redirect: '/posts' },
       { path: '/Naoelrie', component: () => import('~/pages/Naoelrie.vue') },
+      { path: '/WaterColor', component: () => import('~/pages/WaterColor.vue') },
       ...posts,
       { path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
     ],
