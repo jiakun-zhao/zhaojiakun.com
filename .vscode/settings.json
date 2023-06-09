@@ -5,6 +5,7 @@
     "*.png": "$(capture).*.webp"
   },
   "cSpell.words": [
-    "douyin"
+    "douyin",
+    "Midjourney"
   ]
 }
