@@ -1,11 +1,14 @@
-declare module '*.md' {
-  import type { ComponentOptions } from 'vue'
-  const Component: ComponentOptions
-  export default Component
-}
+import 'vue-router'
 
-declare module 'virtual:posts' {
-  import type { RouteRecordRaw } from 'vue-router'
-  const posts: RouteRecordRaw[]
-  export default posts
+declare module 'vue-router' {
+  interface RouteMeta {
+    title: string
+    description?: string
+    author?: string
+    ogImage?: string
+    subtitle?: string
+    date?: string
+    hideHeader?: boolean
+    draft?: boolean
+  }
 }

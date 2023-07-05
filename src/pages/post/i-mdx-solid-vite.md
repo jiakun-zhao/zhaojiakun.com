@@ -2,6 +2,7 @@
 title: 记：Vite + Solid + MDX
 description: 在 Vite + Solid 中使用 MDX，主要是环境搭建。
 date: 2023-05-30 22:58:12
+draft: true
 ---
 
 ### 依赖

@@ -1,33 +1,24 @@
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import { createRouter, createWebHistory } from 'vue-router'
+import NProgress from 'nprogress'
 
-import posts from 'virtual:posts'
-import createGlobalComponent from '~/components/global'
+import routes from '~pages'
 import App from '~/App.vue'
-import Home from '~/pages/Home.vue'
 
 import 'uno.css'
-import '~/assets/styles/default.css'
-import '~/assets/styles/article.css'
-import '~/assets/styles/shiki.css'
-import '~/assets/styles/slide-enter.css'
-import '~/assets/styles/transition.css'
+import 'nprogress/nprogress.css'
+import '~/assets/styles.scss'
+
+const router = createRouter({ routes, history: createWebHistory() })
+NProgress.configure({ showSpinner: false }) // 禁⽤右侧进度环
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+router.afterEach(() => NProgress.done())
 
 createApp(App)
-  .use(createRouter({
-    history: createWebHistory(),
-    routes: [
-      { path: '/', component: Home },
-      { path: '/posts', component: () => import('~/pages/Posts.vue') },
-      { path: '/post', redirect: '/posts' },
-      { path: '/Naoelrie', component: () => import('~/pages/Naoelrie.vue') },
-      { path: '/tools/WaterColor', component: () => import('~/pages/tools/WaterColor.vue') },
-      { path: '/tools/MidjourneyQuickPrompt', component: () => import('~/pages/tools/MidjourneyQuickPrompt.vue') },
-      ...posts,
-      { path: '/:pathMatch(.*)*', component: () => import('~/pages/NotFound.vue') },
-    ],
-  }))
-  .use(createGlobalComponent())
+  .use(router)
   .use(createHead())
   .mount('#root')

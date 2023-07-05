@@ -1,0 +1,140 @@
+:root {
+  --accent: #6054ba;
+  --text-primary: #000;
+  --text-secondary: #767676;
+  --text-thirdly: #bababa;
+  --bg-primary: #fff;
+  --bg-secondary: #f8f8f8;
+  --bg-inline-code: #f0f0f0;
+  --border-primary: #ddd;
+  --border-secondary: #eee;
+
+  @media (prefers-color-scheme: dark) {
+    --text-primary: #f2f2f2;
+    --text-secondary: #898989;
+    --text-thirdly: #444;
+    --bg-primary: #111;
+    --bg-secondary: #191919;
+    --bg-inline-code: #222;
+    --border-primary: #333;
+    --border-secondary: #222;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+details summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  color: white;
+  background-color: var(--accent);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, sans-serif;
+}
+
+code {
+  // Input, Input Mono,
+  font-family: DM Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-primary);
+  transition: all 0.5s linear;
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+div.markdown-body {
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-all;
+
+  img {
+    height: auto;
+    max-width: 100%;
+
+    &[src^='/assets/douyin-emoji'] {
+      display: inline;
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: sub;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong {
+    color: var(--text-primary);
+  }
+
+  blockquote {
+    border-left: 4px solid var(--border-secondary);
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    color: var(--text-secondary);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  pre {
+    overflow-x: auto;
+    background-color: var(--bg-secondary) !important;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    line-height: 1.5rem;
+  }
+
+  code {
+    font-size: 0.96rem;
+    letter-spacing: 0.25px !important;
+
+    &:not(pre > code) {
+      color: var(--text-primary);
+
+      &::before,
+      &::after {
+        content: '\`';
+        color: var(--text-secondary);
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .shiki-light {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+  .shiki-dark {
+    display: none;
+  }
+}
+
+#nprogress .bar {
+  background: var(--accent) !important;
+}
