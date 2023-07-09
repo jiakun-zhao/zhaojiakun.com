@@ -13,14 +13,14 @@ const subtitle = computed(() => (
   route.meta.subtitle
     ? route.meta.subtitle
     : route.meta.date
-      ? route.meta.date.match(/(\d{4}-\d{2}-\d{2}).+(\d{2}:\d{2})/)?.slice(1, 3).join(' ')
+      ? route.meta.date.match(/(\d{4}-\d{2}-\d{2}).+(\d{2}:\d{2}):\d{2}/)?.slice(1, 3).join(' ')
       : null
 ))
 
 useHead(() => {
   const title = route.meta.title
   const description = route.meta.description ?? 'Jiakun Zhao \'s Portfolio.'
-  const ogImage = `${location.origin}/og/${route.meta.ogImage ?? 'icon.jpg'}`
+  const ogImage = `${location.origin}/og/${route.meta.ogImage ?? 'icon.png'}`
   const author = route.meta.author ?? 'Jiakun Zhao'
   const giscus: ReactiveHead['script'] = isPost.value
     ? [{ 'src': 'https://giscus.app/client.js', 'data-theme': `${location.origin}/assets/giscus-4.0.css`, 'data-repo': 'jiakun-zhao/zhaojiakun.com', 'data-repo-id': 'R_kgDOJWuyVg', 'data-category': 'BLOG', 'data-category-id': 'DIC_kwDOJWuyVs4CVzNG', 'data-mapping': 'title', 'data-strict': '1', 'data-reactions-enabled': '0', 'data-emit-metadata': '0', 'data-input-position': 'top', 'data-lang': 'en', 'crossorigin': 'anonymous', 'defer': true }]

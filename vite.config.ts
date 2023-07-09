@@ -90,18 +90,11 @@ export default defineConfig({
           accent: '#6054ba',
         },
       },
-      shortcuts: [{
-        'text-primary': 'text-[var(--text-primary)]',
-        'text-secondary': 'text-[var(--text-secondary)]',
-        'text-thirdly': 'text-[var(--text-thirdly)]',
-        'bg-primary': 'bg-[var(--bg-primary)]',
-        'bg-secondary': 'bg-[var(--bg-secondary)]',
-        'bg-inline-code': 'bg-[var(--bg-inline-code)]',
-        'border-primary': 'border-[var(--border-primary)]',
-        'border-secondary': 'border-[var(--border-secondary)]',
-      }, {
-        'b-safe': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
-      }],
+      shortcuts: [
+        [/^(text|bg|border)-(primary|secondary|thirdly)$/, ([,k, v]) => `${k}-[var(--${k}-${v})]`],
+        {
+          'b-safe': 'pb-[constant(safe-area-inset-bottom)] pb-[env(safe-area-inset-bottom)]',
+        }],
     }),
   ],
 })
