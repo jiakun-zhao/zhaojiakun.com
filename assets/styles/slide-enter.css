@@ -1,0 +1,17 @@
+@keyframes slide-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.slide-enter,
+[slide-enter] {
+  animation: slide-enter 1s both;
+  animation-delay: calc(var(--slide-enter-step, 0) * 90ms);
+}

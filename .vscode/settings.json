@@ -1,0 +1,16 @@
+{
+  "cSpell.words": [
+    "darkmode",
+    "Grayscale",
+    "Umami"
+  ],
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  },
+  "[mdc]": {
+    "editor.wordWrap": "on"
+  }
+}
