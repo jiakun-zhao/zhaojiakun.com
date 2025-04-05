@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import type { Highlighter } from 'shiki'
-import { bundledLanguagesInfo as languages } from 'shiki/bundle-web.mjs'
+import type { BundledLanguageInfo, Highlighter } from 'shiki'
 import { theme } from '~/modules/markdown/shiki'
 
 interface UnGhResult {
@@ -15,9 +14,11 @@ interface UnGhResult {
 let highlighter: Highlighter | undefined
 const id = ref('typescript')
 const code = ref('')
+const languages = ref<BundledLanguageInfo[]>([])
 const isLoading = ref(true)
 
 onMounted(async () => {
+  languages.value = await import('shiki/bundle-web.mjs').then(bundle => bundle.bundledLanguagesInfo)
   highlighter = await import('shiki').then((shiki) => {
     return shiki.createHighlighter({
       langs: ['typescript'],

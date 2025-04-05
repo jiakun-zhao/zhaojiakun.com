@@ -31,11 +31,16 @@ export default defineConfig<Theme>({
   transformers: [
     transformerCompileClass(),
   ],
-  shortcuts: [{
-    'absolute-full': 'absolute top-0 left-0 right-0 bottom-0 size-full',
-    'flex-center': 'items-center justify-center',
-    'btn-reset': 'outline-none bg-transparent p0 b-none font-size-inherit font-inherit text-inherit',
-  }],
+  rules: [
+    [/^\[raw:([^:]+):([^\]]+)\]$/, ([,key, value]) => ({ [key]: value.replaceAll('_', ' ') })],
+  ],
+  shortcuts: [
+    {
+      'absolute-full': 'absolute top-0 left-0 right-0 bottom-0 size-full',
+      'flex-center': 'items-center justify-center',
+      'btn-reset': 'outline-none bg-transparent p0 b-none font-size-inherit font-inherit text-inherit',
+    },
+  ],
   theme: {
     colors: {
       accent: '#954',

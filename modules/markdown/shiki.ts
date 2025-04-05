@@ -37,11 +37,6 @@ const rehypeShikiOptions: RehypeShikiOptions = {
     'javascript',
     'typescript',
   ],
-  transformers: [{
-    pre(hast) {
-      this.addClassToHast(hast, 'of-x-auto rd-lg bg-shadcn-muted px4 py2 lh-relaxed relative')
-    },
-  }],
   themes: {
     light: theme,
   },

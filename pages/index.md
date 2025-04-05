@@ -10,6 +10,7 @@ I'm Jiakun Zhao. Front-end developer, Graphic designer, Freelancer.
 
 Let's find something interesting here:
 
+- [Album \[WIP\]](/content/album)
 - [Highlight](/content/highlight)
 - [Sidebar Tricks](/content/sidebar-tricks)
 - [中文 Letter Spacing](/content/letter-spacing)

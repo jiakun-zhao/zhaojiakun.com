@@ -6,9 +6,8 @@ const props = defineProps<{ frontmatter?: Data }>()
 
 <template>
   <article
-    max-w-2xl text-shadcn-muted lh-loose tracking-wider
-    class=":uno: [&_:not(h1,h2,h3,h4,h5,h6)_a]:font-500"
-    m="x-auto t7xl" p="6 b32"
+    class=":uno: [&_code]:text-nowrap [&_code]:text-sm [&_:not(h1,h2,h3,h4,h5,h6)_a]:font-500 [&_code]:tracking-0"
+    mx-auto mt7xl max-w-2xl p6 pb32 text-shadcn-muted lh-loose tracking-wider
   >
     <slot />
     <p

@@ -23,7 +23,7 @@ const hasChildren = computed(() => notUndefined(props.children))
 <template>
   <div select-none text-shadcn-muted>
     <button
-      btn-reset w-full cursor-pointer py2 hover:text-shadcn
+      w-full cursor-pointer btn-reset py2 hover:text-shadcn
       flex="~ items-center justify-between"
       transition="color duration-250"
       class=":uno: [&>span]:pointer-events-none"

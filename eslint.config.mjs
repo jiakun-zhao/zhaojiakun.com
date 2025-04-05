@@ -10,6 +10,7 @@ export default antfu({
   rules: {
     'eslint-comments/no-unlimited-disable': 'off',
     'no-console': 'warn',
+    'prefer-promise-reject-errors': 'off',
     'style/brace-style': ['warn', '1tbs'],
     'style/jsx-one-expression-per-line': 'off',
     'style/jsx-quotes': ['warn', 'prefer-single'],

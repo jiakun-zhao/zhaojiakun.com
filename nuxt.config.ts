@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   appConfig: {
     origin: 'https://zhaojiakun.com',
   },
-  compatibilityDate: '2025-03-07',
+  compatibilityDate: '2025-03-18',
   css: [
     '@fontsource-variable/geist',
     '@fontsource-variable/geist-mono',
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   markdown: {
     components: {
       a: 'ProseA',
-      code: 'ProseCode',
+      pre: 'ProsePre',
       ul: 'ProseUl',
     },
     defaultLayout: 'ProseContainer',
@@ -38,6 +38,9 @@ export default defineNuxtConfig({
       persistDir: '.wrangler',
     },
     errorHandler: '~/server/utils/error.ts',
+    prerender: {
+      autoSubfolderIndex: true,
+    },
     preset: 'cloudflare-pages',
   },
   routeRules: {
@@ -45,9 +48,6 @@ export default defineNuxtConfig({
       headers: {
         'cache-control': 'public, max-age=31536000, immutable',
       },
-    },
-    '/404': {
-      prerender: true,
     },
   },
   vite: {

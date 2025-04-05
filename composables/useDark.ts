@@ -6,7 +6,7 @@ export const useDark = createGlobalState(() => {
   const toggle = () => theme.value = themes[themes.indexOf(theme.value) + 1] ?? themes[0]
 
   useHead(
-    () => ({ meta: [{ name: 'theme-color', content: isDark.value ? '#050505' : '#ffffff' }] }),
+    () => ({ meta: [{ name: 'theme-color', content: isDark.value ? '#09090b' : '#ffffff' }] }),
     { mode: 'client' },
   )
 
