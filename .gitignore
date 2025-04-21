@@ -3,6 +3,7 @@
 .nuxt
 .output
 .wrangler
+.astro
 
 wrangler.toml
 

@@ -184,7 +184,7 @@ function isTwoTurnsEdgeValid(block: Block, edgeBlock: Block) {
 
 function isTwoTurnsConnectionValid(b1: Block, c1: Block, c2: Block, b2: Block) {
   return b1.index !== c1.index
-    && b1.index !== c1.index
+    && b1.index !== c2.index
     && b2.index !== c1.index
     && b2.index !== c2.index
     && c1.isEliminated
