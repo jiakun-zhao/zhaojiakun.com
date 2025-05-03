@@ -1,3 +1,10 @@
 {
-  "extends": "./.nuxt/tsconfig.json"
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "#modules": ["modules/*"],
+      "~/*": ["src/*"]
+    }
+  },
+  "extends": "astro/tsconfigs/base"
 }

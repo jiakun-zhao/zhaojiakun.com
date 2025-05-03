@@ -1,12 +1,10 @@
 {
   "cSpell.words": [
-    "colorthief",
-    "darkmode",
     "Grayscale",
-    "libvips",
     "Shisen",
-    "Umami"
-  ]
-  // "typescript.inlayHints.parameterNames.enabled": "all",
-  // "javascript.inlayHints.parameterNames.enabled": "all"
+    "Shisenshō",
+    "apple-touch-icon-precomposed",
+    "oxlintrc"
+  ],
+  "editor.fontSize": 13.5
 }

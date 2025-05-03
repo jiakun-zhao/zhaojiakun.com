@@ -1,0 +1,27 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: #954;
+  color: white;
+}
+
+:root {
+  font-size: 0.954rem;
+  --w-screen-fix: 100dvw;
+  --h-screen-fix: 100dvh;
+}
+
+@keyframes slide-enter {
+  0% {
+    transform: translateY(10px);
+    opacity: 0
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1
+  }
+}

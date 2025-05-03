@@ -1,0 +1,52 @@
+---
+import CloudflareWebAnalytics from '~/components/CloudflareWebAnalytics.astro'
+
+import '@fontsource-variable/geist'
+import '@fontsource-variable/geist-mono'
+import '~/assets/style.css'
+
+export interface Props {
+  title?: string
+  description?: string
+  viewport?: string
+  ogImage?: string | URL
+}
+
+const {
+  title = '\u200E',
+  description = 'No description',
+  viewport = 'width=device-width, initial-scale=1.0',
+  ogImage = new URL('_images/og-default.png', Astro.url.origin),
+} = Astro.props
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content={viewport} />
+
+  <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" type="image/png" />
+
+  <title>{title}</title>
+  <meta property="og:title" content={title} />
+  <meta name="twitter:title" content={title} />
+
+  <meta name="description" content={description} />
+  <meta property="og:description" content={description} />
+  <meta name="twitter:description" content={description} />
+
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content={Astro.url} />
+
+  <meta name="theme-color" content="hsl(0,0%,100%)" media="(prefers-color-scheme:light)" >
+  <meta name="theme-color" content="hsl(240,10%,3.9%)" media="(prefers-color-scheme:dark)" >
+
+  <CloudflareWebAnalytics />
+
+  {/* <script is:inline>(()=>{document.addEventListener('gesturestart',e=>e.preventDefault())})()</script> */}
+
+  <slot />
+</head>
