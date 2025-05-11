@@ -47,9 +47,7 @@ const {
   <CloudflareWebAnalytics />
 
   {/* cSpell:disable-next-line */}
-  <script is:inline>(()=>{/MicroMessenger/i.test(window.navigator.userAgent)&&document.documentElement.classList.add('wechat')})()</script>
-
+  <script is:inline>(()=>{/MicroMessenger/i.test(window.navigator.userAgent)&&(document.documentElement.classList.add('wechat'),window._$wechat=true)})()</script>
   {/* <script is:inline>(()=>{document.addEventListener('gesturestart',e=>e.preventDefault())})()</script> */}
-
   <slot />
 </head>

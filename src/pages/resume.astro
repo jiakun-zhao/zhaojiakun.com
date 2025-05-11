@@ -16,32 +16,36 @@ const experience = [
   <Head title="个人简历" description="赵家锟的个人简历">
     <script is:inline>(()=>{const el=document.createElement('style');el.innerHTML='@pages{size:A4 portrait}';document.head.appendChild(el)})()</script>
   </Head>
-  <body class="m0 bg-shadcn p12 text-shadcn/80 lh-loose tracking-wider font-sans bg-wechat">
+  <body class="m0 bg-shadcn px8 py12 text-shadcn/80 lh-loose tracking-wider font-sans bg-wechat">
+    <script is:inline>(()=>{window._$wechat&&document.body.classList.replace('px8','px12')})()</script>
+
     <main class="mx-auto max-w-xl w-full pb-[env(safe-area-inset-bottom)]">
       <h3>赵家锟</h3>
       <p class="text-shadcn-muted/80">计算机世界的狂热爱好者，前端开发者，平面兼 UI 设计师，消暖施工员。期望获得一份新工作来满足正常社交的自由职业者。</p>
       <p class="text-shadcn-muted/80">发送邮件至 hi@zhaojiakun.com 和我联系。</p>
 
       <div class="gap-2 py8 text-2xl filter-contrast-85 filter-grayscale-100 light:filter-invert-100" flex="~ wrap">
-        <span class="i-skill-icons:photoshop"></span>
-        <span class="i-skill-icons:premiere"></span>
-        <span class="i-skill-icons:illustrator"></span>
-        <span class="i-skill-icons:xd"></span>
-        <span class="i-skill-icons:figma-dark"></span>
-        <span class="i-skill-icons:autocad-light filter-invert-100"></span>
-        <span class="i-skill-icons:git" light:filter-invert-100></span>
-        <span class="i-skill-icons:nodejs-dark"></span>
-        <span class="i-skill-icons:typescript" filter-invert-100></span>
-        <span class="i-skill-icons:javascript filter-invert-100"></span>
-        <span class="i-skill-icons:kotlin-light" filter-invert-100></span>
-        <span class="i-skill-icons:vuejs-light filter-invert-100"></span>
-        <span class="i-skill-icons:solidjs-light filter-invert-100"></span>
+        <span class="i-skill-icons:photoshop" title="Adobe PhotoShop"></span>
+        <span class="i-skill-icons:premiere" title="Adobe Premiere"></span>
+        <span class="i-skill-icons:illustrator" title="Adobe illustrator"></span>
+        <span class="i-skill-icons:xd" title="Adobe XD"></span>
+        <span class="i-skill-icons:figma-dark" title="Figma"></span>
+        {/* cSpell:disable-next-line */}
+        <span class="i-skill-icons:autocad-light filter-invert-100" title="AutoCAD"></span>
+        <span class="i-skill-icons:git light:filter-invert-100" title="Git"></span>
+        <span class="i-skill-icons:nodejs-dark" title="Node.js"></span>
+        <span class="i-skill-icons:typescript filter-invert-100" title="TypeScript"></span>
+        <span class="i-skill-icons:javascript filter-invert-100" title="JavaScript"></span>
+        <span class="i-skill-icons:kotlin-light filter-invert-100" title="Kotlin"></span>
+        {/* cSpell:disable-next-line */}
+        <span class="i-skill-icons:vuejs-light filter-invert-100" title="Vue"></span>
+        <span class="i-skill-icons:solidjs-light filter-invert-100" title="Solid"></span>
       </div>
 
       <div grid="~ cols-[min-content_1fr]" class="w-full items-baseline gap-2">
         {experience.map(item => (
           <>
-            <h4 class="m0 mt6 text-nowrap">{item.title}</h4>
+            <h4 class="m0 mt6 text-nowrap text-size-inherit">{item.title}</h4>
             <div class="text-xs text-shadcn-muted/80">{item.date}</div>
             <div class="col-span-2 text-shadcn-muted/80">{item.description}</div>
           </>
