@@ -15,7 +15,7 @@ export interface Props {
 const {
   title = '\u200E',
   description = 'No description',
-  viewport = 'width=device-width, initial-scale=1.0',
+  viewport = 'width=device-width, initial-scale=1.0, viewport-fit=cover',
   ogImage = new URL('_images/og-default.png', Astro.url.origin),
 } = Astro.props
 ---
@@ -41,10 +41,13 @@ const {
   <meta name="twitter:card" content="summary" />
   <meta property="og:url" content={Astro.url} />
 
-  <meta name="theme-color" content="hsl(0,0%,100%)" media="(prefers-color-scheme:light)" >
-  <meta name="theme-color" content="hsl(240,10%,3.9%)" media="(prefers-color-scheme:dark)" >
+  <meta name="theme-color" content="hsl(0,0%,100%)" media="(prefers-color-scheme:light)">
+  <meta name="theme-color" content="hsl(240,10%,3.9%)" media="(prefers-color-scheme:dark)">
 
   <CloudflareWebAnalytics />
+
+  {/* cSpell:disable-next-line */}
+  <script is:inline>(()=>{/MicroMessenger/i.test(window.navigator.userAgent)&&document.documentElement.classList.add('wechat')})()</script>
 
   {/* <script is:inline>(()=>{document.addEventListener('gesturestart',e=>e.preventDefault())})()</script> */}
 

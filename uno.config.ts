@@ -25,6 +25,7 @@ export default defineConfig<Theme>({
       'w-screen': 'w-[var(--w-screen-fix,100vw)]',
       'h-screen': 'h-[var(--h-screen-fix,100vh)]',
       'size-screen': 'w-screen h-screen',
+      'bg-wechat': '[.wechat_&]:bg-#ededed [.wechat_&]:dark:bg-#111',
     },
   ],
   theme: {
@@ -39,7 +40,6 @@ export default defineConfig<Theme>({
     fontFamily: {
       mono: '"Geist Mono Variable","DM Mono","IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
       sans: '"Geist Variable",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji"',
-      vt323: '"VT323"',
     },
     transitionProperty: {
       'grid-rows': 'grid-template-rows',
