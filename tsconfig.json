@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "#modules": ["modules/*"],
+      "#pkg": ["package.json"],
       "~/*": ["src/*"]
     }
   },

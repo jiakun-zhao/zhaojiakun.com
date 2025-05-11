@@ -54,6 +54,7 @@
   ],
   "rules": {
     "array-callback-return": "error",
+    "block-scoped-var": "error",
     "default-case-last": "error",
     "eqeqeq": [
       "error",
@@ -186,6 +187,7 @@
         "vars": "all"
       }
     ],
+    "no-useless-backreference": "off",
     "no-useless-call": "error",
     "no-useless-catch": "error",
     "no-useless-constructor": "error",

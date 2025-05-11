@@ -1,0 +1,46 @@
+---
+import Head from '~/components/Head.astro'
+
+// @keep-sorted
+const experience = [
+  { title: '自由职业', description: '网站/小程序设计与开发，平面设计。', date: '2025.02 - 至今' },
+  { title: '消暖施工员', description: '参与“杭州传化科技城有限公司”系列工程的建设，负责消防与暖通施工管理、图纸绘制等相关工作；', date: '2024.02 - 2025.01' },
+  { title: '自由职业', description: '网站/小程序设计与开发，平面设计。', date: '2022.01 - 2023.12' },
+  { title: '消暖施工员（实习）', description: '参与“成都传化中心”、“上海松江两馆一场”的建设，负责消防与暖通施工管理、图纸绘制等相关工作；', date: '2021.08 - 2022.01' },
+  { title: '平面设计', description: '自营工作室，负责广告相关内容设计制作；', date: '2019.07 - 2021.07' },
+  { title: '平面设计', description: '就职于“杭州众冠文化传播有限公司”，负责广告/海报等相关内容设计制作；', date: '2019.01 - 2019.06' },
+]
+---
+
+<html lang="en">
+  <Head title="个人简历" description="赵家锟的个人简历" />
+  <body class="m0 size-screen bg-shadcn p6 text-shadcn font-sans">
+    <main class="pb10">
+      <h3>赵家锟</h3>
+      <p>非计算机专业的计算机世界狂热爱好者，前端开发者，平面设计师，消暖施工员。</p>
+      <ul class="list-square ps6 lh-loose">
+        <li>年龄：1998.11</li>
+        <li>籍贯：浙江诸暨</li>
+        <li>邮箱：hi@zhaojiakun.com</li>
+      </ul>
+      <h3>技能</h3>
+      <ul class="list-square ps6 lh-loose">
+        <li>办公类软件：Office</li>
+        <li>创意类软件：Adobe PhotoShop、Adobe Illustrator、Adobe Premiere、Adobe XD、AutoCAD、Figma、MasterGo</li>
+        <li>开发：TypeScript、Java、Kotlin、Vue、Nuxt、Solid、Astro</li>
+      </ul>
+      <h3>工作经历</h3>
+      <ul class="aaa list-square ps6 lh-loose">
+        {experience.map(item => (
+          <li>
+            <h4>
+              <span>{item.title}</span>
+              <span class="ml2 text-sm text-shadcn-muted font-normal">{item.date}</span>
+            </h4>
+            <p>{item.description}</p>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>

@@ -28,12 +28,18 @@ export default defineConfig<Theme>({
     },
   ],
   theme: {
+    animation: {
+      keyframes: {
+        'slide-enter': '{0%{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}',
+      },
+    },
     colors: {
       accent: '#954',
     },
     fontFamily: {
       mono: '"Geist Mono Variable","DM Mono","IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
       sans: '"Geist Variable",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji"',
+      vt323: '"VT323"',
     },
     transitionProperty: {
       'grid-rows': 'grid-template-rows',
