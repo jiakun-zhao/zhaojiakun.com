@@ -1,0 +1,20 @@
+---
+import Head from '~/components/Head.astro'
+
+const name = 'Phone number to md5 zip.'
+---
+
+<html lang="en">
+  <Head title={name} description={name} />
+  <body class="m0 size-screen gap-6 bg-shadcn p6 text-shadcn font-sans" flex="~ col">
+    <header class="mx-auto max-w-3xl w-full flex items-center gap-2">
+      <button id="format" class="cursor-pointer rd-1.5 btn-reset bg-shadcn-primary px2 py1.5 text-sm text-shadcn-primary transition-opacity hover:op80">Format</button>
+      <button id="btn16" class="cursor-pointer rd-1.5 btn-reset bg-shadcn-primary px2 py1.5 text-sm text-shadcn-primary transition-opacity hover:op80">16-Bit Download</button>
+      <button id="btn32" class="cursor-pointer rd-1.5 btn-reset bg-shadcn-primary px2 py1.5 text-sm text-shadcn-primary transition-opacity hover:op80">32-Bit Download</button>
+    </header>
+    <main class="mx-auto h0 max-w-3xl w-full flex-1">
+      <textarea class="size-full rd-2 p2 text-inherit font-inherit font-mono outline-none" border="1 shadcn solid"></textarea>
+    </main>
+    <script src="~/modules/phone-number-to-md5-zip"></script>
+  </body>
+</html>

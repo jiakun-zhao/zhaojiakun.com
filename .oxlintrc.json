@@ -229,6 +229,10 @@
         "ignoreMemberSort": false
       }
     ],
+    "import/consistent-type-specifier-style": [
+      "warn",
+      "prefer-top-level"
+    ],
     "import/first": "warn",
     "import/no-duplicates": "warn",
     "import/no-mutable-exports": "warn",
