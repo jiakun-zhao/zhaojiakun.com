@@ -1,0 +1,18 @@
+---
+import Head from '~/components/Head.astro'
+
+export const prerender = false
+
+const name = 'Precious metals price.'
+const data: string[][] = await Astro.locals.runtime.env.JIAKUN_ZHAO_R2.get('PRECIOUS_METALS_V1.0.json').then(res => res.json())
+data.unshift(['商品', '回购', '销售', '最高价', '最低价'])
+---
+
+<html lang="en">
+  <Head title={name} description={name} />
+  <body class="m0 bg-shadcn p6 pb18 text-shadcn font-sans" grid="~ cols-5">
+    {data.flat().map((item, idx) => (
+      <div class="py2" class:list={{ 'font-bold': idx < 5, 'text-sm': idx >= 5 }}>{item}</div>
+    ))}
+  </body>
+</html>

@@ -7,6 +7,10 @@ import { name } from './package.json'
 export default defineConfig({
   adapter: cloudflare({
     imageService: 'passthrough',
+    platformProxy: {
+      enabled: true,
+      environment: 'production',
+    },
   }),
   build: {
     inlineStylesheets: 'never',
