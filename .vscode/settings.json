@@ -6,5 +6,6 @@
     "apple-touch-icon-precomposed",
     "oxlintrc"
   ],
-  "editor.fontSize": 13.5
+  "editor.fontSize": 13.5,
+  "oxc.enable": false
 }
